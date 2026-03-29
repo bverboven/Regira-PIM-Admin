@@ -28,6 +28,7 @@ import ListItem from "./ListItem.vue"
 
 interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> { }
 const emit = defineEmits<Emits>()
+
 const props = defineProps<{
     modelValue?: Array<Entity>
     readonly?: boolean

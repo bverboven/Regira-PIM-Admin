@@ -1,4 +1,9 @@
 {
+    "article.allowAdditions": {
+        "en": "Allow additions",
+        "fr": "Autoriser les ajouts",
+        "nl": "Toevoegingen toestaan"
+    },
     "article": {
         "en": "Article",
         "fr": "Article",
@@ -13,6 +18,41 @@
         "en": "Manage the articles that are available in the webshop.",
         "fr": "Gérez les articles disponibles dans la boutique en ligne.",
         "nl": "Beheer de artikelen die beschikbaar zijn in de webshop."
+    },
+    "assembly": {
+        "en": "Assembly",
+        "fr": "Assemblage",
+        "nl": "Samenstelling"
+    },
+    "assemblies": {
+        "en": "Assemblies",
+        "fr": "Assemblages",
+        "nl": "Samenstellingen"
+    },
+    "component": {
+        "en": "Component",
+        "fr": "Composant",
+        "nl": "Component"
+    },
+    "components": {
+        "en": "Components",
+        "fr": "Composants",
+        "nl": "Componenten"
+    },
+    "facet": {
+        "en": "Facet",
+        "fr": "Facette",
+        "nl": "Facet"
+    },
+    "facetsDescription": {
+        "en": "Manage the facets that are available for articles in the webshop.",
+        "fr": "Gérez les facettes disponibles pour les articles dans la boutique en ligne.",
+        "nl": "Beheer de facetten die beschikbaar zijn voor artikelen in de webshop."
+    },
+    "facets": {
+        "en": "Facets",
+        "fr": "Facettes",
+        "nl": "Facetten"
     },
     "unitType": {
         "en": "Unit Type",

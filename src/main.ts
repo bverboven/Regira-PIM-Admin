@@ -79,7 +79,8 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
             },
         })
 
-        app.use(iconPlugin, { source: "bs", clearFirst: false })
+        const appIcons = await fetch(`${appConfig.baseUrl}/data/app-icons.json?v=${formatDateTime(new Date(), "yyyyMMdd")}`).then((r) => r.json())
+        app.use(iconPlugin, { icons: appIcons, source: "bs", clearFirst: false })
         app.use(screenPlugin)
         app.use(isOnlinePlugin)
         app.use(debugPlugin, { isDebug: config.isDebug })

@@ -16,18 +16,23 @@
 
 <script setup lang="ts">
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
+import config from "../config/config";
 import SearchObject from "./SearchObject"
 
-interface Emits extends /* @vue-ignore */ FilterEmits { }
+interface Emits extends /* @vue-ignore */ FilterEmits<SearchObject> { }
+const emit = defineEmits<Emits & {
+    "update:modelValue": (value: SearchObject) => true,
+    "filter": (value: SearchObject) => true,
+    "toggle-adv": () => void,
+}>()
 
-const emit = defineEmits<Emits>()
 const props = withDefaults(
     defineProps<{
         resultCount?: number
         showToggleAdv?: boolean
     }>(),
     {
-        showToggleAdv: false,
+        showToggleAdv: config.isComplex,
     }
 )
 const searchObject = defineModel<SearchObject>({ default: () => new SearchObject() })

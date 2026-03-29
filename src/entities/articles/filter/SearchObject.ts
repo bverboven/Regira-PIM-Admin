@@ -4,6 +4,12 @@ export class EntitySearchObject extends SearchObjectBase {
     title?: string
     unitTypeId?: number
 
+    componentId?: number | Array<number>
+    assemblyId?: number | Array<number>
+
+    isComponent?: boolean
+    isAssembly?: boolean
+
     allowAdditions?: boolean
 
     minCreated?: Date

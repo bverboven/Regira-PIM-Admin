@@ -73,7 +73,10 @@ import FilterAdv from "../filter/FilterAdv.vue"
 import List from "./List.vue"
 
 interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> { }
-defineEmits<Emits>()
+defineEmits<Emits & {
+    "update:modelValue": (value: SearchObject) => true,
+    "filter": (value: SearchObject) => true,
+}>()
 
 const { service } = useEntityStore()
 

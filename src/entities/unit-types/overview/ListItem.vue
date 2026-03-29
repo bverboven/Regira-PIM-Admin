@@ -1,12 +1,16 @@
 <template>
     <div class="row border-bottom border-bottom-1 py-2">
         <div class="col-auto">
-            <!-- Bigger forms: Link to input page -->
-            <!-- <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
-                <Icon :name="Entity.name" />
-            </router-link> -->
-            <!-- Smaller forms: Open form modal -->
-            <FormModalButton v-model="item" @save="$emit('save', $event)" />
+            <template v-if="config.isComplex">
+                <!-- Complex entity: Link to input page -->
+                <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
+                    <Icon :name="Entity.name" />
+                </router-link>
+            </template>
+            <template v-else>
+                <!-- Simple enitty: Open form modal -->
+                <FormModalButton v-model="item" @save="$emit('save', $event)" />
+            </template>
         </div>
         <div class="col-2 col-lg-1 text-truncate">
             {{ item.code }}
@@ -24,6 +28,7 @@
 <script setup lang="ts">
 import { ModalType, ConfirmButton } from "@/regira_modules/vue/ui"
 import type { SaveResult } from "@/regira_modules/vue/entities"
+import config from "../config/config";
 import Entity from "../data/Entity"
 import FormModalButton from "../details/FormModalButton.vue"
 

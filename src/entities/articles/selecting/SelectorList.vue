@@ -28,15 +28,18 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import type { OverviewEmits } from "@/regira_modules/vue/entities"
+import { type OverviewEmits } from "@/regira_modules/vue/entities"
 import type Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import FormModalButton from "../details/FormModalButton.vue"
 
-interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> {
+interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> { }
+const emit = defineEmits<Emits & {
+    (e: "update:modelValue", value: Array<Entity>): void
+    (e: "update:selected", value?: Entity): void
     (e: "select", selected?: Entity): void
-}
-const emit = defineEmits<Emits>()
+}>()
+
 const props = defineProps<{
     modelValue?: Array<Entity>
     selected?: Entity

@@ -18,62 +18,69 @@
                     </div>
                     <input v-model.lazy.trim="searchObject.q" class="form-control" :placeholder="$t('keywords')" />
                 </div>
+                <FormLabel :label="$t('keywords')" />
             </div>
-        </div>
-        <div class="row">
-            <!-- title -->
+            <!-- UnitType -->
             <div class="col mb-2">
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <Icon name="title" />
-                    </div>
-                    <input v-model.lazy.trim="searchObject.title" class="form-control" :placeholder="$t('name')" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- unitTypeId -->
-            <div class="col mb-2">
-                <UnitTypeInputSelector v-model:id-value="searchObject.unitTypeId" />
+                <UnitTypeInputSelector v-model="unitType" v-model:id-value="searchObject.unitTypeId" />
                 <FormLabel :label="$t('unitType')" />
             </div>
         </div>
         <div class="row">
-            <!-- minCreated -->
-            <div class="col-sm mb-2">
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <Icon name="from" />
-                    </div>
-                    <input type="date" v-model="searchObject.minCreated" class="form-control" />
-                </div>
+            <!-- Component -->
+            <div class="col mb-2">
+                <InputSelector v-model="component" v-model:idValue="searchObject.componentId as number"
+                    :filterDefaults="{ isComponent: true }">
+                    <template #prepend>
+                        <div class="input-group-text">
+                            <NullableCheckBox v-model="searchObject.isComponent" id="isComponent"
+                                class="form-check-input" />
+                        </div>
+                    </template>
+                </InputSelector>
+                <FormLabel :label="$t('component')" />
             </div>
-            <!-- maxCreated -->
-            <div class="col-sm mb-2">
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <Icon name="to" />
-                    </div>
-                    <input type="date" v-model="searchObject.maxCreated" class="form-control" />
-                </div>
+            <!-- Assembly -->
+            <div class="col mb-2">
+                <InputSelector v-model="assembly" v-model:idValue="searchObject.assemblyId as number"
+                    :filterDefaults="{ isAssembly: true }">
+                    <template #prepend>
+                        <div class="input-group-text">
+                            <NullableCheckBox v-model="searchObject.isAssembly" id="isAssembly"
+                                class="form-check-input" />
+                        </div>
+                    </template>
+                </InputSelector>
+                <FormLabel :label="$t('assembly')" />
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
-import { InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
+import { type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
 import SearchObject from "./SearchObject"
+import InputSelector from "../selecting/InputSelector.vue";
+import Article from "../data/Entity";
+import { NullableCheckBox } from "@/regira_modules/vue/ui";
 
 interface Emits extends /* @vue-ignore */ FilterEmits { }
+const emit = defineEmits<Emits & {
+    "update:modelValue": (value: SearchObject) => true,
+    "filter": (value: SearchObject) => true,
+}>()
 
-const emit = defineEmits<Emits>()
 const props = defineProps<{
     resultCount?: number
 }>()
 
 const searchObject = defineModel<SearchObject>({ required: true })
+
+const unitType = ref<UnitType>()
+const component = ref<Article>()
+const assembly = ref<Article>()
 
 const { filterIsActive, handleReset } = useFilter({ searchObject, emit, Constructor: SearchObject })
 </script>

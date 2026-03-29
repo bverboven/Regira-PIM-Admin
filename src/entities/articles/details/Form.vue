@@ -38,15 +38,22 @@
                             <FormLabel :label="$t('unitType')" />
                         </div>
                     </div>
+                </FormSection>
+                <FormSection :title="$t('components')">
                     <div class="row">
                         <div class="col-auto mb-2">
                             <div class="form-check form-switch">
                                 <input type="checkbox" v-model="item.allowAdditions" :disabled="readonly"
                                     class="form-check-input" id="allowAdditions" />
-                                <label class="form-check-label" for="allowAdditions">{{ $t("allowAdditions") }}</label>
+                                <label class="form-check-label" for="allowAdditions">{{ $t("article.allowAdditions")
+                                }}</label>
                             </div>
                         </div>
                     </div>
+                    <ComponentOverview v-model="item.components" />
+                </FormSection>
+
+                <FormSection :title="$t('notes')">
                     <div class="row">
                         <div class="col mb-2">
                             <DescriptionInput v-model="item.description" :label="$t('notes')" :readonly="readonly" />
@@ -55,8 +62,8 @@
                 </FormSection>
             </template>
 
-            <template #components>
-                <ComponentOverview v-model="item.components" />
+            <template #assemblies>
+                <AssemblyOverview :article="item" />
             </template>
         </TabContainer>
         <Debug :modelValue="{
@@ -73,6 +80,7 @@ import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
 import { InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
+import AssemblyOverview from "@/entities/articles/article-assemblies/Overview.vue"
 import ComponentOverview from "@/entities/articles/article-components/Overview.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
@@ -80,6 +88,7 @@ import useEntityStore from "../data/store"
 
 interface Emits extends /* @vue-ignore */ FormEmits<Entity> { }
 const emit = defineEmits<Emits>()
+
 const props = withDefaults(
     defineProps<{
         modelValue: Entity
@@ -100,7 +109,7 @@ const { translate } = useLang()
 const tabs = computed(() =>
     [
         Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
-        Tab.create("components", { icon: "components", title: translate("components") }),
+        Tab.create("assemblies", { icon: "assembly", title: translate("assemblies") }),
     ].filter(tab => tab)
 )
 </script>

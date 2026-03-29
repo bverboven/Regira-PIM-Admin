@@ -15,24 +15,24 @@
 
 <script setup lang="ts">
 import { computed, type Ref } from "vue"
-import { FormStates, useModal, type SaveResult } from "@/regira_modules/vue/entities"
+import { FormStates, useModal, type FormModalEmits, type SaveResult } from "@/regira_modules/vue/entities"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import Form from "./Form.vue"
 
-interface Emits {
-    (e: "update:modelValue", item?: Entity): void;
-    (e: "save", result: SaveResult<Entity>): void;
-    (e: "remove", item: Entity): void;
-    (e: "restore", item: Entity): void;
-    (e: "cancel", arg: { canceled: Entity; original?: Entity; }): void;
-    (e: "changeState", state: FormStates): void;
-    (e: "open", item: Entity, update: (newItem: Entity) => void): void;
-    (e: "close", item?: Entity): void;
-}
+interface Emits extends /* @vue-ignore */ FormModalEmits<Entity> { }
+const emit = defineEmits<Emits & {
+    "update:modelValue": (item?: Entity) => true,
+    "save": (result: SaveResult<Entity>) => true,
+    "remove": (item: Entity) => true,
+    "restore": (item: Entity) => true,
+    "cancel": (arg: { canceled: Entity; original?: Entity; }) => true,
+    "changeState": (state: FormStates) => true,
+    "open": (item: Entity, update: (newItem: Entity) => void) => true,
+    "close": (item?: Entity) => true,
+}>()
 
-const emit = defineEmits<Emits>()
 const props = defineProps<{
     readonly?: boolean
     itemDefaults?: Ref<Record<string, any>> | Record<string, any>
