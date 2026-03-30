@@ -17,7 +17,7 @@ const config: IConfig = {
 
     overviewTitle: "articles",
     detailsTitle: "article",
-    description: "articlesDescription",
+    description: "article.description",
     icon: "bi bi-joystick",
 
     defaultPageSize: 10,

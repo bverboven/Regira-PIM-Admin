@@ -17,7 +17,7 @@ const config: IConfig = {
 
     overviewTitle: "unitTypes",
     detailsTitle: "unitType",
-    description: "unitTypesDescription",
+    description: "unitType.description",
     icon: "bi bi-tools",
 
     defaultPageSize: 0,

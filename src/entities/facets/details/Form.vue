@@ -95,7 +95,7 @@ const { translate } = useLang()
 const tabs = computed(() =>
     [
         Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
-        Tab.create("childEntities", { icon: "component", title: translate("childEntities") }),
+        Tab.create("childEntities", { icon: "component", title: translate("facet.childEntities") }),
     ].filter(tab => tab)
 )
 </script>

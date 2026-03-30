@@ -14,7 +14,7 @@
         "fr": "Articles",
         "nl": "Artikelen"
     },
-    "articlesDescription": {
+    "article.description": {
         "en": "Manage the articles that are available in the webshop.",
         "fr": "Gérez les articles disponibles dans la boutique en ligne.",
         "nl": "Beheer de artikelen die beschikbaar zijn in de webshop."
@@ -44,12 +44,12 @@
         "fr": "Facette",
         "nl": "Facet"
     },
-    "childEntities": {
+    "facet.childEntities": {
         "en": "Child Facets",
         "fr": "Facettes enfants",
         "nl": "Onderfacetten"
     },
-    "facetsDescription": {
+    "facet.description": {
         "en": "Manage the facets that are available for articles in the webshop.",
         "fr": "Gérez les facettes disponibles pour les articles dans la boutique en ligne.",
         "nl": "Beheer de facetten die beschikbaar zijn voor artikelen in de webshop."
@@ -69,7 +69,7 @@
         "fr": "Types d'unités",
         "nl": "Eenheidstypen"
     },
-    "unitTypesDescription": {
+    "unitType.description": {
         "en": "Manage the different unit types that can be used for prices from articles in the webshop.",
         "fr": "Gérez les différents types d'unités qui peuvent être utilisés pour les prix des articles dans la boutique en ligne.",
         "nl": "Beheer de verschillende eenheidstypen die kunnen worden gebruikt voor prijzen van artikelen in de webshop."
