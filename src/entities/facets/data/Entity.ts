@@ -1,5 +1,5 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
-import type FacetChild from "../facet-children/Entity"
+import type FacetChild from "../facet-related-facets/FacetChild"
 
 export class Facet extends EntityBase {
     id: number = 0
@@ -11,6 +11,7 @@ export class Facet extends EntityBase {
     lastModified?: Date
 
     childEntities?: Array<FacetChild>
+    parentEntities?: Array<FacetChild>
 
     override get $id(): string | number {
         return this.id || "new"

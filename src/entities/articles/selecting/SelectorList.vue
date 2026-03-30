@@ -2,7 +2,8 @@
     <div class="entity-list">
         <div class="row pb-2 border-bottom border-bottom-1">
             <div class="col-auto fw-bold">
-                <Icon name="select" class="m-1" />
+                <Icon v-if="config.isComplex" name="edit" class="m-1" />
+                <FormModalButton v-else disabled class="border-0" />
             </div>
             <div class="col fw-bold">{{ $t("name") }}</div>
             <div class="col-3 d-none d-md-block fw-bold">{{ $t("unitType") }}</div>
@@ -29,6 +30,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { type OverviewEmits } from "@/regira_modules/vue/entities"
+import config from "../config/config"
 import type Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import FormModalButton from "../details/FormModalButton.vue"

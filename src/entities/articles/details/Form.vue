@@ -39,23 +39,25 @@
                         </div>
                     </div>
                 </FormSection>
-                <FormSection :title="$t('components')">
-                    <div class="row">
-                        <div class="col-auto mb-2">
+
+                <div class="row">
+                    <div class="col mb-2">
+                        <FormSection :title="$t('components')">
                             <div class="form-check form-switch">
                                 <input type="checkbox" v-model="item.allowAdditions" :disabled="readonly"
                                     class="form-check-input" id="allowAdditions" />
                                 <label class="form-check-label" for="allowAdditions">{{ $t("article.allowAdditions")
-                                    }}</label>
+                                }}</label>
                             </div>
-                        </div>
+                            <ComponentOverview v-model="item.components" :assembly="item" />
+                        </FormSection>
                     </div>
-                    <ComponentOverview v-model="item.components" :assembly="item" />
-                </FormSection>
-
-                <FormSection :title="$t('facets')">
-                    <FacetOverview v-model="item.facets" :article="item" />
-                </FormSection>
+                    <div class="col-xl col-lg-4 mb-2">
+                        <FormSection :title="$t('facets')">
+                            <FacetOverview v-model="item.facets" :article="item" />
+                        </FormSection>
+                    </div>
+                </div>
 
                 <FormSection :title="$t('notes')">
                     <div class="row">

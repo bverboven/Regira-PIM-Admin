@@ -2,10 +2,12 @@
     <form @submit.prevent="handleSubmit" :modelValue="item">
         <div class="row form-buttons">
             <div class="col col-md-auto order-1">
-                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0" @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
+                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0"
+                    @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
             </div>
             <div class="col-auto order-2 order-md-3">
-                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }" class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
+                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
+                    class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
                     <Icon name="popOut" />
                 </RouterLink>
                 <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
@@ -50,8 +52,8 @@
                 </FormSection>
             </template>
 
-            <template #childEntities>
-                <FacetChildrenOverview v-model="item.childEntities" :facet="item" />
+            <template #related>
+                <RelatedOverview v-model="item" />
             </template>
         </TabContainer>
 
@@ -66,9 +68,9 @@ import { computed } from "vue"
 import type { RouteRecordRaw } from "vue-router"
 import { useLang } from "@/regira_modules/vue/lang"
 import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui"
-import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
-import FacetChildrenOverview from "../facet-children/Overview.vue"
+import { FormButtonsRow } from "@/components/input"
+import { Overview as RelatedOverview } from "../facet-related-facets"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
@@ -95,7 +97,7 @@ const { translate } = useLang()
 const tabs = computed(() =>
     [
         Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
-        Tab.create("childEntities", { icon: "component", title: translate("facet.childEntities") }),
+        Tab.create("related", { icon: "component", title: translate("facet.relatedEntities") }),
     ].filter(tab => tab)
 )
 </script>

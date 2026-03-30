@@ -47,12 +47,22 @@
     "facet.childEntities": {
         "en": "Child Facets",
         "fr": "Facettes enfants",
-        "nl": "Onderfacetten"
+        "nl": "Onderliggende facetten"
     },
     "facet.description": {
         "en": "Manage the facets that are available for articles in the webshop.",
         "fr": "Gérez les facettes disponibles pour les articles dans la boutique en ligne.",
         "nl": "Beheer de facetten die beschikbaar zijn voor artikelen in de webshop."
+    },
+    "facet.parentEntities": {
+        "en": "Parent Facets",
+        "fr": "Facettes parentes",
+        "nl": "Bovenliggende facetten"
+    },
+    "facet.relatedEntities": {
+        "en": "Related Facets",
+        "fr": "Facettes liées",
+        "nl": "Gerelateerde facetten"
     },
     "facets": {
         "en": "Facets",

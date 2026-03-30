@@ -5,12 +5,12 @@
                 <InputSelector v-model="newItem.component" v-model:idValue="newItem.componentId"
                     :filterDefaults="{ isComponent: true }" />
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="input-group">
+                    <input type="number" v-model="newItem.quantity" class="form-control" />
                     <div class="input-group-text">
                         <span class="text-muted">{{ getUnitType(newItem.component?.unitType)?.code }}</span>
                     </div>
-                    <input type="number" v-model="newItem.quantity" class="form-control" />
                 </div>
             </div>
             <div class="col-auto">
@@ -25,12 +25,12 @@
                 <div class="col">
                     <InputSelector v-model="item.component" v-model:idValue="item.componentId" />
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="input-group">
+                        <input type="number" v-model="item.quantity" class="form-control" />
                         <div class="input-group-text">
                             <span class="text-muted">{{ getUnitType(item.component?.unitType)?.code }}</span>
                         </div>
-                        <input type="number" v-model="item.quantity" class="form-control" />
                     </div>
                 </div>
                 <div class="col-auto">

@@ -5,7 +5,7 @@
         </slot>
         <Teleport to="#modals">
             <MyModal :is-visible="isOpen" :title="modalTitle || $tm(config.detailsTitle || '')" :showFooter="false"
-                :full-width="false" @close="close" @cancel="handleCancel" @submit="handleSave">
+                :full-width="fullWidth" @close="close" @cancel="handleCancel" @submit="handleSave">
                 <Form v-model="item" :initial-tab="initialTab" :readonly="readonly" :is-popup="true"
                     @cancel="handleCancel" @save="handleSave" @remove="handleRemove" />
             </MyModal>
@@ -33,13 +33,16 @@ const emit = defineEmits<Emits & {
     "close": (item?: Entity) => true,
 }>()
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     readonly?: boolean
     itemDefaults?: Ref<Record<string, any>> | Record<string, any>
     initialTab?: string
     label?: string
     closeOnSave?: boolean
-}>()
+    fullWidth?: boolean
+}>(), {
+    fullWidth: config.isComplex
+})
 
 const modelRef = defineModel<Entity>()
 const { service: entityService } = useEntityStore()

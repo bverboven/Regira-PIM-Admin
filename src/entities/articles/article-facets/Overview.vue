@@ -24,10 +24,6 @@
                 </div>
             </div>
         </template>
-
-        <Debug :modelValue="{
-            items: items.map(x => `${x.id} - ${(x.facet?.title ?? '')}`),
-        }" />
     </div>
 </template>
 

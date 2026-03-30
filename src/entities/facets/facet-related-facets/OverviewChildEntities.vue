@@ -2,7 +2,8 @@
     <div>
         <div class="row mb-2">
             <div class="col">
-                <InputSelector v-model="newItem.child" v-model:idValue="newItem.childId" />
+                <InputSelector v-model="newItem.child" v-model:idValue="newItem.childId"
+                    :filterDefaults="{ exclude: excludedIds }" />
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
@@ -24,19 +25,14 @@
                 </div>
             </div>
         </template>
-
-        <Debug :modelValue="{
-            items: items.map(x => `${x.id} - ${(x.child?.title ?? '')}`),
-        }" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, computed } from "vue"
 import type Facet from "../data/Entity"
-import FacetChild from "./Entity"
+import FacetChild from "./FacetChild"
 import InputSelector from "../selecting/InputSelector.vue"
-import { Debug } from "@/regira_modules/vue/debug"
 import FormModalButton from "../details/FormModalButton.vue"
 
 const props = defineProps<{
@@ -44,6 +40,7 @@ const props = defineProps<{
 }>()
 
 const items = defineModel<FacetChild[]>({ default: () => [] })
+const excludedIds = computed(() => [props.facet.id, ...props.facet.parentEntities?.map(x => x.parentId) ?? [], ...props.facet.childEntities?.map(x => x.childId) ?? []])
 
 function handleRemove(item: FacetChild) {
     item._deleted = !item._deleted

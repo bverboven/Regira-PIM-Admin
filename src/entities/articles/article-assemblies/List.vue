@@ -2,12 +2,14 @@
     <div class="entity-list">
         <div class="row pb-2 border-bottom border-bottom-1">
             <div class="col-auto fw-bold">
-                <Icon name="edit" class="m-1" />
+                <FormModalButton disabled class="border-0" />
             </div>
-            <div class="col fw-bold">{{ $t("name") }}</div>
+            <div class="col-4 fw-bold">{{ $t("name") }}</div>
             <div class="col fw-bold">{{ $t("components") }}</div>
-            <div v-if="!readonly" class="col-auto d-none d-md-block fw-bold">
-                <Icon name="delete" class="text-muted m-1" />
+            <div class="col-auto fw-bold">
+                <button type="button" class="btn btn-outline-danger text-muted" disabled>
+                    <Icon name="delete" />
+                </button>
             </div>
         </div>
         <template v-for="(item, i) in items" :key="item.$id">
@@ -15,18 +17,25 @@
                 <div class="col-auto">
                     <FormModalButton :modelValue="item" />
                 </div>
-                <div class="col text-truncate">
+                <div class="col-4 text-truncate">
                     {{ item.$title }}
                 </div>
                 <div class="col text-truncate">
                     <ul class="list-inline mb-0">
-                        <li v-for="component in item.components" :key="component.id" class="list-inline-item">
+                        <li v-for="(component, i) in item.components" :key="component.id" class="list-inline-item">
                             <span :class="{ 'fw-bold': component.componentId == article.id }">
-                                {{ component.component?.title }} ({{ component.quantity }} {{
+                                {{ component.component?.title }} ({{ component.quantity }}{{
                                     getUnitType(component.component?.unitType)?.code }})
                             </span>
+                            <span v-if="i < item.components!.length - 1">,</span>
                         </li>
                     </ul>
+                </div>
+                <div class="col-auto">
+                    <!-- ToDo: implement -->
+                    <button type="button" class="btn btn-outline-danger">
+                        <Icon name="delete" />
+                    </button>
                 </div>
             </div>
         </template>

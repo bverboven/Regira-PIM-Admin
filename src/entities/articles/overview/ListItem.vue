@@ -15,10 +15,10 @@
         <div class="col text-truncate">
             {{ item.$title }}
         </div>
-        <div class="col text-truncate">
+        <div class="col-4 col-md-2 col-lg-1 text-truncate">
             {{ formatCurrency(item.price, $culture) }}
         </div>
-        <div class="col-3 d-none d-md-block text-truncate">
+        <div class="col-2 col-lg-1 d-none d-md-block text-truncate">
             <UnitTypeButton :model-value="item.unitType" />{{ getUnitType(item.unitType)?.$title }}
         </div>
         <div v-if="!readonly" class="col-auto d-none d-md-block">

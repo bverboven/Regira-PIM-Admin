@@ -1,12 +1,13 @@
 <template>
     <div class="entity-list">
         <div class="row pb-2 border-bottom border-bottom-1">
-            <div class="col-auto fw-bold">
-                <Icon name="edit" class="m-1" />
+            <div class="col-auto">
+                <Icon v-if="config.isComplex" name="edit" class="m-1" />
+                <FormModalButton v-else disabled class="border-0" />
             </div>
             <div class="col fw-bold">{{ $t("name") }}</div>
-            <div class="col fw-bold">{{ $t("price") }}</div>
-            <div class="col-3 d-none d-md-block fw-bold">{{ $t("unitType") }}</div>
+            <div class="col-4 col-md-2 col-lg-1 fw-bold">{{ $t("price") }}</div>
+            <div class="col-2 col-lg-1 d-none d-md-block fw-bold">{{ $t("unitType") }}</div>
             <div v-if="!readonly" class="col-auto d-none d-md-block fw-bold">
                 <Icon name="delete" class="text-muted m-1" />
             </div>
@@ -22,9 +23,11 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import type { OverviewEmits } from "@/regira_modules/vue/entities"
-import useEntityStore from "../data/store"
+import config from "../config/config"
 import type Entity from "../data/Entity"
+import useEntityStore from "../data/store"
 import ListItem from "./ListItem.vue"
+import FormModalButton from "../details/FormModalButton.vue"
 
 interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> { }
 const emit = defineEmits<Emits>()
