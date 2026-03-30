@@ -8,7 +8,6 @@ export class ArticleComponent extends EntityBase {
     quantity: number
     isOmittable: boolean
 
-    assembly?: Article
     component?: Article
 
     _deleted: boolean = false

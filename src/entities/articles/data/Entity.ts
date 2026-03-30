@@ -1,6 +1,7 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
 import { type Entity as UnitType } from "@/entities/unit-types"
 import type { ArticleComponent } from "../article-components/Entity"
+import type ArticleFacet from "../article-facets/Entity"
 
 export class Article extends EntityBase {
     id: number = 0
@@ -17,6 +18,7 @@ export class Article extends EntityBase {
     unitType?: UnitType
     assemblies?: ArticleComponent[]
     components?: ArticleComponent[]
+    facets?: ArticleFacet[]
 
     override get $id(): string | number {
         return this.id || "new"

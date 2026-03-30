@@ -17,7 +17,7 @@ export class ArticleAssembly extends EntityBase {
         return this.id || "new"
     }
     override get $title(): string | undefined {
-        return this.component?.title
+        return this.assembly?.title
     }
 
     static create(values?: object): ArticleAssembly {

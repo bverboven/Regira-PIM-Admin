@@ -46,11 +46,15 @@
                                 <input type="checkbox" v-model="item.allowAdditions" :disabled="readonly"
                                     class="form-check-input" id="allowAdditions" />
                                 <label class="form-check-label" for="allowAdditions">{{ $t("article.allowAdditions")
-                                }}</label>
+                                    }}</label>
                             </div>
                         </div>
                     </div>
-                    <ComponentOverview v-model="item.components" />
+                    <ComponentOverview v-model="item.components" :assembly="item" />
+                </FormSection>
+
+                <FormSection :title="$t('facets')">
+                    <FacetOverview v-model="item.facets" :article="item" />
                 </FormSection>
 
                 <FormSection :title="$t('notes')">
@@ -82,6 +86,7 @@ import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/enti
 import { InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
 import AssemblyOverview from "@/entities/articles/article-assemblies/Overview.vue"
 import ComponentOverview from "@/entities/articles/article-components/Overview.vue"
+import FacetOverview from "@/entities/articles/article-facets/Overview.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
