@@ -28,7 +28,7 @@
                         <router-link :to="{ name: 'admin' }" class="btn btn-link dropdown-item"
                             @click="handleCloseMenu">
                             <Icon name="people" class="me-1" />
-                            {{ $t("manageWebshopUsers") }}
+                            {{ $t("manageUsers") }}
                         </router-link>
                     </li>
                     <li>

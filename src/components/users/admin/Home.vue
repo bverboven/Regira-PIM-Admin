@@ -14,13 +14,13 @@
 import { ref, onMounted } from "vue"
 import { useAxios } from "@/regira_modules/vue/http"
 import { useAuthStore } from "@/regira_modules/vue/auth"
-import type WebshopUser from "./Entity"
+import type PimUser from "./Entity"
 import ListItem from "./ListItem.vue"
 import UserInput from "./UserInput.vue"
 
 const axios = useAxios()
 
-const items = ref<Array<WebshopUser>>()
+const items = ref<Array<PimUser>>()
 
 // trigger searchHandler when logging in or refreshing token
 const authStore = useAuthStore()

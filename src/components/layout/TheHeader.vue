@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-sm bg-body-tertiary" v-click-outside="handleCloseMenu">
-        <router-link class="navbar-brand" :to="{ name: 'home' }" :title="`${$t('webshopManager')} v${version}`">
+        <router-link class="navbar-brand" :to="{ name: 'home' }" :title="`${$t('productInformationManagement')} v${version}`">
             <img :src="logo" style="height: 2rem; vertical-align: top" class="me-1" />
-            <span class="d-sm-none d-md-inline"> {{ $t("webshopManager") }} </span>
+            <span class="d-sm-none d-md-inline"> {{ $t("pimManager") }} </span>
         </router-link>
         <button class="navbar-toggler" type="button" @click.stop="showNavbarContent = !showNavbarContent">
             <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item py-2 py-sm-0 d-none">
                     <router-link class="nav-link" aria-current="page" :to="{ name: 'home' }"
-                        :title="`${$t('webshopManager')} v${version}`">{{ $t("webshopManager") }}</router-link>
+                        :title="`${$t('productInformationManagement')} v${version}`">{{ $t("pimManager") }}</router-link>
                 </li>
             </ul>
             <NavBar class="navbar-nav ms-1 mb-2 mb-lg-0" @select="handleCloseMenu" />

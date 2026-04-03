@@ -20,7 +20,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" :class="{ show: showUsersList }"
                             style="min-width: 12.5rem">
-                            <li v-for="item in webshopUsers" :key="item.username">
+                            <li v-for="item in pimUsers" :key="item.username">
                                 <a class="dropdown-item" href="#" @click="handleSelectUser(item)">{{ item.title }}</a>
                             </li>
                         </ul>
@@ -74,7 +74,7 @@ const { baseUrl } = useConfig()
 const showUsersList = ref(false)
 const demoUsers = ref<Array<IDemoUser>>()
 const minHeight = computed(() => (showUsersList.value ? "15rem" : "10rem"))
-const webshopUsers = computed<Array<IDemoUser>>(() => demoUsers.value || [])
+const pimUsers = computed<Array<IDemoUser>>(() => demoUsers.value || [])
 
 // auth
 function handleSelectUser(item: { username: string; password?: string; }) {

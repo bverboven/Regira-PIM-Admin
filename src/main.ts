@@ -22,7 +22,7 @@ import { Entity as UnitType } from "@/entities/unit-types"
 
 import App from "@/App.vue"
 import DescriptionInput from "@/components/input/DescriptionInput.vue"
-import WebshopModal from "@/components/layout/WebshopModal.vue"
+import PimModal from "@/components/layout/PimModal.vue"
 
 // date serialization to JSON (without timezone)
 import dateSerializer from "@/regira_modules/extensions/date-extensions"
@@ -85,7 +85,7 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
         app.use(isOnlinePlugin)
         app.use(debugPlugin, { isDebug: config.isDebug })
         app.use(loadingPlugin, { img: loadingImg })
-        app.use(modalPlugin, { DefaultModal: WebshopModal })
+        app.use(modalPlugin, { DefaultModal: PimModal })
         app.use(feedbackPlugin, { autoHideDelay: 2500 })
 
         // lang
