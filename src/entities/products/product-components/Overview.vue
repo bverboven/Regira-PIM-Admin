@@ -47,24 +47,24 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useEntityStore as useUnitTypeStore } from '@/entities/unit-types';
-import type Article from '../data/Entity';
+import type Product from '../data/Entity';
 import InputSelector from '../selecting/InputSelector.vue';
-import ArticleComponent from './Entity';
+import ProductComponent from './Entity';
 
 const props = defineProps<{
-    assembly: Article
+    assembly: Product
 }>()
 
-const items = defineModel<Array<ArticleComponent>>({ default: () => [] });
+const items = defineModel<Array<ProductComponent>>({ default: () => [] });
 
-function handleRemove(item: ArticleComponent) {
+function handleRemove(item: ProductComponent) {
     item._deleted = !item._deleted;
 }
 
-const newItem = ref<ArticleComponent>(ArticleComponent.create({ assemblyId: props.assembly.id }));
-function handleAdd(item: ArticleComponent) {
-    items.value.push(ArticleComponent.create({ ...item }));
-    newItem.value = ArticleComponent.create({ assemblyId: props.assembly.id });
+const newItem = ref<ProductComponent>(ProductComponent.create({ assemblyId: props.assembly.id }));
+function handleAdd(item: ProductComponent) {
+    items.value.push(ProductComponent.create({ ...item }));
+    newItem.value = ProductComponent.create({ assemblyId: props.assembly.id });
 }
 
 const { fromPool: getUnitType } = useUnitTypeStore()

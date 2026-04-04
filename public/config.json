@@ -34,11 +34,11 @@
         "icon": "taxonomy"
       }
     ],
-    "entities": ["Country", "Article", "Facet", "FacetGroup", "UnitType"],
+    "entities": ["Country", "Product", "Facet", "FacetGroup", "UnitType"],
     "dashboard": [
-      ["Catalog", ["Article", "UnitType"]],
+      ["Catalog", ["Product", "UnitType"]],
       ["Taxonomy", ["Facet", "FacetGroup"]]
     ],
-    "navbar": ["Article", ["Taxonomy", ["Facet", "FacetGroup"]]]
+    "navbar": ["Product", ["Taxonomy", ["Facet", "FacetGroup"]]]
   }
 }

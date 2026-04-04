@@ -1,14 +1,14 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
-import type Article from "../data/Entity"
+import type Product from "../data/Entity"
 
-export class ArticleComponent extends EntityBase {
+export class ProductComponent extends EntityBase {
     id: number = 0
     assemblyId: number
     componentId: number
     quantity: number
     isOmittable: boolean
 
-    component?: Article
+    component?: Product
 
     _deleted: boolean = false
 
@@ -19,11 +19,11 @@ export class ArticleComponent extends EntityBase {
         return this.component?.title
     }
 
-    static create(values?: object): ArticleComponent {
-        return Object.assign(new ArticleComponent(), values || {})
+    static create(values?: object): ProductComponent {
+        return Object.assign(new ProductComponent(), values || {})
     }
 }
 
-export const Entity = ArticleComponent
+export const Entity = ProductComponent
 
-export default ArticleComponent
+export default ProductComponent

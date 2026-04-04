@@ -46,7 +46,7 @@
                             <div class="form-check form-switch">
                                 <input type="checkbox" v-model="item.allowAdditions" :disabled="readonly"
                                     class="form-check-input" id="allowAdditions" />
-                                <label class="form-check-label" for="allowAdditions">{{ $t("article.allowAdditions")
+                                <label class="form-check-label" for="allowAdditions">{{ $t("product.allowAdditions")
                                 }}</label>
                             </div>
                             <ComponentOverview v-model="item.components" :assembly="item" />
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-xl col-lg-4 mb-2">
                         <FormSection :title="$t('facets')">
-                            <InputSelectorInline v-model="item.facets" :article="item" />
+                            <InputSelectorInline v-model="item.facets" :product="item" />
                         </FormSection>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             </template>
 
             <template #assemblies>
-                <AssemblyOverview :article="item" />
+                <AssemblyOverview :product="item" />
             </template>
 
         </TabContainer>
@@ -88,9 +88,9 @@ import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
 import { InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
-import AssemblyOverview from "@/entities/articles/article-assemblies/Overview.vue"
-import ComponentOverview from "@/entities/articles/article-components/Overview.vue"
-import { InputSelectorInline } from "@/entities/articles/article-facets/"
+import AssemblyOverview from "@/entities/products/product-assemblies/Overview.vue"
+import ComponentOverview from "@/entities/products/product-components/Overview.vue"
+import { InputSelectorInline } from "@/entities/products/product-facets/"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"

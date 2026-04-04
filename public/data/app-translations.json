@@ -14,25 +14,25 @@
     "fr": "Gestion de l'information produit",
     "nl": "Product Informatie Management"
   },
-  "article.allowAdditions": {
+  "product.allowAdditions": {
     "en": "Allow additions",
     "fr": "Autoriser les ajouts",
     "nl": "Toevoegingen toestaan"
   },
-  "article": {
-    "en": "Article",
-    "fr": "Article",
-    "nl": "Artikel"
+  "product": {
+    "en": "Product",
+    "fr": "Produit",
+    "nl": "Product"
   },
-  "articles": {
-    "en": "Articles",
-    "fr": "Articles",
-    "nl": "Artikelen"
+  "products": {
+    "en": "Products",
+    "fr": "Produits",
+    "nl": "Producten"
   },
-  "article.description": {
-    "en": "Manage the articles that are available in the PIM.",
-    "fr": "Gérez les articles disponibles dans le GIP.",
-    "nl": "Beheer de artikelen die beschikbaar zijn in de PIM."
+  "product.description": {
+    "en": "Manage the products that are available in the PIM.",
+    "fr": "Gérez les produits disponibles dans le GIP.",
+    "nl": "Beheer de producten die beschikbaar zijn in de PIM."
   },
   "assembly": {
     "en": "Assembly",
@@ -65,9 +65,9 @@
     "nl": "Onderliggende facetten"
   },
   "facet.description": {
-    "en": "Manage the facets that are available for articles.",
-    "fr": "Gérez les facettes disponibles pour les articles.",
-    "nl": "Beheer de facetten die beschikbaar zijn voor artikelen."
+    "en": "Manage the facets that are available for products.",
+    "fr": "Gérez les facettes disponibles pour les produits.",
+    "nl": "Beheer de facetten die beschikbaar zijn voor producten."
   },
   "facet.parentEntities": {
     "en": "Parent Facets",
@@ -95,9 +95,9 @@
     "nl": "Onderliggende facetgroepen"
   },
   "facetGroup.description": {
-    "en": "Manage the facet groups that are available for articles.",
-    "fr": "Gérez les groupes de facettes disponibles pour les articles.",
-    "nl": "Beheer de facetgroepen die beschikbaar zijn voor artikelen."
+    "en": "Manage the facet groups that are available for products.",
+    "fr": "Gérez les groupes de facettes disponibles pour les produits.",
+    "nl": "Beheer de facetgroepen die beschikbaar zijn voor producten."
   },
   "facetGroup.facets": {
     "en": "Facets",
@@ -140,8 +140,8 @@
     "nl": "Eenheidstypen"
   },
   "unitType.description": {
-    "en": "Manage the different unit types that can be used for prices from articles in the PIM.",
-    "fr": "Gérez les différents types d'unités qui peuvent être utilisés pour les prix des articles dans le GIP.",
-    "nl": "Beheer de verschillende eenheidstypen die kunnen worden gebruikt voor prijzen van artikelen in de PIM."
+    "en": "Manage the different unit types that can be used for prices from products in the PIM.",
+    "fr": "Gérez les différents types d'unités qui peuvent être utilisés pour les prix des produits dans le GIP.",
+    "nl": "Beheer de verschillende eenheidstypen die kunnen worden gebruikt voor prijzen van producten in de PIM."
   }
 }

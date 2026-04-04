@@ -1,9 +1,9 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
 import type Facet from "@/entities/facets/data/Entity"
 
-export class ArticleFacet extends EntityBase {
+export class ProductFacet extends EntityBase {
     id: number = 0
-    articleId: number
+    productId: number
     facetId: number
 
     facet?: Facet
@@ -17,11 +17,11 @@ export class ArticleFacet extends EntityBase {
         return this.facet?.title
     }
 
-    static create(values?: object): ArticleFacet {
-        return Object.assign(new ArticleFacet(), values || {})
+    static create(values?: object): ProductFacet {
+        return Object.assign(new ProductFacet(), values || {})
     }
 }
 
-export const Entity = ArticleFacet
+export const Entity = ProductFacet
 
-export default ArticleFacet
+export default ProductFacet

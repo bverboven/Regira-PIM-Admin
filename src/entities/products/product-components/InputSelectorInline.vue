@@ -3,8 +3,8 @@
         <template v-for="item in items" :key="item.id">
             <div class="col-auto mb-2 pe-0">
                 <div class="form-control p-0" :class="{ 'is-deleted': item._deleted }">
-                    <FormModalButton :modelValue="item.facet" />
-                    {{ item.facet?.title ?? '' }}
+                    <FormModalButton :modelValue="item.component" />
+                    {{ item.component?.title ?? '' }}
                     <button type="button" class="btn btn-outline-danger border-0" @click="handleRemove(item)">
                         <Icon name="delete" />
                     </button>
@@ -19,22 +19,23 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import type Article from "../data/Entity"
-import ArticleFacet from "./Entity"
-import { type Entity as Facet, InputSelector, FormModalButton } from "@/entities/facets"
+import type Product from "../data/Entity"
+import ProductComponent from './Entity';
+import InputSelector from '../selecting/InputSelector.vue';
+import FormModalButton from "../details/FormModalButton.vue"
 
 const props = defineProps<{
-    article: Article
+    product: Product
 }>()
 
-const items = defineModel<ArticleFacet[]>({ default: () => [] })
-const excludeIds = computed(() => items.value.map(i => i.facetId))
+const items = defineModel<ProductComponent[]>({ default: () => [] })
+const excludeIds = computed(() => items.value.map(i => i.componentId))
 
-function handleRemove(item: ArticleFacet) {
+function handleRemove(item: ProductComponent) {
     item._deleted = !item._deleted
 }
 
-function handleAdd(item?: Facet) {
-    items.value.push(ArticleFacet.create({ articleId: props.article.id, facetId: item?.id, facet: item }))
+function handleAdd(item?: Product) {
+    items.value.push(ProductComponent.create({ assemblyId: props.product.id, componentId: item?.id, component: item }))
 }
 </script>

@@ -1,4 +1,4 @@
 import InputSelectorInline from "./InputSelectorInline.vue"
 
-export { default as ArticleFacet } from "./Entity"
+export { default as ProductFacet } from "./Entity"
 export { InputSelectorInline };

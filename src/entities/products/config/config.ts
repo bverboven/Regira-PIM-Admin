@@ -1,23 +1,23 @@
 import type { IConfig } from "@/regira_modules/vue/entities";
 import Entity from "../data/Entity";
 
-const api = "/articles";
+const api = "/products";
 
 const config: IConfig = {
   id: Entity.name,
-  key: "Article",
+  key: "Product",
   requires: [],
   isComplex: true,
 
-  routePrefix: "articles",
+  routePrefix: "products",
   baseQueryParams: {
     includes: ["Price", "Facets"],
   },
   initialQuery: { isRoot: true },
 
-  overviewTitle: "articles",
-  detailsTitle: "article",
-  description: "article.description",
+  overviewTitle: "products",
+  detailsTitle: "product",
+  description: "product.description",
   icon: "bi bi-joystick",
 
   defaultPageSize: 10,
