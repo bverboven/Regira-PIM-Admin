@@ -23,7 +23,7 @@
                 <div class="col text-truncate">
                     <ul class="list-inline mb-0">
                         <li v-for="(component, i) in item.components" :key="component.id" class="list-inline-item">
-                            <span :class="{ 'fw-bold': component.componentId == article.id }">
+                            <span :class="{ 'fw-bold': component.componentId == product.id }">
                                 {{ component.component?.title }} ({{ component.quantity }}{{
                                     getUnitType(component.component?.unitType)?.code }})
                             </span>
@@ -54,7 +54,7 @@ interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> { }
 const emit = defineEmits<Emits>()
 
 const props = defineProps<{
-    article: Entity,
+    product: Entity,
     modelValue?: Array<Entity>
     readonly?: boolean
 }>()

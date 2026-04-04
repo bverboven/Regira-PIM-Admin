@@ -29,24 +29,24 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue"
-import type Article from "../data/Entity";
-import ArticleFacet from "./Entity"
+import type Product from "../data/Entity";
+import ProductFacet from "./Entity"
 import InputSelector from "@/entities/facets/selecting/InputSelector.vue";
 import { Debug } from "@/regira_modules/vue/debug";
 import FormModalButton from "@/entities/facets/details/FormModalButton.vue";
 
 const props = defineProps<{
-    article: Article
+    product: Product
 }>()
 
-const items = defineModel<ArticleFacet[]>({ default: () => [] })
-function handleRemove(item: ArticleFacet) {
+const items = defineModel<ProductFacet[]>({ default: () => [] })
+function handleRemove(item: ProductFacet) {
     item._deleted = !item._deleted;
 }
 
-const newItem = ref<ArticleFacet>(ArticleFacet.create({ articleId: props.article.id }))
-function handleAdd(item: ArticleFacet) {
-    items.value.push(ArticleFacet.create({ ...item }));
-    newItem.value = ArticleFacet.create({ articleId: props.article.id });
+const newItem = ref<ProductFacet>(ProductFacet.create({ productId: props.product.id }))
+function handleAdd(item: ProductFacet) {
+    items.value.push(ProductFacet.create({ ...item }));
+    newItem.value = ProductFacet.create({ productId: props.product.id });
 }
 </script>

@@ -69,7 +69,7 @@ import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
 import { type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
 import SearchObject from "./SearchObject"
 import InputSelector from "../selecting/InputSelector.vue";
-import Article from "../data/Entity";
+import Product from "../data/Entity";
 import { NullableCheckBox } from "@/regira_modules/vue/ui";
 
 interface Emits extends /* @vue-ignore */ FilterEmits { }
@@ -85,8 +85,8 @@ const props = defineProps<{
 const searchObject = defineModel<SearchObject>({ required: true })
 
 const unitType = ref<UnitType>()
-const component = ref<Article>()
-const assembly = ref<Article>()
+const component = ref<Product>()
+const assembly = ref<Product>()
 
 const { filterIsActive, handleReset } = useFilter({ searchObject, emit, Constructor: SearchObject })
 </script>

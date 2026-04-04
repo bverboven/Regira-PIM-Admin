@@ -3,7 +3,7 @@
         <Filter v-model="searchObject" @filter="searchHandler(true)" @change="searchHandler(true)"
             :result-count="itemsCount" />
         <LoadingContainer :is-loading="isLoading">
-            <List :modelValue="items" :article="article" :is-loading="isLoading" :feedback="feedback"
+            <List :modelValue="items" :product="product" :is-loading="isLoading" :feedback="feedback"
                 @remove="applyRemove" />
             <p v-if="items && items.length <= 0" class="italic-muted">{{ $t("noResults") }}</p>
         </LoadingContainer>
@@ -39,7 +39,7 @@ import useEntityStore from '../data/store';
 import { Debug } from '@/regira_modules/vue/debug';
 
 const props = defineProps<{
-    article: Entity
+    product: Entity
 }>()
 
 const { service } = useEntityStore()
@@ -51,7 +51,7 @@ const {
     searchHandler,
 } = useSearchView({
     service,
-    searchObject: { componentId: props.article.id, includes: ["Components"] },
+    searchObject: { componentId: props.product.id, includes: ["Components"] },
     defaultPageSize: 10,
 })
 

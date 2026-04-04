@@ -1,9 +1,9 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
 import { type Entity as UnitType } from "@/entities/unit-types"
-import type { ArticleComponent } from "../article-components/Entity"
-import type ArticleFacet from "../article-facets/Entity"
+import type { ProductComponent } from "../product-components/Entity"
+import type ProductFacet from "../product-facets/Entity"
 
-export class Article extends EntityBase {
+export class Product extends EntityBase {
     id: number = 0
     title: string
     description?: string
@@ -16,9 +16,9 @@ export class Article extends EntityBase {
     lastModified?: Date
 
     unitType?: UnitType
-    assemblies?: ArticleComponent[]
-    components?: ArticleComponent[]
-    facets?: ArticleFacet[]
+    assemblies?: ProductComponent[]
+    components?: ProductComponent[]
+    facets?: ProductFacet[]
 
     override get $id(): string | number {
         return this.id || "new"
@@ -28,6 +28,6 @@ export class Article extends EntityBase {
     }
 }
 
-export const Entity = Article
+export const Entity = Product
 
-export default Article
+export default Product
