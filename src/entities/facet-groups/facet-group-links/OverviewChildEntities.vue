@@ -30,10 +30,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue"
+import InputSelector from "@/entities/facets/selecting/InputSelector.vue"
+import FormModalButton from "@/entities/facets/details/FormModalButton.vue"
 import type FacetGroup from "../data/Entity"
 import FacetGroupLinkChild from "./FacetChildGroup"
-import InputSelector from "../selecting/InputSelector.vue"
-import FormModalButton from "../details/FormModalButton.vue"
 
 const props = defineProps<{
     facetGroup: FacetGroup
