@@ -53,6 +53,11 @@
             </template>
 
             <template #facets>
+                <div class="row">
+                    <div class="col mb-2">
+                        <h3>{{ item.title }}</h3>
+                    </div>
+                </div>
                 <RelatedOverview v-model="item" />
             </template>
         </TabContainer>

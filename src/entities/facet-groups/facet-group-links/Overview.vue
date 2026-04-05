@@ -1,13 +1,13 @@
 <template>
     <div class="row">
         <div class="col-lg-6">
-            <FormSection :title="$t('facetGroup.parentEntities')">
-                <OverviewParentEntities v-model="item.parentEntities" :facetGroup="item" />
+            <FormSection :title="$t('facetGroup.parentFacets')">
+                <OverviewParentEntities v-model="item.parentFacets" :facetGroup="item" />
             </FormSection>
         </div>
         <div class="col-lg-6">
-            <FormSection :title="$t('facetGroup.childEntities')">
-                <OverviewChildEntities v-model="item.childEntities" :facetGroup="item" />
+            <FormSection :title="$t('facetGroup.childFacets')">
+                <OverviewChildEntities v-model="item.childFacets" :facetGroup="item" />
             </FormSection>
         </div>
     </div>

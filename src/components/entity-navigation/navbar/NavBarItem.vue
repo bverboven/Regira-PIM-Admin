@@ -5,9 +5,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button"
                     data-toggle="dropdown" aria-expanded="false" @click="handleToggleDropDown">
                     <icon :name="node.value.icon" />
-                    <span class="d-none d-md-inline d-xl-none ms-2">{{ node.value.shortTitle ?? node.value.title
+                    <span class="d-none d-md-inline d-xl-none ms-2">{{ $t(node.value.shortTitle ?? node.value.title)
                     }}</span>
-                    <span class="d-md-none d-xl-inline ms-2">{{ node.value.title }}</span>
+                    <span class="d-md-none d-xl-inline ms-2">{{ $t(node.value.title) }}</span>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end" :class="{ show: showDropDown }"
@@ -19,7 +19,7 @@
                                 $emit('select', e)
                             }
                         ">
-                            <span class="ms-2">{{ child.value.title }}</span>
+                            <span class="ms-2">{{ $t(child.value.title) }}</span>
                         </NavBarItemLink>
                     </li>
                 </ul>

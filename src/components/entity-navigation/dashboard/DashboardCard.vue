@@ -5,7 +5,7 @@
             <Icon :name="node.value.icon" size="xl" />
         </router-link>
         <div>
-            {{ node.value.title }}
+            {{ $t(node.value.title) }}
         </div>
     </div>
 </template>

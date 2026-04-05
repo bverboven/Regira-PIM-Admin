@@ -2,7 +2,7 @@
     <div>
         <div class="row mb-2">
             <div class="col">
-                <InputSelector v-model="newItem.parent" v-model:idValue="newItem.parentId"
+                <InputSelector v-model="newItem.facet" v-model:idValue="newItem.facetId"
                     :filterDefaults="{ exclude: excludedIds }" />
             </div>
             <div class="col-auto">
@@ -15,8 +15,8 @@
         <template v-for="item in items" :key="item.id">
             <div class="row mb-2" :class="{ 'is-deleted': item._deleted }">
                 <div class="col">
-                    <FormModalButton :modelValue="item.parent" />
-                    {{ item.parent?.title ?? '' }}
+                    <FormModalButton :modelValue="item.facet" />
+                    {{ item.facet?.title ?? '' }}
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue"
 import type FacetGroup from "../data/Entity"
-import FacetGroupLinkParent from "./FacetGroupLinkParent"
+import FacetGroupLinkParent from "./FacetParentGroup"
 import InputSelector from "../selecting/InputSelector.vue"
 import FormModalButton from "../details/FormModalButton.vue"
 
@@ -40,15 +40,19 @@ const props = defineProps<{
 }>()
 
 const items = defineModel<FacetGroupLinkParent[]>({ default: () => [] })
-const excludedIds = computed(() => [props.facetGroup.id, ...props.facetGroup.parentEntities?.map(x => x.parentId) ?? [], ...props.facetGroup.childEntities?.map(x => x.childId) ?? []])
+const excludedIds = computed(() => [
+    props.facetGroup.id,
+    ...props.facetGroup.parentFacets?.filter(x => !x._deleted).map(x => x.facetId) ?? [],
+    ...props.facetGroup.childFacets?.filter(x => !x._deleted).map(x => x.facetId) ?? []
+])
 
 function handleRemove(item: FacetGroupLinkParent) {
     item._deleted = !item._deleted
 }
 
-const newItem = ref<FacetGroupLinkParent>(FacetGroupLinkParent.create({ childId: props.facetGroup.id }))
+const newItem = ref<FacetGroupLinkParent>(FacetGroupLinkParent.create({ facetGroupId: props.facetGroup.id }))
 function handleAdd(item: FacetGroupLinkParent) {
     items.value.push(FacetGroupLinkParent.create({ ...item }))
-    newItem.value = FacetGroupLinkParent.create({ childId: props.facetGroup.id })
+    newItem.value = FacetGroupLinkParent.create({ facetGroupId: props.facetGroup.id })
 }
 </script>

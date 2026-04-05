@@ -1,5 +1,5 @@
-import FacetGroupLinkParent from "./FacetGroupLinkParent";
-import FacetGroupLinkChild from "./FacetGroupLinkChild";
+import FacetGroupLinkParent from "./FacetParentGroup";
+import FacetGroupLinkChild from "./FacetChildGroup";
 import Overview from "./Overview.vue";
 
 export { FacetGroupLinkParent, FacetGroupLinkChild, Overview }

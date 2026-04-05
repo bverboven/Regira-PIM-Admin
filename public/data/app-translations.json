@@ -9,31 +9,6 @@
     "fr": "Gestionnaire PIM",
     "nl": "PIM Manager"
   },
-  "productInformationManagement": {
-    "en": "Product Information Management",
-    "fr": "Gestion de l'information produit",
-    "nl": "Product Informatie Management"
-  },
-  "product.allowAdditions": {
-    "en": "Allow additions",
-    "fr": "Autoriser les ajouts",
-    "nl": "Toevoegingen toestaan"
-  },
-  "product": {
-    "en": "Product",
-    "fr": "Produit",
-    "nl": "Product"
-  },
-  "products": {
-    "en": "Products",
-    "fr": "Produits",
-    "nl": "Producten"
-  },
-  "product.description": {
-    "en": "Manage the products that are available in the PIM.",
-    "fr": "Gérez les produits disponibles dans le GIP.",
-    "nl": "Beheer de producten die beschikbaar zijn in de PIM."
-  },
   "assembly": {
     "en": "Assembly",
     "fr": "Assemblage",
@@ -43,6 +18,11 @@
     "en": "Assemblies",
     "fr": "Assemblages",
     "nl": "Samenstellingen"
+  },
+  "catalog": {
+    "en": "Catalog",
+    "fr": "Catalogue",
+    "nl": "Catalogus"
   },
   "component": {
     "en": "Component",
@@ -89,10 +69,10 @@
     "fr": "Groupe de facettes",
     "nl": "Facetgroep"
   },
-  "facetGroup.childEntities": {
-    "en": "Child Facet Groups",
-    "fr": "Groupes de facettes enfants",
-    "nl": "Onderliggende facetgroepen"
+  "facetGroup.childFacets": {
+    "en": "Child Facets",
+    "fr": "Facettes enfants",
+    "nl": "Onderliggende facetten"
   },
   "facetGroup.description": {
     "en": "Manage the facet groups that are available for products.",
@@ -104,30 +84,60 @@
     "fr": "Facettes",
     "nl": "Facetten"
   },
-  "facetGroup.parentEntities": {
-    "en": "Parent Facet Groups",
-    "fr": "Groupes de facettes parents",
-    "nl": "Bovenliggende facetgroepen"
+  "facetGroup.parentFacets": {
+    "en": "Parent Facets",
+    "fr": "Facettes parentes",
+    "nl": "Bovenliggende facetten"
   },
-  "facetGroup.relatedEntities": {
-    "en": "Related Facet Groups",
-    "fr": "Groupes de facettes liés",
-    "nl": "Gerelateerde facetgroepen"
+  "facetGroup.relatedFacets": {
+    "en": "Related Facets",
+    "fr": "Facettes liées",
+    "nl": "Gerelateerde facetten"
   },
   "facetGroups": {
     "en": "Facet Groups",
     "fr": "Groupes de facettes",
     "nl": "Facetgroepen"
   },
+  "facets": {
+    "en": "Facets",
+    "fr": "Facettes",
+    "nl": "Facetten"
+  },
   "isRoot": {
     "en": "Top-level",
     "fr": "Premier niveau",
     "nl": "Top-level"
   },
-  "facets": {
-    "en": "Facets",
-    "fr": "Facettes",
-    "nl": "Facetten"
+  "productInformationManagement": {
+    "en": "Product Information Management",
+    "fr": "Gestion de l'information produit",
+    "nl": "Product Informatie Management"
+  },
+  "product.allowAdditions": {
+    "en": "Allow additions",
+    "fr": "Autoriser les ajouts",
+    "nl": "Toevoegingen toestaan"
+  },
+  "product": {
+    "en": "Product",
+    "fr": "Produit",
+    "nl": "Product"
+  },
+  "products": {
+    "en": "Products",
+    "fr": "Produits",
+    "nl": "Producten"
+  },
+  "product.description": {
+    "en": "Manage the products that are available in the PIM.",
+    "fr": "Gérez les produits disponibles dans le GIP.",
+    "nl": "Beheer de producten die beschikbaar zijn in de PIM."
+  },
+  "taxonomy": {
+    "en": "Taxonomy",
+    "fr": "Taxonomie",
+    "nl": "Taxonomie"
   },
   "unitType": {
     "en": "Unit Type",

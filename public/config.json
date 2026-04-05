@@ -23,14 +23,14 @@
     "groups": [
       {
         "id": "Catalog",
-        "title": "Catalog",
-        "shortTitle": "Catalog",
+        "title": "catalog",
+        "shortTitle": "catalog",
         "icon": "catalog"
       },
       {
         "id": "Taxonomy",
-        "title": "Taxonomy",
-        "shortTitle": "Taxonomy",
+        "title": "taxonomy",
+        "shortTitle": "taxonomy",
         "icon": "taxonomy"
       }
     ],

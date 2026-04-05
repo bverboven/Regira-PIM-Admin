@@ -2,7 +2,7 @@
     <FormSection :collapsed="isCollapsed">
         <template #title>
             <h3 class="p-2 mb-2" @click="isCollapsed = !isCollapsed">
-                <Icon :name="node.value.icon" class="me-1" /> {{ node.value.title }}
+                <Icon :name="node.value.icon" class="me-1" /> {{ $t(node.value.title) }}
             </h3>
         </template>
         <div class="row">
