@@ -15,18 +15,17 @@
         <div class="col text-truncate">
             {{ item.$title }}
         </div>
-        <div class="col text-truncate">
+        <div class="col-4 col-xl d-none d-md-block text-truncate">
             {{item.facets?.map(f => getFacet(f.facet)?.$title).join(", ")}}
         </div>
         <div class="col-4 col-md-2 col-xl-1 text-truncate">
-            {{ formatCurrency(item.price, $culture) }}
+            {{ formatCurrency(item.price, $culture) }}<span class="d-md-none">/{{ getUnitType(item.unitType)?.code }}</span>
         </div>
-        <div class="col-2 col-lg-1 d-none d-md-block text-truncate">
+        <div class="col-2 d-none d-md-block text-truncate">
             <UnitTypeButton :model-value="item.unitType" />{{ getUnitType(item.unitType)?.$title }}
         </div>
         <div class="col-auto">
-            <ConfirmButton icon="delete" class="m-0 p-1" :modal-type="ModalType.danger"
-                @confirm="$emit('request-remove', item)">{{ $t("deleteItem", { title: item?.$title }) }}</ConfirmButton>
+            <ConfirmButton icon="delete" class="m-0 p-1" :modal-type="ModalType.danger" @confirm="$emit('request-remove', item)">{{ $t("deleteItem", { title: item?.$title }) }}</ConfirmButton>
         </div>
     </div>
 </template>

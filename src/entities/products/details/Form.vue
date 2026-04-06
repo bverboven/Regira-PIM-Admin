@@ -2,12 +2,10 @@
     <form @submit.prevent="handleSubmit" :modelValue="item">
         <div class="row form-buttons">
             <div class="col col-md-auto order-1">
-                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0"
-                    @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
+                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0" @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
             </div>
             <div class="col-auto order-2 order-md-3">
-                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
-                    class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
+                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }" class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
                     <Icon name="popOut" />
                 </RouterLink>
                 <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
@@ -23,7 +21,7 @@
             <template #form>
 
                 <div class="row">
-                    <div class="col mb-2">
+                    <div class="col-lg mb-2">
                         <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
                             <div class="row">
                                 <div class="col-lg mb-2">
@@ -31,28 +29,25 @@
                                         <div class="input-group-text">
                                             <Icon name="title" />
                                         </div>
-                                        <input v-model="item.title" maxlength="128" :readonly="readonly"
-                                            class="form-control" />
+                                        <input v-model="item.title" maxlength="128" :readonly="readonly" class="form-control" />
                                     </div>
                                     <FormLabel :label="$t('name')" />
                                 </div>
                                 <div class="col-lg mb-2">
-                                    <UnitTypeInputSelector v-model="item.unitType" v-model:id-value="item.unitTypeId"
-                                        :readonly="readonly" />
+                                    <UnitTypeInputSelector v-model="item.unitType" v-model:id-value="item.unitTypeId" :readonly="readonly" />
                                     <FormLabel :label="$t('unitType')" />
                                 </div>
                             </div>
                         </FormSection>
 
-                        <FormSection :title="$t('facets')">
+                        <FormSection :title="$t('product.facets')">
                             <InputSelectorInline v-model="item" />
                         </FormSection>
 
                         <FormSection :title="$t('notes')">
                             <div class="row">
                                 <div class="col mb-2">
-                                    <DescriptionInput v-model="item.description" :label="$t('notes')"
-                                        :readonly="readonly" />
+                                    <DescriptionInput v-model="item.description" :label="$t('notes')" :readonly="readonly" />
                                 </div>
                             </div>
                         </FormSection>
@@ -60,7 +55,7 @@
                     </div>
                     <div v-show="screen.isLarge" class="col mb-2">
 
-                        <FormSection :title="$t('components')">
+                        <FormSection :title="$t('product.components')">
                             <ComponentOverview v-model="item" />
                         </FormSection>
 
@@ -69,7 +64,7 @@
             </template>
 
             <template #components>
-                <FormSection :title="$t('components')">
+                <FormSection :title="$t('product.components')">
                     <ComponentOverview v-model="item" />
                 </FormSection>
             </template>
@@ -115,7 +110,7 @@ const props = withDefaults(
     { ...formDefaults }
 )
 
-const { size, screen } = useScreen()
+const { screen } = useScreen()
 
 const { service: entityService } = useEntityStore()
 
@@ -126,7 +121,7 @@ const { translate } = useLang()
 const tabs = computed(() =>
     [
         Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
-        !screen.isLarge ? Tab.create("components", { icon: "component", title: translate("components") }) : null,
+        !screen.isLarge ? Tab.create("product.components", { icon: "component", title: translate("product.components") }) : null,
         Tab.create("assemblies", { icon: "assembly", title: translate("assemblies") }),
     ].filter(tab => tab)
 )

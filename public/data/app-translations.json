@@ -24,16 +24,6 @@
     "fr": "Catalogue",
     "nl": "Catalogus"
   },
-  "component": {
-    "en": "Component",
-    "fr": "Composant",
-    "nl": "Component"
-  },
-  "components": {
-    "en": "Components",
-    "fr": "Composants",
-    "nl": "Componenten"
-  },
   "facet": {
     "en": "Facet",
     "fr": "Facette",
@@ -123,6 +113,21 @@
     "en": "Product",
     "fr": "Produit",
     "nl": "Product"
+  },
+  "product.component": {
+    "en": "Component",
+    "fr": "Composant",
+    "nl": "Component"
+  },
+  "product.components": {
+    "en": "Components",
+    "fr": "Composants",
+    "nl": "Componenten"
+  },
+  "product.facets": {
+    "en": "Facets",
+    "fr": "Facettes",
+    "nl": "Eigenschappen"
   },
   "products": {
     "en": "Products",

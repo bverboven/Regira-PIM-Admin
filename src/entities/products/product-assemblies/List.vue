@@ -5,7 +5,7 @@
                 <FormModalButton disabled class="border-0" />
             </div>
             <div class="col-4 fw-bold">{{ $t("name") }}</div>
-            <div class="col fw-bold">{{ $t("components") }}</div>
+            <div class="col fw-bold">{{ $t("product.components") }}</div>
             <div class="col-auto fw-bold">
                 <button type="button" class="btn btn-outline-danger text-muted" disabled>
                     <Icon name="delete" />
@@ -20,7 +20,7 @@
                 <div class="col-4 text-truncate">
                     {{ item.$title }}
                 </div>
-                <div class="col text-truncate">
+                <div class="col">
                     <ul class="list-inline mb-0">
                         <li v-for="(component, i) in item.components" :key="component.id" class="list-inline-item">
                             <span :class="{ 'fw-bold': component.componentId == product.id }">

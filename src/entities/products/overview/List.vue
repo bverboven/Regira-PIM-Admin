@@ -6,16 +6,15 @@
                 <FormModalButton v-else disabled class="border-0" />
             </div>
             <div class="col fw-bold">{{ $t("name") }}</div>
-            <div class="col fw-bold">{{ $t("facets") }}</div>
+            <div class="col-4 col-xl d-none d-md-block fw-bold">{{ $t("product.facets") }}</div>
             <div class="col-4 col-md-2 col-xl-1 fw-bold">{{ $t("price") }}</div>
-            <div class="col-2 col-lg-1 d-none d-md-block fw-bold">{{ $t("unitType") }}</div>
+            <div class="col-2 d-none d-md-block fw-bold">{{ $t("unitType") }}</div>
             <div class="col-auto fw-bold">
                 <Icon name="delete" class="text-muted m-1" />
             </div>
         </div>
         <template v-for="(item, i) in items" :key="item.$id">
-            <ListItem v-model="items[i]!" :readonly="readonly" :class="{ 'bg-light': i % 2 == 0 }"
-                @request-save="$emit('request-save', $event)" @request-remove="$emit('request-remove', $event)"
+            <ListItem v-model="items[i]!" :readonly="readonly" :class="{ 'bg-light': i % 2 == 0 }" @request-save="$emit('request-save', $event)" @request-remove="$emit('request-remove', $event)"
                 @save="$emit('save', $event)" @remove="$emit('remove', $event)" />
         </template>
     </div>
