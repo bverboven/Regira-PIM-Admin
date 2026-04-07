@@ -97,6 +97,14 @@
             </div>
         </FormSection>
 
+        <FormSection :title="$t('address(es)')">
+            <AddressesOverview v-model="item" />
+        </FormSection>
+
+        <FormSection :title="$t('contactData')">
+            <ContactDataOverview v-model="item" />
+        </FormSection>
+
         <Debug :modelValue="{
             item,
         }" />
@@ -111,6 +119,8 @@ import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/enti
 import config from "../config/config"
 import Entity, { Person, Organization, PartyTypes } from "../data/Entity"
 import useEntityStore from "../data/store"
+import AddressesOverview from "../party-addresses/Overview.vue"
+import ContactDataOverview from "../party-contactdata/Overview.vue"
 
 interface Emits extends /* @vue-ignore */ FormEmits<Entity> { }
 const emit = defineEmits<Emits>()
