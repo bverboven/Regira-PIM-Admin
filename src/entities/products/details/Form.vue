@@ -2,10 +2,12 @@
     <form @submit.prevent="handleSubmit" :modelValue="item">
         <div class="row form-buttons">
             <div class="col col-md-auto order-1">
-                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0" @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
+                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0"
+                    @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
             </div>
             <div class="col-auto order-2 order-md-3">
-                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }" class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
+                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
+                    class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
                     <Icon name="popOut" />
                 </RouterLink>
                 <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
@@ -29,12 +31,14 @@
                                         <div class="input-group-text">
                                             <Icon name="title" />
                                         </div>
-                                        <input v-model="item.title" maxlength="128" :readonly="readonly" class="form-control" />
+                                        <input v-model="item.title" maxlength="128" :readonly="readonly"
+                                            class="form-control" />
                                     </div>
                                     <FormLabel :label="$t('name')" />
                                 </div>
                                 <div class="col-lg mb-2">
-                                    <UnitTypeInputSelector v-model="item.unitType" v-model:id-value="item.unitTypeId" :readonly="readonly" />
+                                    <UnitTypeInputSelector v-model="item.unitType" v-model:id-value="item.unitTypeId"
+                                        :readonly="readonly" />
                                     <FormLabel :label="$t('unitType')" />
                                 </div>
                             </div>
@@ -48,10 +52,11 @@
                             <PricesOverview v-model="item" />
                         </FormSection>
 
-                        <FormSection :title="$t('notes')">
+                        <FormSection :title="$t('description')">
                             <div class="row">
                                 <div class="col mb-2">
-                                    <DescriptionInput v-model="item.description" :label="$t('notes')" :readonly="readonly" />
+                                    <DescriptionInput v-model="item.description" :label="$t('description')"
+                                        :readonly="readonly" />
                                 </div>
                             </div>
                         </FormSection>

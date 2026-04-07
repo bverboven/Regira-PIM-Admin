@@ -46,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col mb-2">
-                            <DescriptionInput v-model="item.description" :label="$t('notes')" :readonly="readonly" />
+                            <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
                         </div>
                     </div>
                 </FormSection>

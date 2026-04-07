@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="col">
-                <DateInput v-model="newItem.startDate" :label="$t('date')" />
+                <DateInput v-model="newItem.startDate" :label="$t('date')" class="form-control" />
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <DateInput v-model="item.startDate" :label="$t('date')" />
+                    <DateInput v-model="item.startDate" :label="$t('date')" class="form-control" />
                 </div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
@@ -45,11 +45,12 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { orderByDesc } from '@/regira_modules/utilities/array-utility'
 import Product from '../data/Entity'
 import ProductPricePeriod from './Entity'
 
 const model = defineModel<Product>({ required: true })
-const items = computed(() => model.value.prices ?? [])
+const items = computed(() => orderByDesc(model.value.prices ?? [], x => x.startDate && new Date(x.startDate)))
 
 function handleRemove(item: ProductPricePeriod) {
     item._deleted = !item._deleted
@@ -57,9 +58,10 @@ function handleRemove(item: ProductPricePeriod) {
 
 const newItem = ref<ProductPricePeriod>(ProductPricePeriod.create({ objectId: model.value.id }))
 function handleAdd(item: ProductPricePeriod) {
-    if (!item.price) return
-    if (!model.value.prices) model.value.prices = []
-    model.value.prices.push(ProductPricePeriod.create({ ...item }))
+    if (!item.price)
+        return
+    model.value.prices ??= []
+    model.value.prices.push(item)
     newItem.value = ProductPricePeriod.create({ objectId: model.value.id })
 }
 </script>
