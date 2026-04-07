@@ -32,13 +32,20 @@
         "title": "taxonomy",
         "shortTitle": "taxonomy",
         "icon": "taxonomy"
+      },
+      {
+        "id": "Relations",
+        "title": "relations",
+        "shortTitle": "relations",
+        "icon": "relations"
       }
     ],
-    "entities": ["Country", "Product", "Facet", "FacetGroup", "UnitType"],
+    "entities": ["Country", "Product", "Facet", "FacetGroup", "UnitType", "Party"],
     "dashboard": [
       ["Catalog", ["Product", "UnitType"]],
-      ["Taxonomy", ["Facet", "FacetGroup"]]
+      ["Taxonomy", ["Facet", "FacetGroup"]],
+      ["Relations", ["Party"]]
     ],
-    "navbar": ["Product", ["Taxonomy", ["Facet", "FacetGroup"]]]
+    "navbar": ["Product", ["Taxonomy", ["Facet", "FacetGroup"]], "Party"]
   }
 }
