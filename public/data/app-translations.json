@@ -159,6 +159,51 @@
     "fr": "Nom de famille",
     "nl": "Achternaam"
   },
+  "party.address.street": {
+    "en": "Street",
+    "fr": "Rue",
+    "nl": "Straat"
+  },
+  "party.address.houseNumber": {
+    "en": "No.",
+    "fr": "N°",
+    "nl": "Nr."
+  },
+  "party.address.postalCode": {
+    "en": "Postal code",
+    "fr": "Code postal",
+    "nl": "Postcode"
+  },
+  "party.address.city": {
+    "en": "City",
+    "fr": "Ville",
+    "nl": "Stad"
+  },
+  "party.contactData.value": {
+    "en": "Value",
+    "fr": "Valeur",
+    "nl": "Waarde"
+  },
+  "party.contactData.other": {
+    "en": "Other",
+    "fr": "Autre",
+    "nl": "Overige"
+  },
+  "party.contactData.phone": {
+    "en": "Phone",
+    "fr": "Téléphone",
+    "nl": "Telefoon"
+  },
+  "party.contactData.email": {
+    "en": "Email",
+    "fr": "E-mail",
+    "nl": "E-mail"
+  },
+  "party.contactData.website": {
+    "en": "Website",
+    "fr": "Site web",
+    "nl": "Website"
+  },
   "productInformationManagement": {
     "en": "Product Information Management",
     "fr": "Gestion de l'information produit",
