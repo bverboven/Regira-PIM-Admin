@@ -14,8 +14,10 @@ export class PartyAddress extends EntityBase {
   stateOrProvince?: string;
   countryCode?: string;
   description?: string;
-  
+
   sortOrder: number = 0;
+
+  _deleted?: boolean = false;
 
   override get $id(): string | number {
     return this.id || "new";
@@ -25,6 +27,10 @@ export class PartyAddress extends EntityBase {
       this.title ??
       `${this.street} ${this.houseNumber}, ${this.postalCode} ${this.city}`.trim()
     );
+  }
+
+  static create(values?: object): PartyAddress {
+    return Object.assign(new PartyAddress(), values || {});
   }
 }
 

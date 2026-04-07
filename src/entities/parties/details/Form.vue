@@ -89,20 +89,14 @@
                     </div>
                 </div>
             </template>
-
-            <div class="row">
-                <div class="col mb-2">
-                    <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
-                </div>
-            </div>
         </FormSection>
 
-        <FormSection :title="$t('address(es)')">
-            <AddressesOverview v-model="item" />
-        </FormSection>
+        <ContactDataOverview v-model="item.contactData" :party="item" />
 
-        <FormSection :title="$t('contactData')">
-            <ContactDataOverview v-model="item" />
+        <AddressesOverview v-model="item.addresses" :party="item" />
+
+        <FormSection :title="$t('description')">
+            <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
         </FormSection>
 
         <Debug :modelValue="{
@@ -112,15 +106,16 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from "vue"
 import type { RouteRecordRaw } from "vue-router"
 import { Feedback } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
+import { Overview as AddressesOverview } from "../party-addresses"
+import { Overview as ContactDataOverview } from "../party-contact-data"
 import config from "../config/config"
 import Entity, { Person, Organization, PartyTypes } from "../data/Entity"
 import useEntityStore from "../data/store"
-import AddressesOverview from "../party-addresses/Overview.vue"
-import ContactDataOverview from "../party-contactdata/Overview.vue"
 
 interface Emits extends /* @vue-ignore */ FormEmits<Entity> { }
 const emit = defineEmits<Emits>()
@@ -138,4 +133,22 @@ const props = withDefaults(
 const { service: entityService } = useEntityStore()
 
 const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({ entityService, props, emit })
+
+watch(() => item.value.partyType, () => {
+    const organization = item.value as Organization
+    const person = item.value as Person
+
+    if (item.value.partyType === PartyTypes.Person) {
+        item.value = entityService.toEntity({
+            ...item.value,
+            familyName: organization.name
+        }) as Person
+    }
+    if (item.value.partyType === PartyTypes.Organization) {
+        item.value = entityService.toEntity({
+            ...item.value,
+            name: person.familyName
+        }) as Organization
+    }
+})
 </script>

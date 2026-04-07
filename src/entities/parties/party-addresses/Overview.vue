@@ -1,73 +1,45 @@
 <template>
-    <div>
-        <div class="row mb-2">
-            <div class="col mb-2">
-                <input v-model="newItem.street" class="form-control" :placeholder="$t('party.address.street')" />
-            </div>
-            <div class="col-sm-auto mb-2">
-                <input v-model="newItem.houseNumber" class="form-control" :placeholder="$t('party.address.houseNumber')" />
-            </div>
-            <div class="col-sm-auto mb-2">
-                <input v-model="newItem.postalCode" class="form-control" :placeholder="$t('party.address.postalCode')" />
-            </div>
-            <div class="col mb-2">
-                <input v-model="newItem.city" class="form-control" :placeholder="$t('party.address.city')" />
-            </div>
-            <div class="col-sm-auto mb-2">
-                <input v-model="newItem.countryCode" maxlength="2" class="form-control" :placeholder="$t('country')" />
-            </div>
-            <div class="col-auto mb-2">
-                <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
+    <FormSection>
+        <template #title>
+            <div class="d-flex justify-content-between">
+                <h3 class="p-2 mb-2">{{ $t("address(es)") }}</h3>
+                <FormModalButton v-if="!readonly" :modal-title="$t('addressModalTitle', { name: party.$title })"
+                    :item-defaults="defaultValues" class="btn btn-info py-1 my-1" @save="handleSave">
                     <Icon name="new" />
-                </button>
-            </div>
-        </div>
-
-        <template v-for="item in items" :key="item.$id">
-            <div class="row mb-2" :class="{ 'is-deleted': item._deleted }">
-                <div class="col mb-2">
-                    <input v-model="item.street" class="form-control" :placeholder="$t('party.address.street')" />
-                </div>
-                <div class="col-sm-auto mb-2">
-                    <input v-model="item.houseNumber" class="form-control" :placeholder="$t('party.address.houseNumber')" />
-                </div>
-                <div class="col-sm-auto mb-2">
-                    <input v-model="item.postalCode" class="form-control" :placeholder="$t('party.address.postalCode')" />
-                </div>
-                <div class="col mb-2">
-                    <input v-model="item.city" class="form-control" :placeholder="$t('party.address.city')" />
-                </div>
-                <div class="col-sm-auto mb-2">
-                    <input v-model="item.countryCode" maxlength="2" class="form-control" :placeholder="$t('country')" />
-                </div>
-                <div class="col-auto mb-2">
-                    <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
-                        <Icon name="delete" />
-                    </button>
-                </div>
+                </FormModalButton>
             </div>
         </template>
-    </div>
+        <List v-if="items?.length" v-model="items" :readonly="readonly" />
+        <p v-else class="text-info">{{ $t("noItems") }}</p>
+    </FormSection>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import Party from '../data/Entity'
-import PartyAddress from './Entity'
+import { ref } from "vue"
+import { useOwnedCollection } from "@/regira_modules/vue/entities"
+import type Party from "../data/Entity"
+import type Entity from "./Entity"
+import List from "./List.vue"
+import FormModalButton from "./FormModalButton.vue"
 
-const model = defineModel<Party>({ required: true })
-const items = computed(() => model.value.addresses ?? [])
+const emit = defineEmits<{
+    (e: "update:modelValue", args: Array<Entity>): void
+    (e: "sort", args: any): void
+}>()
+const props = withDefaults(
+    defineProps<{
+        modelValue?: Array<Entity>
+        party: Party
+        readonly?: boolean
+        showSummary?: boolean
+    }>(),
+    {
+        modelValue: () => [],
+    }
+)
 
-function handleRemove(item: PartyAddress) {
-    item._deleted = !item._deleted
-}
+const { items, handleSave } = useOwnedCollection({ props, emit })
 
-const newItem = ref<PartyAddress>(new PartyAddress())
-function handleAdd(item: PartyAddress) {
-    if (!item.street && !item.city)
-        return
-    model.value.addresses ??= []
-    model.value.addresses.push(Object.assign(new PartyAddress(), { ...item }))
-    newItem.value = new PartyAddress()
-}
+// set default countryCode
+const defaultValues = ref({ countryCode: "BE" })
 </script>
