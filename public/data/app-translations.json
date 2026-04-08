@@ -234,6 +234,11 @@
     "fr": "Facettes",
     "nl": "Eigenschappen"
   },
+  "product.suppliers": {
+    "en": "Suppliers",
+    "fr": "Fournisseurs",
+    "nl": "Leveranciers"
+  },
   "products": {
     "en": "Products",
     "fr": "Produits",

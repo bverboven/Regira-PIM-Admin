@@ -11,6 +11,7 @@ export class EntityService extends EntityServiceBase<Entity> {
         item.components = item.components?.filter(x => !x._deleted) || []
         item.facets = item.facets?.filter(x => !x._deleted) || []
         item.prices = item.prices?.filter(x => !x._deleted) || []
+        item.suppliers = item.suppliers?.filter(x => !x._deleted) || []
         return item
     }
 
