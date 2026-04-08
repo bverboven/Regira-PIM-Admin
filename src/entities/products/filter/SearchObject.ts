@@ -7,6 +7,7 @@ export class EntitySearchObject extends SearchObjectBase {
     componentId?: number | Array<number>
     assemblyId?: number | Array<number>
     facetId?: number | Array<number>
+    supplierId?: number | Array<number>
 
     isRoot?: boolean
 

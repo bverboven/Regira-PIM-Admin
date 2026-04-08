@@ -19,85 +19,95 @@
             </div>
         </div>
 
-        <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
-            <div class="row">
-                <!-- partyType -->
-                <div class="col-sm-auto mb-2">
-                    <select v-model="item.partyType" class="form-select">
-                        <option :value="PartyTypes.Person">{{ $t("party.person") }}</option>
-                        <option :value="PartyTypes.Organization">{{ $t("party.organization") }}</option>
-                    </select>
-                    <FormLabel :label="$t('party.partyType')" />
-                </div>
-            </div>
+        <TabContainer :tabs="tabs" :active="initialTab" :use-route-nav="!isPopup">
+            <template #form>
 
-            <!-- Person fields -->
-            <template v-if="item.partyType === PartyTypes.Person">
-                <div class="row">
-                    <div class="col-sm-auto mb-2">
-                        <input v-model="(item as Person).salutation" maxlength="16" :readonly="readonly"
-                            class="form-control" />
-                        <FormLabel :label="$t('party.salutation')" />
+                <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
+                    <div class="row">
+                        <!-- partyType -->
+                        <div class="col-sm-auto mb-2">
+                            <select v-model="item.partyType" class="form-select">
+                                <option :value="PartyTypes.Person">{{ $t("party.person") }}</option>
+                                <option :value="PartyTypes.Organization">{{ $t("party.organization") }}</option>
+                            </select>
+                            <FormLabel :label="$t('party.partyType')" />
+                        </div>
                     </div>
-                    <div class="col-sm mb-2">
-                        <input v-model="(item as Person).givenName" maxlength="64" :readonly="readonly"
-                            class="form-control" />
-                        <FormLabel :label="$t('party.givenName')" />
-                    </div>
-                    <div class="col-sm mb-2">
-                        <input v-model="(item as Person).middleName" maxlength="64" :readonly="readonly"
-                            class="form-control" />
-                        <FormLabel :label="$t('party.middleName')" />
-                    </div>
-                    <div class="col-sm mb-2">
-                        <input v-model="(item as Person).familyName" maxlength="64" :readonly="readonly"
-                            class="form-control" />
-                        <FormLabel :label="$t('party.familyName')" />
-                    </div>
-                </div>
+
+                    <!-- Person fields -->
+                    <template v-if="item.partyType === PartyTypes.Person">
+                        <div class="row">
+                            <div class="col-sm-auto mb-2">
+                                <input v-model="(item as Person).salutation" maxlength="16" :readonly="readonly"
+                                    class="form-control" />
+                                <FormLabel :label="$t('party.salutation')" />
+                            </div>
+                            <div class="col-sm mb-2">
+                                <input v-model="(item as Person).givenName" maxlength="64" :readonly="readonly"
+                                    class="form-control" />
+                                <FormLabel :label="$t('party.givenName')" />
+                            </div>
+                            <div class="col-sm mb-2">
+                                <input v-model="(item as Person).middleName" maxlength="64" :readonly="readonly"
+                                    class="form-control" />
+                                <FormLabel :label="$t('party.middleName')" />
+                            </div>
+                            <div class="col-sm mb-2">
+                                <input v-model="(item as Person).familyName" maxlength="64" :readonly="readonly"
+                                    class="form-control" />
+                                <FormLabel :label="$t('party.familyName')" />
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- Organization fields -->
+                    <template v-if="item.partyType === PartyTypes.Organization">
+                        <div class="row">
+                            <!-- name -->
+                            <div class="col mb-2">
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <Icon name="title" />
+                                    </div>
+                                    <input v-model="(item as Organization).name" maxlength="128" :readonly="readonly"
+                                        class="form-control" />
+                                </div>
+                                <FormLabel :label="$t('party.name')" />
+                            </div>
+                            <!-- code -->
+                            <div class="col-sm col-md-2 mb-2">
+                                <div class="input-group">
+                                    <div class="input-group-text">
+                                        <Icon name="code" />
+                                    </div>
+                                    <input v-model="item.code" maxlength="32" :readonly="readonly" class="form-control" />
+                                </div>
+                                <FormLabel :label="$t('code')" />
+                            </div>
+                            <!-- legalEntity -->
+                            <div class="col-sm col-md-2 mb-2">
+                                <input v-model="(item as Organization).legalEntity" maxlength="64" :readonly="readonly"
+                                    class="form-control" />
+                                <FormLabel :label="$t('party.legalEntity')" />
+                            </div>
+                        </div>
+                    </template>
+                </FormSection>
+
+                <ContactDataOverview v-model="item.contactData" :party="item" />
+
+                <AddressesOverview v-model="item.addresses" :party="item" />
+
+                <FormSection :title="$t('description')">
+                    <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
+                </FormSection>
+
             </template>
 
-            <!-- Organization fields -->
-            <template v-if="item.partyType === PartyTypes.Organization">
-                <div class="row">
-                    <!-- name -->
-                    <div class="col mb-2">
-                        <div class="input-group">
-                            <div class="input-group-text">
-                                <Icon name="title" />
-                            </div>
-                            <input v-model="(item as Organization).name" maxlength="128" :readonly="readonly"
-                                class="form-control" />
-                        </div>
-                        <FormLabel :label="$t('party.name')" />
-                    </div>
-                    <!-- code -->
-                    <div class="col-sm col-md-2 mb-2">
-                        <div class="input-group">
-                            <div class="input-group-text">
-                                <Icon name="code" />
-                            </div>
-                            <input v-model="item.code" maxlength="32" :readonly="readonly" class="form-control" />
-                        </div>
-                        <FormLabel :label="$t('code')" />
-                    </div>
-                    <!-- legalEntity -->
-                    <div class="col-sm col-md-2 mb-2">
-                        <input v-model="(item as Organization).legalEntity" maxlength="64" :readonly="readonly"
-                            class="form-control" />
-                        <FormLabel :label="$t('party.legalEntity')" />
-                    </div>
-                </div>
+            <template #products>
+                <ProductsOverview :party="item" />
             </template>
-        </FormSection>
-
-        <ContactDataOverview v-model="item.contactData" :party="item" />
-
-        <AddressesOverview v-model="item.addresses" :party="item" />
-
-        <FormSection :title="$t('description')">
-            <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
-        </FormSection>
+        </TabContainer>
 
         <Debug :modelValue="{
             item,
@@ -106,13 +116,15 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from "vue"
+import { computed, watch } from "vue"
 import type { RouteRecordRaw } from "vue-router"
-import { Feedback } from "@/regira_modules/vue/ui"
+import { useLang } from "@/regira_modules/vue/lang"
+import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
 import { Overview as AddressesOverview } from "../party-addresses"
 import { Overview as ContactDataOverview } from "../party-contact-data"
+import { Overview as ProductsOverview } from "../party-products"
 import config from "../config/config"
 import Entity, { Person, Organization, PartyTypes } from "../data/Entity"
 import useEntityStore from "../data/store"
@@ -151,4 +163,13 @@ watch(() => item.value.partyType, () => {
         }) as Organization
     }
 })
+
+// Tabs
+const { translate } = useLang()
+const tabs = computed(() =>
+    [
+        Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
+        Tab.create("products", { icon: "product", title: translate("products") }),
+    ].filter(tab => tab)
+)
 </script>
