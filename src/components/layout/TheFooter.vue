@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useConfig } from '@/app-config'
+import { useConfig } from "@/app-config";
 
-const { version: appVersion } = useConfig()
+const { version: appVersion } = useConfig();
 </script>

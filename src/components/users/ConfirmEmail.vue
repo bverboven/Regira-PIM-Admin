@@ -1,3 +1,1 @@
-<template>
-    CONFIRM EMAIL
-</template>
+<template>CONFIRM EMAIL</template>

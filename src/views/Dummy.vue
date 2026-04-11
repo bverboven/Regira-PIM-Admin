@@ -1,3 +1,1 @@
-<template>
-    DUMMY
-</template>
+<template>DUMMY</template>

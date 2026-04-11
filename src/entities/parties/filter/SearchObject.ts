@@ -1,18 +1,21 @@
-import { SearchObjectBase } from "@/regira_modules/vue/entities"
+import { SearchObjectBase } from "@/regira_modules/vue/entities";
 
 export class EntitySearchObject extends SearchObjectBase {
-    code?: string
-    name?: string
-    partyType?: string
+  code?: string;
+  name?: string;
+  partyType?: string;
 
-    minCreated?: Date
-    maxCreated?: Date
-    minLastModified?: Date
-    maxLastModified?: Date
+  minCreated?: Date;
+  maxCreated?: Date;
+  minLastModified?: Date;
+  maxLastModified?: Date;
 
-    isArchived?: boolean
+  isArchived?: boolean;
 
-    productIdSupplied?: number | Array<number>
+  productIdSupplied?: number | Array<number>;
+  ancestorId?: number | Array<number>;
+  offspringId?: number | Array<number>;
+  rootId?: number | Array<number>;
 }
 
-export default EntitySearchObject
+export default EntitySearchObject;
