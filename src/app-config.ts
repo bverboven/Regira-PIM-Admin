@@ -15,9 +15,7 @@ const appConfig: AppConfig = {
 };
 
 function getEnvValue(config: any, key: string): any {
-  return typeof config[key][appConfig.env] !== "undefined"
-    ? config[key][appConfig.env]
-    : config[key];
+  return typeof config[key][appConfig.env] !== "undefined" ? config[key][appConfig.env] : config[key];
 }
 
 // add extra config to appConfig

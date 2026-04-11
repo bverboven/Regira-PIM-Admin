@@ -25,11 +25,7 @@
         <template v-if="pagingInfo != null">
           <Paging
             class="mt-2"
-            v-show="
-              !isLoading &&
-              itemsCount != null &&
-              itemsCount > pagingInfo.pageSize!
-            "
+            v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
             v-model="pagingInfo"
             :count="itemsCount || 0"
             :buttonType="ButtonType.button"
@@ -38,11 +34,7 @@
         </template>
       </div>
       <div class="col-12 col-sm-auto order-1 order-sm-3">
-        <ResultSummary
-          v-if="items?.length"
-          :visibleCount="items.length"
-          :totalCount="itemsCount"
-        />
+        <ResultSummary v-if="items?.length" :visibleCount="items.length" :totalCount="itemsCount" />
       </div>
     </div>
     <Debug

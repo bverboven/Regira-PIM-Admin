@@ -54,11 +54,7 @@
           <div v-show="!feedback.status.value" class="row g-0">
             <div class="col-auto">
               <div v-if="selected?.id" class="form-control bg-info py-0">
-                <IconButton
-                  icon="selected"
-                  class="px-1 me-1"
-                  @click="handleSelect(undefined)"
-                />
+                <IconButton icon="selected" class="px-1 me-1" @click="handleSelect(undefined)" />
                 <FormModalButton v-model="selected" class="px-1" />
                 {{ selected.$title }}
               </div>
@@ -85,11 +81,7 @@
         <template v-if="pagingInfo != null">
           <Paging
             class="mt-2"
-            v-show="
-              !isLoading &&
-              itemsCount != null &&
-              itemsCount > pagingInfo.pageSize!
-            "
+            v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
             v-model="pagingInfo"
             :button-type="ButtonType.button"
             :count="itemsCount || 0"
@@ -98,28 +90,14 @@
         </template>
       </div>
       <div class="col-12 col-sm-auto order-1 order-sm-3">
-        <ResultSummary
-          v-if="items?.length"
-          :visibleCount="items.length"
-          :totalCount="itemsCount"
-        />
+        <ResultSummary v-if="items?.length" :visibleCount="items.length" :totalCount="itemsCount" />
       </div>
     </div>
 
     <!-- List - Loading -->
     <LoadingContainer :is-loading="isLoading">
-      <slot
-        name="list"
-        :items="items"
-        :search-object="searchObject"
-        :paging-info="pagingInfo"
-      >
-        <component
-          :is="List"
-          v-model="items"
-          :selected="selected"
-          @select="handleSelect"
-        />
+      <slot name="list" :items="items" :search-object="searchObject" :paging-info="pagingInfo">
+        <component :is="List" v-model="items" :selected="selected" @select="handleSelect" />
       </slot>
     </LoadingContainer>
 
@@ -127,9 +105,7 @@
     <template v-if="pagingInfo != null">
       <Paging
         class="mt-2"
-        v-show="
-          !isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!
-        "
+        v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
         v-model="pagingInfo"
         :button-type="ButtonType.button"
         :count="itemsCount || 0"
@@ -144,12 +120,7 @@
 <script setup lang="ts">
 import { onMounted, type Ref } from "vue";
 import { useSearchView } from "@/regira_modules/vue/entities";
-import {
-  Paging,
-  LoadingContainer,
-  Feedback,
-  ButtonType,
-} from "@/regira_modules/vue/ui";
+import { Paging, LoadingContainer, Feedback, ButtonType } from "@/regira_modules/vue/ui";
 import ResultSummary from "@/components/ResultSummary.vue";
 import config from "../config/config";
 import Entity from "../data/Entity";
@@ -196,9 +167,7 @@ console.debug("SelectorSearch", {
 });
 
 function handleSelect(item?: Entity) {
-  feedback.success(
-    item != null ? `${item.$title} selected` : `selection removed`,
-  );
+  feedback.success(item != null ? `${item.$title} selected` : `selection removed`);
   selected.value = item;
 }
 

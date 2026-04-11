@@ -3,9 +3,7 @@
     <div class="row">
       <div class="col mb-2" v-if="resultCount != null">
         <span class="text-info">{{ resultCount }} results</span>
-        <small v-if="filterIsActive" class="ms-2 italic-muted"
-          >({{ $t("filtersAreApplied") }})</small
-        >
+        <small v-if="filterIsActive" class="ms-2 italic-muted">({{ $t("filtersAreApplied") }})</small>
       </div>
       <div class="col mb-2 text-end">
         <IconButton icon="clear" @click="handleReset" :showText="true" />
@@ -18,20 +16,13 @@
           <div class="input-group-text">
             <Icon name="search" />
           </div>
-          <input
-            v-model.lazy.trim="searchObject.q"
-            class="form-control"
-            :placeholder="$t('keywords')"
-          />
+          <input v-model.lazy.trim="searchObject.q" class="form-control" :placeholder="$t('keywords')" />
         </div>
         <FormLabel :label="$t('keywords')" />
       </div>
       <!-- UnitType -->
       <div class="col mb-2">
-        <UnitTypeInputSelector
-          v-model="unitType"
-          v-model:id-value="searchObject.unitTypeId"
-        />
+        <UnitTypeInputSelector v-model="unitType" v-model:id-value="searchObject.unitTypeId" />
         <FormLabel :label="$t('unitType')" />
       </div>
     </div>
@@ -45,19 +36,11 @@
         >
           <template #prepend>
             <div class="input-group-text">
-              <NullableCheckBox
-                v-model="searchObject.isComponent"
-                id="isComponent"
-                class="form-check-input"
-              />
+              <NullableCheckBox v-model="searchObject.isComponent" id="isComponent" class="form-check-input" />
             </div>
             <div class="input-group-text">
               <label class="form-check-label" for="isRoot">
-                <NullableCheckBox
-                  v-model="searchObject.isRoot"
-                  id="isRoot"
-                  class="form-check-input"
-                />
+                <NullableCheckBox v-model="searchObject.isRoot" id="isRoot" class="form-check-input" />
                 {{ $t("isRoot") }}
               </label>
             </div>
@@ -74,11 +57,7 @@
         >
           <template #prepend>
             <div class="input-group-text">
-              <NullableCheckBox
-                v-model="searchObject.isAssembly"
-                id="isAssembly"
-                class="form-check-input"
-              />
+              <NullableCheckBox v-model="searchObject.isAssembly" id="isAssembly" class="form-check-input" />
             </div>
           </template>
         </InputSelector>
@@ -91,10 +70,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities";
-import {
-  type Entity as UnitType,
-  InputSelector as UnitTypeInputSelector,
-} from "@/entities/unit-types";
+import { type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types";
 import SearchObject from "./SearchObject";
 import InputSelector from "../selecting/InputSelector.vue";
 import Product from "../data/Entity";

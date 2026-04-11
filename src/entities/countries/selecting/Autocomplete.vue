@@ -33,9 +33,7 @@ const props = withDefaults(
 );
 
 const { fromCache } = useEntityStore();
-const items = computed<Array<Entity>>(() =>
-  (fromCache() as Array<Ref<Entity>>).map((x: Ref<Entity>) => x.value),
-);
+const items = computed<Array<Entity>>(() => (fromCache() as Array<Ref<Entity>>).map((x: Ref<Entity>) => x.value));
 
 const search = (q: string = "") =>
   Promise.resolve(

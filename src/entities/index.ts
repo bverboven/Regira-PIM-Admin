@@ -9,14 +9,7 @@ import { plugin as facetGroupPlugin } from "./facet-groups";
 import { plugin as partyPlugin } from "./parties";
 
 // order is important -> cf HomeView
-export const plugins = [
-  countryPlugin,
-  unitTypePlugin,
-  productPlugin,
-  facetPlugin,
-  facetGroupPlugin,
-  partyPlugin,
-];
+export const plugins = [countryPlugin, unitTypePlugin, productPlugin, facetPlugin, facetGroupPlugin, partyPlugin];
 
 export default {
   install(app: App<Element>, { routes }: { routes: Array<RouteRecordRaw> }) {
@@ -26,11 +19,4 @@ export default {
   },
 };
 
-export {
-  countryPlugin,
-  unitTypePlugin,
-  productPlugin,
-  facetPlugin,
-  facetGroupPlugin,
-  partyPlugin,
-};
+export { countryPlugin, unitTypePlugin, productPlugin, facetPlugin, facetGroupPlugin, partyPlugin };

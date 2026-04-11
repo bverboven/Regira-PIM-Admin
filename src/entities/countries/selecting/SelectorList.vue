@@ -9,10 +9,7 @@
     </div>
 
     <template v-for="item in items" :key="item.$id">
-      <div
-        class="row border-bottom border-bottom-1 py-2"
-        :class="{ 'is-selected': isSelected(item) }"
-      >
+      <div class="row border-bottom border-bottom-1 py-2" :class="{ 'is-selected': isSelected(item) }">
         <div class="col-auto">
           <IconButton
             :icon="isSelected(item) ? 'selected' : 'select'"
@@ -50,9 +47,7 @@ const props = defineProps<{
   selected?: Entity;
 }>();
 
-const isSelected = computed(
-  () => (item: Entity) => item.$id == props.selected?.$id,
-);
+const isSelected = computed(() => (item: Entity) => item.$id == props.selected?.$id);
 const { fromPool } = useEntityStore();
 const items = computed<Array<Entity>>({
   get: () => fromPool(props.modelValue || []),

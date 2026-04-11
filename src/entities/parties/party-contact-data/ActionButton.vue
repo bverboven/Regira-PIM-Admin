@@ -1,17 +1,8 @@
 <template>
-  <MyAnchor
-    v-if="href"
-    :href="href"
-    :target="dataType == ContactDataTypes.website ? '_blank' : undefined"
-  >
+  <MyAnchor v-if="href" :href="href" :target="dataType == ContactDataTypes.website ? '_blank' : undefined">
     <ContactDataIcon :type="dataType" />
   </MyAnchor>
-  <button
-    v-else
-    type="button"
-    class="btn btn-default border-1"
-    @click="copyTextToClipboard(item!.value)"
-  >
+  <button v-else type="button" class="btn btn-default border-1" @click="copyTextToClipboard(item!.value)">
     <ContactDataIcon :type="dataType" />
   </button>
 </template>

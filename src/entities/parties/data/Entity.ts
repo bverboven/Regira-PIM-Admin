@@ -44,9 +44,7 @@ export class Party extends EntityBase {
     return this.partyType == PartyTypes.Organization;
   }
   get $initials(): string {
-    const input = this.$isOrganization
-      ? (this.name ?? "")
-      : `${this.givenName ?? ""} ${this.familyName ?? ""}`.trim();
+    const input = this.$isOrganization ? (this.name ?? "") : `${this.givenName ?? ""} ${this.familyName ?? ""}`.trim();
     return getInitials(input ?? "");
   }
   // main address
@@ -58,21 +56,15 @@ export class Party extends EntityBase {
   }
   // main phone
   get $phone(): string | undefined {
-    return this.contactData
-      ?.filter((x) => ContactDataTypes.phone == x.dataType!)
-      .map((x) => x.value)[0];
+    return this.contactData?.filter((x) => ContactDataTypes.phone == x.dataType!).map((x) => x.value)[0];
   }
   // main email
   get $email(): string | undefined {
-    return this.contactData
-      ?.filter((x) => ContactDataTypes.email === x.dataType)
-      .map((x) => x.value)[0];
+    return this.contactData?.filter((x) => ContactDataTypes.email === x.dataType).map((x) => x.value)[0];
   }
   // main website
   get $website(): string | undefined {
-    return this.contactData
-      ?.filter((x) => ContactDataTypes.website === x.dataType)
-      .map((x) => x.value)[0];
+    return this.contactData?.filter((x) => ContactDataTypes.website === x.dataType).map((x) => x.value)[0];
   }
 }
 

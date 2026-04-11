@@ -22,11 +22,7 @@
         >
           <Icon name="popOut" />
         </RouterLink>
-        <RouterLink
-          v-else-if="overviewUrl"
-          :to="overviewUrl"
-          class="btn btn-info py-1"
-        >
+        <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
           <Icon name="list" />
           <span class="d-none d-md-inline ms-1">{{ $t("overview") }}</span>
         </RouterLink>
@@ -38,10 +34,7 @@
 
     <TabContainer :tabs="tabs" :active="initialTab" :use-route-nav="!isPopup">
       <template #form>
-        <FormSection
-          :title="$t(config.detailsTitle || '')"
-          :readonly="readonly"
-        >
+        <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
           <div class="row">
             <!-- partyType -->
             <div class="col-sm-auto mb-2">
@@ -61,39 +54,19 @@
           <template v-if="item.partyType === PartyTypes.Person">
             <div class="row">
               <div class="col-sm-auto mb-2">
-                <input
-                  v-model="item.salutation"
-                  maxlength="16"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.salutation" maxlength="16" :readonly="readonly" class="form-control" />
                 <FormLabel :label="$t('party.salutation')" />
               </div>
               <div class="col-sm mb-2">
-                <input
-                  v-model="item.givenName"
-                  maxlength="64"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.givenName" maxlength="64" :readonly="readonly" class="form-control" />
                 <FormLabel :label="$t('party.givenName')" />
               </div>
               <div class="col-sm mb-2">
-                <input
-                  v-model="item.middleName"
-                  maxlength="64"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.middleName" maxlength="64" :readonly="readonly" class="form-control" />
                 <FormLabel :label="$t('party.middleName')" />
               </div>
               <div class="col-sm mb-2">
-                <input
-                  v-model="item.familyName"
-                  maxlength="64"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.familyName" maxlength="64" :readonly="readonly" class="form-control" />
                 <FormLabel :label="$t('party.familyName')" />
               </div>
             </div>
@@ -108,12 +81,7 @@
                   <div class="input-group-text">
                     <Icon name="title" />
                   </div>
-                  <input
-                    v-model="item.name"
-                    maxlength="128"
-                    :readonly="readonly"
-                    class="form-control"
-                  />
+                  <input v-model="item.name" maxlength="128" :readonly="readonly" class="form-control" />
                 </div>
                 <FormLabel :label="$t('party.name')" />
               </div>
@@ -123,23 +91,13 @@
                   <div class="input-group-text">
                     <Icon name="code" />
                   </div>
-                  <input
-                    v-model="item.code"
-                    maxlength="32"
-                    :readonly="readonly"
-                    class="form-control"
-                  />
+                  <input v-model="item.code" maxlength="32" :readonly="readonly" class="form-control" />
                 </div>
                 <FormLabel :label="$t('code')" />
               </div>
               <!-- legalEntity -->
               <div class="col-sm col-md-2 mb-2">
-                <input
-                  v-model="item.legalEntity"
-                  maxlength="64"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.legalEntity" maxlength="64" :readonly="readonly" class="form-control" />
                 <FormLabel :label="$t('party.legalEntity')" />
               </div>
             </div>
@@ -151,11 +109,7 @@
         <AddressesOverview v-model="item.addresses" :party="item" />
 
         <FormSection :title="$t('description')">
-          <DescriptionInput
-            v-model="item.description"
-            :label="$t('description')"
-            :readonly="readonly"
-          />
+          <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
         </FormSection>
       </template>
 
@@ -178,11 +132,7 @@ import type { RouteRecordRaw } from "vue-router";
 import { useLang } from "@/regira_modules/vue/lang";
 import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui";
 import { FormButtonsRow } from "@/components/input";
-import {
-  useForm,
-  type FormEmits,
-  formDefaults,
-} from "@/regira_modules/vue/entities";
+import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities";
 import { Entity as Product } from "@/entities/products";
 import { Overview as AddressesOverview } from "../party-addresses";
 import { Overview as ContactDataOverview } from "../party-contact-data";
@@ -207,14 +157,11 @@ const props = withDefaults(
 
 const { service: entityService } = useEntityStore();
 
-const {
-  item,
-  feedback,
-  handleCancel,
-  handleSubmit,
-  handleRemove,
-  handleRestore,
-} = useForm<Entity>({ entityService, props, emit });
+const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({
+  entityService,
+  props,
+  emit,
+});
 
 watch(
   () => item.value.partyType,

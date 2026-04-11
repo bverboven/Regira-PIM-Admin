@@ -5,11 +5,7 @@
         <div class="form-control p-0" :class="{ 'is-deleted': item._deleted }">
           <FormModalButton :modelValue="item.parent" />
           {{ item.parent?.title ?? "" }}
-          <button
-            type="button"
-            class="btn btn-outline-danger border-0"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger border-0" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -37,8 +33,7 @@ const facet = defineModel<Facet>({ required: true });
 const items = computed(() => facet.value.parentEntities ?? []);
 
 function handleRemove(item: RelatedEntity) {
-  item._deleted =
-    !item._deleted || props.filterDefaults?.exclude?.includes(item.parentId);
+  item._deleted = !item._deleted || props.filterDefaults?.exclude?.includes(item.parentId);
 }
 
 function handleAdd(item?: Facet) {

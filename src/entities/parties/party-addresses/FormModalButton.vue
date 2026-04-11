@@ -10,12 +10,7 @@
         @cancel="handleCancel"
         @submit="handleSubmit"
       >
-        <Form
-          v-model="item"
-          :item-defaults="itemDefaults"
-          :readonly="readonly"
-          class="pt-2"
-        />
+        <Form v-model="item" :item-defaults="itemDefaults" :readonly="readonly" class="pt-2" />
       </MyModal>
     </Teleport>
   </button>
@@ -39,8 +34,5 @@ const props = defineProps<{
   modalTitle?: string;
 }>();
 
-const { item, isOpen, handleOpen, handleCancel, handleSubmit } = useOwnedModal(
-  Entity,
-  { props, emit },
-);
+const { item, isOpen, handleOpen, handleCancel, handleSubmit } = useOwnedModal(Entity, { props, emit });
 </script>

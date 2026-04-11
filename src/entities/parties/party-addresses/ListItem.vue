@@ -9,11 +9,7 @@
         <div class="form-control">
           {{ address }}
         </div>
-        <FormModalButton
-          v-model="item"
-          :readonly="readonly"
-          class="btn btn-outline-secondary"
-        >
+        <FormModalButton v-model="item" :readonly="readonly" class="btn btn-outline-secondary">
           <Icon name="edit" />
         </FormModalButton>
         <button

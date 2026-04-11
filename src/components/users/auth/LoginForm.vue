@@ -3,21 +3,14 @@
     <div class="mb-3 position-relative" v-if="failed">
       <div class="bg-danger border rounded text-light p-2">
         {{ $t("auth.signInErrorMsg") }}
-        <span v-if="isLockedOut">{{
-          $t("auth.tryAgainInMin", { minutes: 5 })
-        }}</span>
+        <span v-if="isLockedOut">{{ $t("auth.tryAgainInMin", { minutes: 5 }) }}</span>
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-3 col-form-label">{{ $t("auth.username") }}</label>
       <div class="col-sm-9">
         <div class="input-group">
-          <input
-            class="form-control"
-            autocomplete="username email"
-            v-model="username"
-            :disabled="signingIn"
-          />
+          <input class="form-control" autocomplete="username email" v-model="username" :disabled="signingIn" />
         </div>
       </div>
     </div>
@@ -44,12 +37,7 @@
           <Loading class="me-1" style="width: 2rem" />
           {{ $t("auth.signingIn") }}
         </span>
-        <button
-          v-else
-          type="button"
-          class="btn btn-link"
-          @click="handleForgotPassword"
-        >
+        <button v-else type="button" class="btn btn-link" @click="handleForgotPassword">
           {{ $t("auth.forgotPassword") }}
         </button>
       </div>
@@ -58,11 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  useLoginForm,
-  type ILoginEmits,
-  type ILoginProps,
-} from "@/regira_modules/vue/auth";
+import { useLoginForm, type ILoginEmits, type ILoginProps } from "@/regira_modules/vue/auth";
 import { Loading } from "@/regira_modules/vue/ui";
 
 interface IEmits extends /* @vue-ignore */ ILoginEmits {}
@@ -73,13 +57,8 @@ const props: ILoginProps = defineProps<{
   signingIn?: boolean;
 }>();
 
-const {
-  username,
-  password,
-  signingIn,
-  failed,
-  isLockedOut,
-  handleSubmit,
-  handleForgotPassword,
-} = useLoginForm(props, emit);
+const { username, password, signingIn, failed, isLockedOut, handleSubmit, handleForgotPassword } = useLoginForm(
+  props,
+  emit,
+);
 </script>

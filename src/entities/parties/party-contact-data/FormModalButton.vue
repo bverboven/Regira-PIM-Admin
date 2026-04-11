@@ -32,8 +32,5 @@ const props = defineProps<{
   itemDefaults?: Ref<Record<string, any>> | Record<string, any>;
 }>();
 
-const { item, isOpen, handleOpen, handleCancel, handleSubmit } = useOwnedModal(
-  Entity,
-  { props, emit },
-);
+const { item, isOpen, handleOpen, handleCancel, handleSubmit } = useOwnedModal(Entity, { props, emit });
 </script>

@@ -32,9 +32,7 @@ const selected = computed({
 });
 const { fromCache } = useEntityStore();
 
-const items = computed(() =>
-  (fromCache() as Array<Ref<Entity>>)!.map((x) => x.value),
-);
+const items = computed(() => (fromCache() as Array<Ref<Entity>>)!.map((x) => x.value));
 onMounted(() => {
   if (!selected.value && props.idValue) {
     selected.value = items.value.find((x) => x.id == props.idValue);

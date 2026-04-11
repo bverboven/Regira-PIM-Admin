@@ -2,11 +2,7 @@
   <div class="entity-list">
     <div class="row pb-2 border-bottom border-bottom-1">
       <div class="col-auto fw-bold">
-        <IconButton
-          icon="select"
-          class="btn-default py-0 px-1 border-0"
-          disabled
-        />
+        <IconButton icon="select" class="btn-default py-0 px-1 border-0" disabled />
       </div>
       <div class="col fw-bold">{{ $t("name") }}</div>
       <div class="col-4 col-md-2 col-xl-1 fw-bold">{{ $t("price") }}</div>
@@ -16,10 +12,7 @@
     </div>
 
     <template v-for="(item, i) in items" :key="item.$id">
-      <div
-        class="row border-bottom border-bottom-1 py-2"
-        :class="{ 'is-selected': isSelected(item) }"
-      >
+      <div class="row border-bottom border-bottom-1 py-2" :class="{ 'is-selected': isSelected(item) }">
         <div class="col-auto">
           <IconButton
             :icon="isSelected(item) ? 'selected' : 'select'"
@@ -35,9 +28,7 @@
           {{ formatCurrency(item.price, $culture) }}
         </div>
         <div class="col-4 col-lg-2 d-none d-md-block text-truncate">
-          <UnitTypeButton :model-value="item.unitType" />{{
-            getUnitType(item.unitType)?.$title
-          }}
+          <UnitTypeButton :model-value="item.unitType" />{{ getUnitType(item.unitType)?.$title }}
         </div>
       </div>
     </template>
@@ -48,10 +39,7 @@
 import { computed } from "vue";
 import { type OverviewEmits } from "@/regira_modules/vue/entities";
 import { formatCurrency } from "@/regira_modules/vue/formatters";
-import {
-  useEntityStore as useUnitTypeStore,
-  FormModalButton as UnitTypeButton,
-} from "@/entities/unit-types";
+import { useEntityStore as useUnitTypeStore, FormModalButton as UnitTypeButton } from "@/entities/unit-types";
 import config from "../config/config";
 import type Entity from "../data/Entity";
 import useEntityStore from "../data/store";
@@ -71,9 +59,7 @@ const props = defineProps<{
   selected?: Entity;
 }>();
 
-const isSelected = computed(
-  () => (item: Entity) => item.$id == props.selected?.$id,
-);
+const isSelected = computed(() => (item: Entity) => item.$id == props.selected?.$id);
 const { fromPool } = useEntityStore();
 const items = computed<Array<Entity>>({
   get: () => fromPool(props.modelValue || []),

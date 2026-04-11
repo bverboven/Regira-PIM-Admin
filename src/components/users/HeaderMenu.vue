@@ -28,11 +28,7 @@
         v-click-outside="handleCloseMenu"
       >
         <li class="nav-item dropdown">
-          <router-link
-            :to="{ name: 'account' }"
-            class="btn btn-link dropdown-item"
-            @click="handleCloseMenu"
-          >
+          <router-link :to="{ name: 'account' }" class="btn btn-link dropdown-item" @click="handleCloseMenu">
             {{ $t("auth.myAccount") }}
           </router-link>
         </li>
@@ -41,11 +37,7 @@
         </li>
         <template v-if="$isAdmin">
           <li class="nav-item dropdown">
-            <router-link
-              :to="{ name: 'admin' }"
-              class="btn btn-link dropdown-item"
-              @click="handleCloseMenu"
-            >
+            <router-link :to="{ name: 'admin' }" class="btn btn-link dropdown-item" @click="handleCloseMenu">
               <Icon name="people" class="me-1" />
               {{ $t("manageUsers") }}
             </router-link>
@@ -55,11 +47,7 @@
           </li>
         </template>
         <li class="nav-item dropdown">
-          <button
-            type="button"
-            class="btn btn-link dropdown-item"
-            @click="handleLogout"
-          >
+          <button type="button" class="btn btn-link dropdown-item" @click="handleLogout">
             <Icon name="exit" class="me-1" />
             {{ $t("signOut") }}
           </button>

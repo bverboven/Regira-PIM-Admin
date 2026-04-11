@@ -2,11 +2,7 @@
   <section>
     <h1>Sign in</h1>
 
-    <LoginForm
-      :username="username"
-      @success="handleLogin"
-      @forgot-password="handleForgotPassword"
-    />
+    <LoginForm :username="username" @success="handleLogin" @forgot-password="handleForgotPassword" />
   </section>
 </template>
 

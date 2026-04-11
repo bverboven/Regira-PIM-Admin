@@ -1,18 +1,8 @@
 <template>
   <div>
-    <Draggable
-      v-model="items"
-      item-key="id"
-      handle=".drag-handle"
-      ghost-class="ghost"
-      @end="handleSort"
-    >
+    <Draggable v-model="items" item-key="id" handle=".drag-handle" ghost-class="ghost" @end="handleSort">
       <template #item="{ element, index }">
-        <Form
-          v-model="items[index]!"
-          :class="{ 'is-deleted': element._deleted }"
-          @save="onSave"
-        />
+        <Form v-model="items[index]!" :class="{ 'is-deleted': element._deleted }" @save="onSave" />
       </template>
     </Draggable>
     <FormModalButton v-model="newItem" @save="onSave" @cancel="onCancel" />

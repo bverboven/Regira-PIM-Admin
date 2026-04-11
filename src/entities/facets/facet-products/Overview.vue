@@ -26,11 +26,7 @@
         <template v-if="pagingInfo != null">
           <Paging
             class="mt-2"
-            v-show="
-              !isLoading &&
-              itemsCount != null &&
-              itemsCount > pagingInfo.pageSize!
-            "
+            v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
             v-model="pagingInfo"
             :count="itemsCount || 0"
             :buttonType="ButtonType.button"
@@ -39,11 +35,7 @@
         </template>
       </div>
       <div class="col-12 col-sm-auto order-1 order-sm-3">
-        <ResultSummary
-          v-if="items?.length"
-          :visibleCount="items.length"
-          :totalCount="itemsCount"
-        />
+        <ResultSummary v-if="items?.length" :visibleCount="items.length" :totalCount="itemsCount" />
       </div>
     </div>
     <Debug
@@ -62,12 +54,7 @@ import ResultSummary from "@/components/ResultSummary.vue";
 import { Paging, LoadingContainer, ButtonType } from "@/regira_modules/vue/ui";
 import { useSearchView } from "@/regira_modules/vue/entities";
 import { Debug } from "@/regira_modules/vue/debug";
-import {
-  type Entity,
-  List,
-  FilterInline,
-  useEntityStore,
-} from "@/entities/products";
+import { type Entity, List, FilterInline, useEntityStore } from "@/entities/products";
 import type Facet from "../data/Entity";
 
 const props = defineProps<{

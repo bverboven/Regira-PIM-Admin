@@ -1,11 +1,7 @@
 <template>
   <div>
     <slot name="inline" :handleToggle="handleToggle">
-      <FilterInline
-        v-model="searchObject"
-        @filter="handleFilter"
-        @toggle-adv="handleToggle"
-      />
+      <FilterInline v-model="searchObject" @filter="handleFilter" @toggle-adv="handleToggle" />
     </slot>
 
     <Teleport to="#modals">
@@ -18,13 +14,7 @@
         @submit="handleSubmit"
       >
         <slot name="title"></slot>
-        <slot
-          name="adv"
-          :handleUpdate="handleUpdate"
-          :handleSubmit="handleSubmit"
-          :handleClose="handleClose"
-        >
-        </slot>
+        <slot name="adv" :handleUpdate="handleUpdate" :handleSubmit="handleSubmit" :handleClose="handleClose"> </slot>
 
         <Debug :modelValue="searchObject" />
       </MyModal>

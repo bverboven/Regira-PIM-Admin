@@ -10,24 +10,14 @@
       </div>
       <div class="col-4">
         <div class="input-group">
-          <input
-            type="number"
-            v-model="newItem.quantity"
-            class="form-control"
-          />
+          <input type="number" v-model="newItem.quantity" class="form-control" />
           <div class="input-group-text">
-            <span class="text-muted">{{
-              getUnitType(newItem.component?.unitType)?.code
-            }}</span>
+            <span class="text-muted">{{ getUnitType(newItem.component?.unitType)?.code }}</span>
           </div>
         </div>
       </div>
       <div class="col-auto">
-        <button
-          type="button"
-          class="btn btn-success"
-          @click="handleAdd(newItem)"
-        >
+        <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
           <Icon name="new" />
         </button>
       </div>
@@ -36,27 +26,18 @@
     <template v-for="item in items" :key="item.id">
       <div class="row mb-2" :class="{ 'is-deleted': item._deleted }">
         <div class="col">
-          <InputSelector
-            v-model="item.component"
-            v-model:idValue="item.componentId"
-          />
+          <InputSelector v-model="item.component" v-model:idValue="item.componentId" />
         </div>
         <div class="col-4">
           <div class="input-group">
             <input type="number" v-model="item.quantity" class="form-control" />
             <div class="input-group-text">
-              <span class="text-muted">{{
-                getUnitType(item.component?.unitType)?.code
-              }}</span>
+              <span class="text-muted">{{ getUnitType(item.component?.unitType)?.code }}</span>
             </div>
           </div>
         </div>
         <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -80,9 +61,7 @@ function handleRemove(item: ProductComponent) {
   item._deleted = !item._deleted;
 }
 
-const newItem = ref<ProductComponent>(
-  ProductComponent.create({ assemblyId: model.value.id }),
-);
+const newItem = ref<ProductComponent>(ProductComponent.create({ assemblyId: model.value.id }));
 function handleAdd(item: ProductComponent) {
   if (!model.value.components) model.value.components = [];
   model.value.components.push(ProductComponent.create({ ...item }));

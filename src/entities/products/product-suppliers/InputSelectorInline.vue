@@ -5,33 +5,21 @@
         <div class="form-control p-0" :class="{ 'is-deleted': item._deleted }">
           <FormModalButton :modelValue="item.supplier!" />
           {{ getSupplier(item.supplier!)?.$title ?? "" }}
-          <button
-            type="button"
-            class="btn btn-outline-danger border-0"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger border-0" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
       </div>
     </template>
     <div class="col-auto mb-2">
-      <InputSelector
-        @select="handleAdd"
-        :filterDefaults="{ exclude: excludeIds }"
-      />
+      <InputSelector @select="handleAdd" :filterDefaults="{ exclude: excludeIds }" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  type Entity as Party,
-  FormModalButton,
-  InputSelector,
-  useEntityStore,
-} from "@/entities/parties";
+import { type Entity as Party, FormModalButton, InputSelector, useEntityStore } from "@/entities/parties";
 import type Product from "../data/Entity";
 import ProductSupplier from "./Entity";
 

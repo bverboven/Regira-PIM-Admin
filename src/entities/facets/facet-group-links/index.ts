@@ -3,9 +3,4 @@ import InputSelectorInlineParent from "./InputSelectorInlineParent.vue";
 import InputSelectorInlineChild from "./InputSelectorInlineChild.vue";
 import Overview from "./Overview.vue";
 
-export {
-  FacetFacetGroup,
-  InputSelectorInlineParent,
-  InputSelectorInlineChild,
-  Overview,
-};
+export { FacetFacetGroup, InputSelectorInlineParent, InputSelectorInlineChild, Overview };

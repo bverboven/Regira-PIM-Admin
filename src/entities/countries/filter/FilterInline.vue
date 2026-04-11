@@ -2,11 +2,7 @@
   <div class="row">
     <div class="col-auto">
       <div class="input-group">
-        <IconButton
-          icon="clear"
-          class="btn-outline-secondary"
-          @click="handleReset"
-        />
+        <IconButton icon="clear" class="btn-outline-secondary" @click="handleReset" />
         <input
           v-model.lazy.trim="searchObject.q"
           class="form-control"
@@ -14,15 +10,9 @@
           :placeholder="$t('keywords')"
           @change="handleUpdate"
         />
-        <IconButton
-          icon="search"
-          class="btn-outline-primary"
-          @click="handleUpdate"
-        />
+        <IconButton icon="search" class="btn-outline-primary" @click="handleUpdate" />
       </div>
-      <small v-if="filterIsActive" class="italic-muted">{{
-        $t("filtersAreApplied")
-      }}</small>
+      <small v-if="filterIsActive" class="italic-muted">{{ $t("filtersAreApplied") }}</small>
     </div>
   </div>
 </template>

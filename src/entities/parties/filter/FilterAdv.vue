@@ -3,9 +3,7 @@
     <div class="row">
       <div class="col mb-2" v-if="resultCount != null">
         <span class="text-info">{{ resultCount }} results</span>
-        <small v-if="filterIsActive" class="ms-2 italic-muted"
-          >({{ $t("filtersAreApplied") }})</small
-        >
+        <small v-if="filterIsActive" class="ms-2 italic-muted">({{ $t("filtersAreApplied") }})</small>
       </div>
       <div class="col mb-2 text-end">
         <IconButton icon="clear" @click="handleReset" :showText="true" />
@@ -18,11 +16,7 @@
           <div class="input-group-text">
             <Icon name="search" />
           </div>
-          <input
-            v-model.lazy.trim="searchObject.q"
-            class="form-control"
-            :placeholder="$t('keywords')"
-          />
+          <input v-model.lazy.trim="searchObject.q" class="form-control" :placeholder="$t('keywords')" />
         </div>
       </div>
     </div>
@@ -33,11 +27,7 @@
           <div class="input-group-text">
             <Icon name="title" />
           </div>
-          <input
-            v-model.lazy.trim="searchObject.name"
-            class="form-control"
-            :placeholder="$t('name')"
-          />
+          <input v-model.lazy.trim="searchObject.name" class="form-control" :placeholder="$t('name')" />
         </div>
       </div>
     </div>
@@ -60,11 +50,7 @@
           <div class="input-group-text">
             <Icon name="from" />
           </div>
-          <input
-            type="date"
-            v-model="searchObject.minCreated"
-            class="form-control"
-          />
+          <input type="date" v-model="searchObject.minCreated" class="form-control" />
         </div>
       </div>
       <!-- maxCreated -->
@@ -73,11 +59,7 @@
           <div class="input-group-text">
             <Icon name="to" />
           </div>
-          <input
-            type="date"
-            v-model="searchObject.maxCreated"
-            class="form-control"
-          />
+          <input type="date" v-model="searchObject.maxCreated" class="form-control" />
         </div>
       </div>
     </div>

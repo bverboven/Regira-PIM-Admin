@@ -1,10 +1,7 @@
 <template>
   <div class="row mb-2">
     <div class="col">
-      <div
-        class="input-group"
-        :class="{ 'is-deleted': !item.permissions?.length }"
-      >
+      <div class="input-group" :class="{ 'is-deleted': !item.permissions?.length }">
         <div class="input-group-text">
           <Loading v-if="isLoading" style="height: 1.5rem" />
           <Icon v-else :name="isAdminUser ? 'admin' : 'user'" />
@@ -38,12 +35,7 @@
             {{ $t("claims.canWrite") }}
           </label>
         </div>
-        <IconButton
-          icon="delete"
-          class="btn-outline-danger py-1"
-          @click="handleRemoveUser"
-          :disabled="isAdminUser"
-        />
+        <IconButton icon="delete" class="btn-outline-danger py-1" @click="handleRemoveUser" :disabled="isAdminUser" />
       </div>
     </div>
   </div>
@@ -61,10 +53,7 @@ const item = defineModel<Entity>({ required: true });
 const isAdminUser = computed(() => isAdmin(item.value));
 
 function toggleCanRead() {
-  if (
-    item.value.permissions.includes(Permissions.CAN_READ) &&
-    item.value.permissions.includes(Permissions.CAN_WRITE)
-  ) {
+  if (item.value.permissions.includes(Permissions.CAN_READ) && item.value.permissions.includes(Permissions.CAN_WRITE)) {
     item.value.permissions = [];
   }
 }

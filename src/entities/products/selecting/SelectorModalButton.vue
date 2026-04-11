@@ -47,9 +47,7 @@ const props = withDefaults(
 const selected = ref<Entity>();
 const isOpen = ref(false);
 const { service: entityService } = useEntityStore();
-const modalTitle = computed(
-  () => props.label || entityService.toEntity(props.modelValue || {}).$title,
-);
+const modalTitle = computed(() => props.label || entityService.toEntity(props.modelValue || {}).$title);
 
 function open() {
   selected.value = props.modelValue;

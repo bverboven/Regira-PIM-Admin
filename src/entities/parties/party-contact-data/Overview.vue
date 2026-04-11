@@ -1,9 +1,5 @@
 <template>
-  <FormSection
-    :title="tm('ContactData')"
-    :readonly="readonly"
-    :show-summary="(party?.id || 0) > 0"
-  >
+  <FormSection :title="tm('ContactData')" :readonly="readonly" :show-summary="(party?.id || 0) > 0">
     <List v-model="items" />
 
     <div class="row">
@@ -22,11 +18,7 @@
             autocomplete="__away"
             ref="newContactDataInput"
           />
-          <button
-            type="button"
-            @click.prevent="handleAddNew"
-            class="btn btn-outline-info"
-          >
+          <button type="button" @click.prevent="handleAddNew" class="btn btn-outline-info">
             <Icon name="new" />
           </button>
         </div>
@@ -38,9 +30,7 @@
           <div class="input-group">
             <ActionButton :item="item" class="btn btn-outline-info" />
             <input v-model="item.value" class="form-control" />
-            <span class="input-group-text" v-if="item.title != null">{{
-              item.title
-            }}</span>
+            <span class="input-group-text" v-if="item.title != null">{{ item.title }}</span>
           </div>
         </div>
       </template>
@@ -90,14 +80,10 @@ const translations: Record<string, ITranslationMessage> = {
   },
 };
 const { translateMessage } = useLang();
-const tm = computed(
-  () => (key: string) => translateMessage(translations[key]!),
-);
+const tm = computed(() => (key: string) => translateMessage(translations[key]!));
 
 const newContactData = ref<string>();
-const newContactDataInput = ref<InstanceType<typeof HTMLInputElement> | null>(
-  null,
-);
+const newContactDataInput = ref<InstanceType<typeof HTMLInputElement> | null>(null);
 function handleAddNew() {
   if (!newContactData.value) {
     return;

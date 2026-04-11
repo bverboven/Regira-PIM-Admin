@@ -1,7 +1,5 @@
 <template>
-  <div v-if="!isOnline" class="bg-danger text-white text-center p-2">
-    OFFLINE
-  </div>
+  <div v-if="!isOnline" class="bg-danger text-white text-center p-2">OFFLINE</div>
 </template>
 
 <script setup lang="ts">

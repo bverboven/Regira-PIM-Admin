@@ -34,13 +34,8 @@
         <Feedback v-bind="{ feedback }" :hideCloseButton="true" />
       </div>
       <div class="col-auto order-2 order-lg-3 ps-2">
-        <RouterLink
-          :to="{ name: Entity.name + 'Details', params: { id: 'new' } }"
-          class="btn btn-info"
-        >
-          <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{
-            $t("new")
-          }}</span>
+        <RouterLink :to="{ name: Entity.name + 'Details', params: { id: 'new' } }" class="btn btn-info">
+          <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("new") }}</span>
         </RouterLink>
       </div>
     </div>
@@ -51,11 +46,7 @@
         <template v-if="pagingInfo != null">
           <Paging
             class="mt-2"
-            v-show="
-              !isLoading &&
-              itemsCount != null &&
-              itemsCount > pagingInfo.pageSize!
-            "
+            v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
             v-model="pagingInfo"
             :count="itemsCount || 0"
             @change="updateOverviewRoute(false)"
@@ -63,11 +54,7 @@
         </template>
       </div>
       <div class="col-12 col-sm-auto order-1 order-sm-3">
-        <ResultSummary
-          v-if="items?.length"
-          :visibleCount="items.length"
-          :totalCount="itemsCount"
-        />
+        <ResultSummary v-if="items?.length" :visibleCount="items.length" :totalCount="itemsCount" />
       </div>
     </div>
 
@@ -92,9 +79,7 @@
     <template v-if="pagingInfo != null">
       <Paging
         class="mt-2"
-        v-show="
-          !isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!
-        "
+        v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
         v-model="pagingInfo"
         :count="itemsCount || 0"
         @change="updateOverviewRoute(false)"
@@ -111,11 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  useSearchView,
-  useRouteOverview,
-  type OverviewEmits,
-} from "@/regira_modules/vue/entities";
+import { useSearchView, useRouteOverview, type OverviewEmits } from "@/regira_modules/vue/entities";
 import { Paging, LoadingContainer, Feedback } from "@/regira_modules/vue/ui";
 import { useAuthStore } from "@/regira_modules/vue/auth";
 import ResultSummary from "@/components/ResultSummary.vue";
@@ -160,8 +141,7 @@ const { updateOverviewRoute } = useRouteOverview({
 const authStore = useAuthStore();
 authStore.$onAction(
   ({ name, after }) =>
-    ["login", "refresh"].includes(name) &&
-    after(() => authStore.isAuthenticated && searchHandler(false)),
+    ["login", "refresh"].includes(name) && after(() => authStore.isAuthenticated && searchHandler(false)),
 );
 
 async function handleRequestSave(item: Entity) {

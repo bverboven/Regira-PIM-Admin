@@ -11,11 +11,7 @@
         @cancel="handleCancel"
         @submit="handleSubmit"
       >
-        <SelectorSearch
-          v-model="selected"
-          :filter-defaults="filterDefaults"
-          :page-size="5"
-        />
+        <SelectorSearch v-model="selected" :filter-defaults="filterDefaults" :page-size="5" />
       </MyModal>
     </Teleport>
   </button>

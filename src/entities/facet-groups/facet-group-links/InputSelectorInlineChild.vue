@@ -5,11 +5,7 @@
         <div class="form-control p-0" :class="{ 'is-deleted': item._deleted }">
           <FormModalButton :modelValue="item.facet" />
           {{ item.facet?.title ?? "" }}
-          <button
-            type="button"
-            class="btn btn-outline-danger border-0"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger border-0" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -37,8 +33,7 @@ const facetGroup = defineModel<FacetGroup>({ required: true });
 const items = computed(() => facetGroup.value.childFacets ?? []);
 
 function handleRemove(item: FacetGroupFacet) {
-  item._deleted =
-    !item._deleted || props.filterDefaults?.exclude?.includes(item.facetId);
+  item._deleted = !item._deleted || props.filterDefaults?.exclude?.includes(item.facetId);
 }
 
 function handleAdd(item?: Facet) {

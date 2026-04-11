@@ -9,11 +9,7 @@
         />
       </div>
       <div class="col-auto">
-        <button
-          type="button"
-          class="btn btn-success"
-          @click="handleAdd(newItem)"
-        >
+        <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
           <Icon name="new" />
         </button>
       </div>
@@ -26,11 +22,7 @@
           {{ item.parent?.title ?? "" }}
         </div>
         <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -61,9 +53,7 @@ function handleRemove(item: FacetParent) {
   item._deleted = !item._deleted;
 }
 
-const newItem = ref<FacetParent>(
-  FacetParent.create({ childId: props.facet.id }),
-);
+const newItem = ref<FacetParent>(FacetParent.create({ childId: props.facet.id }));
 function handleAdd(item: FacetParent) {
   items.value.push(FacetParent.create({ ...item }));
   newItem.value = FacetParent.create({ childId: props.facet.id });

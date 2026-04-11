@@ -15,29 +15,14 @@ import {
   NullableLabel,
 } from "@/regira_modules/vue/ui";
 import { focus, grow, clickOutside } from "@/regira_modules/vue/directives";
-import {
-  AppStatus,
-  plugin as appPlugin,
-  whenAppReady,
-} from "@/regira_modules/vue/app";
+import { AppStatus, plugin as appPlugin, whenAppReady } from "@/regira_modules/vue/app";
 import { plugin as langPlugin, useLang } from "@/regira_modules/vue/lang";
 import { plugin as isOnlinePlugin } from "@/regira_modules/vue/online";
 import { plugin as debugPlugin } from "@/regira_modules/vue/debug";
-import {
-  preloaderPlugin,
-  usePreloader,
-  defaultPoolCache,
-  PoolCache,
-} from "@/regira_modules/vue/entities";
+import { preloaderPlugin, usePreloader, defaultPoolCache, PoolCache } from "@/regira_modules/vue/entities";
 import { initAxios } from "@/regira_modules/vue/http";
-import {
-  plugin as authPlugin,
-  LocalStorageTokenManager,
-} from "@/regira_modules/vue/auth";
-import {
-  plugin as servicesPlugin,
-  type IServiceProvider,
-} from "@/regira_modules/vue/ioc";
+import { plugin as authPlugin, LocalStorageTokenManager } from "@/regira_modules/vue/auth";
+import { plugin as servicesPlugin, type IServiceProvider } from "@/regira_modules/vue/ioc";
 import { formatDateTime } from "@/regira_modules/vue/formatters";
 import appConfig, { createConfig, useConfig } from "@/app-config";
 import { routerFactory } from "@/router";
@@ -62,9 +47,7 @@ import "./assets/main.scss";
 import loadingImg from "@/assets/images/loading.gif";
 
 // load config
-fetch(
-  `${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd")}`,
-)
+fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd")}`)
   .then((r) => r.json())
   .then(async (config: Record<string, any>) => {
     // start init app
@@ -152,10 +135,7 @@ fetch(
     app.use(authPlugin, {
       enabled: true,
       clientApp: processedConfig.clientApp,
-      loginUrl: processedConfig.loginUrl.replace(
-        /{clientApp}/,
-        processedConfig.clientApp,
-      ),
+      loginUrl: processedConfig.loginUrl.replace(/{clientApp}/, processedConfig.clientApp),
       tokenManager: new LocalStorageTokenManager(),
       axios,
       onAuthenticationChange: async (auth) => {

@@ -22,11 +22,7 @@
         >
           <Icon name="popOut" />
         </RouterLink>
-        <RouterLink
-          v-else-if="overviewUrl"
-          :to="overviewUrl"
-          class="btn btn-info py-1"
-        >
+        <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
           <Icon name="list" />
           <span class="d-none d-md-inline ms-1">{{ $t("overview") }}</span>
         </RouterLink>
@@ -40,22 +36,14 @@
       <template #form>
         <div class="row">
           <div class="col-lg mb-2">
-            <FormSection
-              :title="$t(config.detailsTitle || '')"
-              :readonly="readonly"
-            >
+            <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
               <div class="row">
                 <div class="col-lg mb-2">
                   <div class="input-group">
                     <div class="input-group-text">
                       <Icon name="title" />
                     </div>
-                    <input
-                      v-model="item.title"
-                      maxlength="128"
-                      :readonly="readonly"
-                      class="form-control"
-                    />
+                    <input v-model="item.title" maxlength="128" :readonly="readonly" class="form-control" />
                   </div>
                   <FormLabel :label="$t('name')" />
                 </div>
@@ -70,11 +58,7 @@
               </div>
               <div class="row">
                 <div class="col mb-2">
-                  <DescriptionInput
-                    v-model="item.description"
-                    :label="$t('description')"
-                    :readonly="readonly"
-                  />
+                  <DescriptionInput v-model="item.description" :label="$t('description')" :readonly="readonly" />
                 </div>
               </div>
             </FormSection>
@@ -83,10 +67,7 @@
               <PricesOverview v-model="item" />
             </FormSection>
 
-            <FormSection
-              :title="$t('product.suppliers')"
-              class="d-none d-lg-block"
-            >
+            <FormSection :title="$t('product.suppliers')" class="d-none d-lg-block">
               <SupplierInputSelectorOverview v-model="item" />
             </FormSection>
           </div>
@@ -125,17 +106,12 @@
         item: {
           ...item,
           unitType: item.unitType?.title,
-          prices: item.prices?.map(
-            ({ id, price, startDate }) => `${startDate}  €${price} #${id}`,
-          ),
+          prices: item.prices?.map(({ id, price, startDate }) => `${startDate}  €${price} #${id}`),
           components: item.components?.map(
-            ({ id, component, quantity }) =>
-              `${component?.title} (${quantity} ${component?.unitType?.title}) #${id}`,
+            ({ id, component, quantity }) => `${component?.title} (${quantity} ${component?.unitType?.title}) #${id}`,
           ),
           facets: item.facets?.map(({ id, facet }) => `${facet?.title} #${id}`),
-          suppliers: item.suppliers?.map(
-            ({ id, supplier }) => `${supplier?.name} #${id}`,
-          ),
+          suppliers: item.suppliers?.map(({ id, supplier }) => `${supplier?.name} #${id}`),
         },
       }"
     />
@@ -146,18 +122,9 @@
 import { computed } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { useLang } from "@/regira_modules/vue/lang";
-import {
-  Feedback,
-  TabContainer,
-  Tab,
-  useScreen,
-} from "@/regira_modules/vue/ui";
+import { Feedback, TabContainer, Tab, useScreen } from "@/regira_modules/vue/ui";
 import { FormButtonsRow } from "@/components/input";
-import {
-  useForm,
-  type FormEmits,
-  formDefaults,
-} from "@/regira_modules/vue/entities";
+import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities";
 import { InputSelector as UnitTypeInputSelector } from "@/entities/unit-types";
 import AssemblyOverview from "@/entities/products/product-assemblies/Overview.vue";
 import ComponentOverview from "@/entities/products/product-components/Overview.vue";
@@ -189,14 +156,11 @@ const { screen } = useScreen();
 
 const { service: entityService } = useEntityStore();
 
-const {
-  item,
-  feedback,
-  handleCancel,
-  handleSubmit,
-  handleRemove,
-  handleRestore,
-} = useForm<Entity>({ entityService, props, emit });
+const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({
+  entityService,
+  props,
+  emit,
+});
 
 // Tabs
 const { translate } = useLang();

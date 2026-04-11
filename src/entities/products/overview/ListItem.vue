@@ -3,10 +3,7 @@
     <div class="col-auto">
       <template v-if="config.isComplex">
         <!-- Complex entity: Link to input page -->
-        <router-link
-          :to="{ name: Entity.name + 'Details', params: { id: item.$id } }"
-          class="btn btn-link p-1"
-        >
+        <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
           <Icon :name="Entity.name" />
         </router-link>
       </template>
@@ -19,23 +16,16 @@
       {{ item.$title }}
     </div>
     <div class="col-4 col-xl d-none d-md-block text-truncate">
-      <span
-        v-for="(itemFacet, i) in item.facets"
-        :key="itemFacet.id"
-        class="me-1"
-      >
+      <span v-for="(itemFacet, i) in item.facets" :key="itemFacet.id" class="me-1">
         <FacetButton :modelValue="itemFacet.facet" />
         {{ getFacet(itemFacet.facet)?.$title }}
       </span>
     </div>
     <div class="col-4 col-md-2 col-xl-1 text-truncate">
-      {{ formatCurrency(item.price, $culture)
-      }}<span class="d-md-none">/{{ getUnitType(item.unitType)?.code }}</span>
+      {{ formatCurrency(item.price, $culture) }}<span class="d-md-none">/{{ getUnitType(item.unitType)?.code }}</span>
     </div>
     <div class="col-2 d-none d-md-block text-truncate">
-      <UnitTypeButton :model-value="item.unitType" />{{
-        getUnitType(item.unitType)?.$title
-      }}
+      <UnitTypeButton :model-value="item.unitType" />{{ getUnitType(item.unitType)?.$title }}
     </div>
     <div class="col-auto">
       <ConfirmButton
@@ -53,14 +43,8 @@
 import { ModalType, ConfirmButton } from "@/regira_modules/vue/ui";
 import { formatCurrency } from "@/regira_modules/vue/formatters";
 import { type SaveResult } from "@/regira_modules/vue/entities";
-import {
-  useEntityStore as useUnitTypeStore,
-  FormModalButton as UnitTypeButton,
-} from "@/entities/unit-types";
-import {
-  useEntityStore as useFacetStore,
-  FormModalButton as FacetButton,
-} from "@/entities/facets";
+import { useEntityStore as useUnitTypeStore, FormModalButton as UnitTypeButton } from "@/entities/unit-types";
+import { useEntityStore as useFacetStore, FormModalButton as FacetButton } from "@/entities/facets";
 import config from "../config/config";
 import Entity from "../data/Entity";
 import FormModalButton from "../details/FormModalButton.vue";

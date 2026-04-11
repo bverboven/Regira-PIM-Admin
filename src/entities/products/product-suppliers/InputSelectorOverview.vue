@@ -2,10 +2,7 @@
   <div>
     <div class="row mb-2">
       <div class="col">
-        <InputSelector
-          @select="handleAdd"
-          :filterDefaults="{ exclude: excludeIds }"
-        />
+        <InputSelector @select="handleAdd" :filterDefaults="{ exclude: excludeIds }" />
       </div>
     </div>
 
@@ -18,11 +15,7 @@
           <span class="form-control">{{ getLocation(item.supplier!) }}</span>
         </div>
         <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -33,13 +26,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  type Entity as Party,
-  FormModalButton,
-  InputSelector,
-  useEntityStore,
-  formatCity,
-} from "@/entities/parties";
+import { type Entity as Party, FormModalButton, InputSelector, useEntityStore, formatCity } from "@/entities/parties";
 import type Product from "../data/Entity";
 import ProductSupplier from "./Entity";
 
@@ -64,7 +51,5 @@ function handleAdd(item?: Party) {
 
 const { fromPool } = useEntityStore();
 const getSupplier = (x: Party) => fromPool(x);
-const getLocation = computed(
-  () => (item: Party) => formatCity(getSupplier(item).$address),
-);
+const getLocation = computed(() => (item: Party) => formatCity(getSupplier(item).$address));
 </script>

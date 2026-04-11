@@ -23,10 +23,7 @@ export class PartyAddress extends EntityBase {
     return this.id || "new";
   }
   override get $title(): string | undefined {
-    return (
-      this.title ??
-      `${this.street} ${this.houseNumber}, ${this.postalCode} ${this.city}`.trim()
-    );
+    return this.title ?? `${this.street} ${this.houseNumber}, ${this.postalCode} ${this.city}`.trim();
   }
 
   static create(values?: object): PartyAddress {

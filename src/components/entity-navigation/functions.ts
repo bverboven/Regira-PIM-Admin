@@ -16,9 +16,9 @@ export function useNavigation() {
     navigation: { groups, dashboard, navbar, search, sidebar },
   } = useConfig();
 
-  const configs = Object.entries(
-    app.appContext.config.globalProperties.$configs,
-  ).map(([, config]) => config as IConfig);
+  const configs = Object.entries(app.appContext.config.globalProperties.$configs).map(
+    ([, config]) => config as IConfig,
+  );
 
   function hasAccess(config: IConfig): boolean {
     return true;
@@ -46,9 +46,7 @@ export function useNavigation() {
     return tree;
   });
 
-  const searchItemConfig = computed<IConfig>(
-    () => configs.find((c) => c.key == search)!,
-  );
+  const searchItemConfig = computed<IConfig>(() => configs.find((c) => c.key == search)!);
 
   const sidebarItems = ref<Array<string>>(sidebar ?? []);
 

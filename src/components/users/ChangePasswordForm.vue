@@ -52,21 +52,15 @@
           />
           <FormLabel :label="$t('auth.repeatPassword')" />
           <div>
-            <small
-              v-if="passwordRepeat && !pwdMatches"
-              class="form-text text-danger"
-              >{{ $t("auth.passwordsMustMatch") }}</small
-            >
+            <small v-if="passwordRepeat && !pwdMatches" class="form-text text-danger">{{
+              $t("auth.passwordsMustMatch")
+            }}</small>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12 text-end">
-          <button
-            type="submit"
-            class="btn btn-success"
-            :disabled="!isFormValid"
-          >
+          <button type="submit" class="btn btn-success" :disabled="!isFormValid">
             {{ $t("submit") }}
           </button>
         </div>
@@ -77,11 +71,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed } from "vue";
-import {
-  LoadingContainer,
-  Feedback,
-  useFeedback,
-} from "@/regira_modules/vue/ui";
+import { LoadingContainer, Feedback, useFeedback } from "@/regira_modules/vue/ui";
 import { useAuth } from "@/regira_modules/vue/auth";
 import { useLang } from "@/regira_modules/vue/lang";
 

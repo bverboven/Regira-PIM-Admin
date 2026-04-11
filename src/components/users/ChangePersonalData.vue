@@ -46,11 +46,7 @@
             </div>
             <select v-model="model.culture" class="form-select">
               <option value=""></option>
-              <option
-                v-for="(lang, culture) in cultures"
-                :key="culture"
-                :value="culture"
-              >
+              <option v-for="(lang, culture) in cultures" :key="culture" :value="culture">
                 {{ lang }}
               </option>
             </select>
@@ -73,11 +69,7 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { useAxios } from "@/regira_modules/vue/http";
-import {
-  LoadingContainer,
-  Feedback,
-  useFeedback,
-} from "@/regira_modules/vue/ui";
+import { LoadingContainer, Feedback, useFeedback } from "@/regira_modules/vue/ui";
 import { useAuthStore } from "@/regira_modules/vue/auth";
 import { useLang } from "@/regira_modules/vue/lang";
 import { useConfig } from "@/app-config";
@@ -111,10 +103,7 @@ async function handleSubmit() {
     await refreshToken({});
   } catch (err: any) {
     console.error("Changing personal data failed", { err });
-    feedback.fail(
-      translate("auth.changePersonalDataFailed"),
-      err.response?.data,
-    );
+    feedback.fail(translate("auth.changePersonalDataFailed"), err.response?.data);
   } finally {
     isLoading.value = false;
   }

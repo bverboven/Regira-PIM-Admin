@@ -2,17 +2,10 @@
   <div>
     <div class="row mb-2">
       <div class="col">
-        <InputSelector
-          v-model="newItem.facet"
-          v-model:idValue="newItem.facetId"
-        />
+        <InputSelector v-model="newItem.facet" v-model:idValue="newItem.facetId" />
       </div>
       <div class="col-auto">
-        <button
-          type="button"
-          class="btn btn-success"
-          @click="handleAdd(newItem)"
-        >
+        <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
           <Icon name="new" />
         </button>
       </div>
@@ -25,11 +18,7 @@
           {{ item.facet?.title ?? "" }}
         </div>
         <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -55,9 +44,7 @@ function handleRemove(item: ProductFacet) {
   item._deleted = !item._deleted;
 }
 
-const newItem = ref<ProductFacet>(
-  ProductFacet.create({ productId: props.product.id }),
-);
+const newItem = ref<ProductFacet>(ProductFacet.create({ productId: props.product.id }));
 function handleAdd(item: ProductFacet) {
   items.value.push(ProductFacet.create({ ...item }));
   newItem.value = ProductFacet.create({ productId: props.product.id });

@@ -22,11 +22,7 @@
         >
           <Icon name="popOut" />
         </RouterLink>
-        <RouterLink
-          v-else-if="overviewUrl"
-          :to="overviewUrl"
-          class="btn btn-info py-1"
-        >
+        <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
           <Icon name="list" />
           <span class="d-none d-md-inline ms-1">{{ $t("overview") }}</span>
         </RouterLink>
@@ -38,22 +34,14 @@
 
     <div class="row">
       <div class="col">
-        <FormSection
-          :title="$t(config.detailsTitle || '')"
-          :readonly="readonly"
-        >
+        <FormSection :title="$t(config.detailsTitle || '')" :readonly="readonly">
           <div class="row">
             <div class="col mb-2">
               <div class="input-group">
                 <div class="input-group-text">
                   <Icon name="code" />
                 </div>
-                <input
-                  v-model="item.code"
-                  maxlength="16"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.code" maxlength="16" :readonly="readonly" class="form-control" />
               </div>
               <FormLabel :label="$t('code')" />
             </div>
@@ -64,12 +52,7 @@
                 <div class="input-group-text">
                   <Icon name="title" />
                 </div>
-                <input
-                  v-model="item.title"
-                  maxlength="64"
-                  :readonly="readonly"
-                  class="form-control"
-                />
+                <input v-model="item.title" maxlength="64" :readonly="readonly" class="form-control" />
               </div>
               <FormLabel :label="$t('name')" />
             </div>
@@ -90,11 +73,7 @@
 import type { RouteRecordRaw } from "vue-router";
 import { Feedback } from "@/regira_modules/vue/ui";
 import { FormButtonsRow } from "@/components/input";
-import {
-  useForm,
-  type FormEmits,
-  formDefaults,
-} from "@/regira_modules/vue/entities";
+import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities";
 import config from "../config/config";
 import Entity from "../data/Entity";
 import useEntityStore from "../data/store";
@@ -114,12 +93,9 @@ const props = withDefaults(
 
 const { service: entityService } = useEntityStore();
 
-const {
-  item,
-  feedback,
-  handleCancel,
-  handleSubmit,
-  handleRemove,
-  handleRestore,
-} = useForm<Entity>({ entityService, props, emit });
+const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({
+  entityService,
+  props,
+  emit,
+});
 </script>

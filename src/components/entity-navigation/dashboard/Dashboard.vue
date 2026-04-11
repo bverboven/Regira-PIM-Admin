@@ -1,11 +1,7 @@
 <template>
   <div v-if="dashboardTree != null">
     <template v-for="node in dashboardTree.roots" :key="node.value.id">
-      <DashboardContainer
-        v-if="node.children.length"
-        :node="node"
-        :is-collapsed="isCollapsed"
-      />
+      <DashboardContainer v-if="node.children.length" :node="node" :is-collapsed="isCollapsed" />
     </template>
     <Debug :modelValue="{ values: dashboardTree.getValues() }" />
   </div>

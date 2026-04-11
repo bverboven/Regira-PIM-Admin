@@ -32,9 +32,7 @@ const { item, isLoading, overviewUrl, load, feedback } = useDetails(service);
 // trigger load when logging in (only load when item has not been loaded before)
 const authStore = useAuthStore();
 authStore.$onAction(
-  ({ name, after }) =>
-    name == "login" &&
-    after(() => item.value == null && authStore.isAuthenticated && load()),
+  ({ name, after }) => name == "login" && after(() => item.value == null && authStore.isAuthenticated && load()),
 );
 
 const router = useRouter();

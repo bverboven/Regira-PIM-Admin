@@ -5,21 +5,14 @@
         <div class="form-control p-0" :class="{ 'is-deleted': item._deleted }">
           <FormModalButton :modelValue="item.facet" />
           {{ item.facet?.title ?? "" }}
-          <button
-            type="button"
-            class="btn btn-outline-danger border-0"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger border-0" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
       </div>
     </template>
     <div class="col-auto mb-2">
-      <InputSelector
-        @select="handleAdd"
-        :filterDefaults="{ exclude: excludeIds }"
-      />
+      <InputSelector @select="handleAdd" :filterDefaults="{ exclude: excludeIds }" />
     </div>
   </div>
 </template>
@@ -28,11 +21,7 @@
 import { computed } from "vue";
 import type Product from "../data/Entity";
 import ProductFacet from "./Entity";
-import {
-  type Entity as Facet,
-  InputSelector,
-  FormModalButton,
-} from "@/entities/facets";
+import { type Entity as Facet, InputSelector, FormModalButton } from "@/entities/facets";
 
 const model = defineModel<Product>({ required: true });
 const items = computed(() => model.value.facets ?? []);

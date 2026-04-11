@@ -7,29 +7,14 @@
             <div class="input-group-text opacity-50">
               <Icon name="user" />
             </div>
-            <input
-              type="email"
-              v-model="item.email"
-              class="form-control"
-              :placeholder="$t('usernameLabel')"
-            />
+            <input type="email" v-model="item.email" class="form-control" :placeholder="$t('usernameLabel')" />
             <div class="input-group-text">
               <label class="form-check-label mx-1">
-                <input
-                  type="checkbox"
-                  v-model="item.permissions"
-                  value="can_read"
-                  class="form-check-input"
-                />
+                <input type="checkbox" v-model="item.permissions" value="can_read" class="form-check-input" />
                 {{ $t("claims.canRead") }}
               </label>
               <label class="form-check-label mx-1">
-                <input
-                  type="checkbox"
-                  v-model="item.permissions"
-                  value="can_write"
-                  class="form-check-input"
-                />
+                <input type="checkbox" v-model="item.permissions" value="can_write" class="form-check-input" />
                 {{ $t("claims.canWrite") }}
               </label>
             </div>

@@ -25,11 +25,7 @@ export const plugin = {
     // make langCode persistent
     const { langCode, setLangCode } = useLang();
     const lastLangCode = localStorage.getItem("lang");
-    if (
-      !authStore.isAuthenticated &&
-      lastLangCode &&
-      lastLangCode != langCode.value
-    ) {
+    if (!authStore.isAuthenticated && lastLangCode && lastLangCode != langCode.value) {
       setLangCode(lastLangCode.substring(0, 2));
     }
     watch(langCode, (newLangCode) => {

@@ -12,15 +12,8 @@
       </div>
       <div class="col">
         <div class="position-relative h-100 overflow-hidden">
-          <Feedback
-            v-bind="{ feedback }"
-            :hideCloseButton="true"
-            class="my-2"
-          />
-          <div
-            v-if="selected?.id"
-            class="position-absolute is-selected d-inline-block py-2 pe-2"
-          >
+          <Feedback v-bind="{ feedback }" :hideCloseButton="true" class="my-2" />
+          <div v-if="selected?.id" class="position-absolute is-selected d-inline-block py-2 pe-2">
             <IconButton icon="selected" @click="handleSelect(undefined)" />
             {{ selected.$title }}
           </div>
@@ -34,11 +27,7 @@
         <template v-if="pagingInfo != null">
           <Paging
             class="mt-2"
-            v-show="
-              !isLoading &&
-              itemsCount != null &&
-              itemsCount > pagingInfo.pageSize!
-            "
+            v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
             v-model="pagingInfo"
             :button-type="ButtonType.button"
             :count="itemsCount || 0"
@@ -47,22 +36,13 @@
         </template>
       </div>
       <div class="col-12 col-sm-auto order-1 order-sm-3">
-        <ResultSummary
-          v-if="items?.length"
-          :visibleCount="items.length"
-          :totalCount="itemsCount"
-        />
+        <ResultSummary v-if="items?.length" :visibleCount="items.length" :totalCount="itemsCount" />
       </div>
     </div>
 
     <!-- List - Loading -->
     <LoadingContainer :is-loading="isLoading">
-      <slot
-        name="list"
-        :items="items"
-        :search-object="searchObject"
-        :paging-info="pagingInfo"
-      >
+      <slot name="list" :items="items" :search-object="searchObject" :paging-info="pagingInfo">
         <component
           :is="List"
           v-model="items"
@@ -80,9 +60,7 @@
     <template v-if="pagingInfo != null">
       <Paging
         class="mt-2"
-        v-show="
-          !isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!
-        "
+        v-show="!isLoading && itemsCount != null && itemsCount > pagingInfo.pageSize!"
         v-model="pagingInfo"
         :button-type="ButtonType.button"
         :count="itemsCount || 0"
@@ -99,12 +77,7 @@
 <script setup lang="ts">
 import { onMounted, type Ref } from "vue";
 import { useSearchView } from "@/regira_modules/vue/entities";
-import {
-  Paging,
-  LoadingContainer,
-  Feedback,
-  ButtonType,
-} from "@/regira_modules/vue/ui";
+import { Paging, LoadingContainer, Feedback, ButtonType } from "@/regira_modules/vue/ui";
 import ResultSummary from "@/components/ResultSummary.vue";
 import config from "../config/config";
 import Entity from "../data/Entity";
@@ -152,14 +125,10 @@ async function handleRequestRemove(item: Entity) {
 }
 
 function handleSelect(item?: Entity) {
-  feedback.success(
-    item != null ? `${item.$title} selected` : `selection removed`,
-  );
+  feedback.success(item != null ? `${item.$title} selected` : `selection removed`);
   selected.value = item;
 }
 
 //onMounted(searchHandler)
-onMounted(
-  () => (items.value = (fromCache() as Array<Ref<Entity>>).map((x) => x.value)),
-);
+onMounted(() => (items.value = (fromCache() as Array<Ref<Entity>>).map((x) => x.value)));
 </script>

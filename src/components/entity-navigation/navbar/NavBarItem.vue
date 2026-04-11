@@ -12,12 +12,8 @@
           @click="handleToggleDropDown"
         >
           <icon :name="node.value.icon" />
-          <span class="d-none d-md-inline d-xl-none ms-2">{{
-            $t(node.value.description ?? node.value.title)
-          }}</span>
-          <span class="d-md-none d-xl-inline ms-2">{{
-            $t(node.value.title)
-          }}</span>
+          <span class="d-none d-md-inline d-xl-none ms-2">{{ $t(node.value.description ?? node.value.title) }}</span>
+          <span class="d-md-none d-xl-inline ms-2">{{ $t(node.value.title) }}</span>
         </a>
 
         <ul
@@ -25,11 +21,7 @@
           :class="{ show: showDropDown }"
           v-click-outside="handleCloseDropDown"
         >
-          <li
-            v-for="child in node.children"
-            :key="child.value.id"
-            class="nav-item dropdown"
-          >
+          <li v-for="child in node.children" :key="child.value.id" class="nav-item dropdown">
             <NavBarItemLink
               :item="child.value as INavItem"
               class="btn btn-link dropdown-item"
@@ -47,11 +39,7 @@
       </template>
     </template>
     <template v-else>
-      <NavBarItemLink
-        :item="navItem"
-        class="nav-link"
-        @select="$emit('select', $event)"
-      />
+      <NavBarItemLink :item="navItem" class="nav-link" @select="$emit('select', $event)" />
     </template>
   </li>
 </template>
@@ -59,11 +47,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { TreeNode } from "@/regira_modules/treelist";
-import {
-  type INavCore,
-  type INavItem,
-  isNavItem,
-} from "@/regira_modules/vue/entities";
+import { type INavCore, type INavItem, isNavItem } from "@/regira_modules/vue/entities";
 import NavBarItemLink from "./NavBarItemLink.vue";
 
 defineEmits<{

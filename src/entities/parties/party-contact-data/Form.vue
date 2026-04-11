@@ -19,12 +19,7 @@
     </div>
     <div class="row">
       <div class="col-md mb-2">
-        <input
-          v-model.trim="item.title"
-          :placeholder="tm('titlePlaceholder')"
-          maxlength="32"
-          class="form-control"
-        />
+        <input v-model.trim="item.title" :placeholder="tm('titlePlaceholder')" maxlength="32" class="form-control" />
         <FormLabel :label="tm('Title')" />
       </div>
     </div>
@@ -74,7 +69,5 @@ const translations: Record<string, ITranslationMessage> = {
   },
 };
 const { translateMessage } = useLang();
-const tm = computed(
-  () => (key: string) => translateMessage(translations[key]!),
-);
+const tm = computed(() => (key: string) => translateMessage(translations[key]!));
 </script>

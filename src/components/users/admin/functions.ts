@@ -4,10 +4,7 @@ import { useConfig } from "@/app-config";
 import Permissions from "@/infrastructure/permissions";
 import Entity from "./Entity";
 
-export async function saveUser(
-  item: Entity,
-  siteUrl?: string,
-): Promise<Entity> {
+export async function saveUser(item: Entity, siteUrl?: string): Promise<Entity> {
   const axios = useAxios();
   if (item.permissions.includes(Permissions.CAN_WRITE)) {
     if (!item.permissions.includes(Permissions.CAN_READ)) {

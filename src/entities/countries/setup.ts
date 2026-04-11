@@ -7,10 +7,7 @@ import { Entity } from "./data/Entity";
 import { EntityService } from "./data/EntityService";
 
 export function addServices(serviceProvider: IServiceProvider) {
-  serviceProvider.add(
-    Entity.name,
-    (sp) => new EntityService(sp.get<AxiosInstance>("axios")!, config),
-  );
+  serviceProvider.add(Entity.name, (sp) => new EntityService(sp.get<AxiosInstance>("axios")!, config));
 }
 
 export function addIcons(icons: IIconProvider) {

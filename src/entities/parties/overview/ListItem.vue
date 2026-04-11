@@ -1,10 +1,7 @@
 <template>
   <div class="row border-bottom border-bottom-1 py-2">
     <div class="col-auto">
-      <router-link
-        :to="{ name: Entity.name + 'Details', params: { id: item.$id } }"
-        class="btn btn-link p-1"
-      >
+      <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
         <PartyIcon :item="item" />
       </router-link>
     </div>
@@ -19,18 +16,12 @@
 </div> -->
       <div class="d-sm-none text-muted" v-if="item.$address != null">
         <small>{{ getLocation(item) }}</small>
-        <AddressButton
-          :modelValue="item.$address"
-          class="btn btn-sm btn-default p-0 ps-1"
-        />
+        <AddressButton :modelValue="item.$address" class="btn btn-sm btn-default p-0 ps-1" />
       </div>
     </div>
     <div class="col d-none d-sm-block">
       <template v-if="item.$address != null">
-        <AddressButton
-          :modelValue="item.$address"
-          class="btn btn-default p-1"
-        />
+        <AddressButton :modelValue="item.$address" class="btn btn-default p-1" />
         {{ getLocation(item) }}
       </template>
     </div>
@@ -67,11 +58,7 @@ import { distinctBy } from "@/regira_modules/utilities/array-utility";
 import { ModalType, ConfirmButton } from "@/regira_modules/vue/ui";
 import type { SaveResult } from "@/regira_modules/vue/entities";
 import { AddressButton, formatCity } from "../party-addresses";
-import {
-  ContactDetails,
-  ActionButton,
-  ContactDataTypes,
-} from "../party-contact-data";
+import { ContactDetails, ActionButton, ContactDataTypes } from "../party-contact-data";
 import Entity from "../data/Entity";
 import PartyIcon from "../details/PartyIcon.vue";
 
@@ -89,10 +76,7 @@ const props = defineProps<{
 const item = defineModel<Entity>({ required: true });
 const getContactData = computed(
   () => (item: Entity) =>
-    distinctBy(
-      item.contactData || [],
-      (cd: ContactDetails) => cd.dataType,
-    ).filter((x) =>
+    distinctBy(item.contactData || [], (cd: ContactDetails) => cd.dataType).filter((x) =>
       [ContactDataTypes.email, ContactDataTypes.phone].includes(x.dataType!),
     ) as Array<ContactDetails>,
 );

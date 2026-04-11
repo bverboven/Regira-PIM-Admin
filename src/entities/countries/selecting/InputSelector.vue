@@ -84,9 +84,7 @@ function handleSelect(selected?: Entity) {
 
 onMounted(() => {
   if (!item.value && props.idValue) {
-    const items = computed(() =>
-      (fromCache() as Array<Ref<Entity>>)!.map((x) => x.value),
-    );
+    const items = computed(() => (fromCache() as Array<Ref<Entity>>)!.map((x) => x.value));
     item.value = items.value.find((x) => x.id == props.idValue);
   }
 });

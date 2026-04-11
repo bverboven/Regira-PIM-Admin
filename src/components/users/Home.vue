@@ -8,21 +8,13 @@
             {{ $auth.authData?.displayName ?? $auth.authData?.name }}
           </li>
           <li class="list-group-item">
-            <button
-              type="button"
-              class="btn btn-default p-1"
-              @click="showChangePassword = !showChangePassword"
-            >
+            <button type="button" class="btn btn-default p-1" @click="showChangePassword = !showChangePassword">
               <Icon name="security" class="me-1" />
               {{ $t("auth.changePassword") }}
             </button>
           </li>
           <li class="list-group-item">
-            <button
-              type="button"
-              class="btn btn-default p-1"
-              @click="showChangePersonalData = !showChangePersonalData"
-            >
+            <button type="button" class="btn btn-default p-1" @click="showChangePersonalData = !showChangePersonalData">
               <Icon name="contact" class="me-1" />
               {{ $t("auth.personalData") }}
             </button>
@@ -34,11 +26,7 @@
             </router-link>
           </li>
           <li class="list-group-item">
-            <button
-              type="button"
-              class="btn btn-default p-1"
-              @click="handleLogout"
-            >
+            <button type="button" class="btn btn-default p-1" @click="handleLogout">
               <Icon name="exit" class="me-1" />
               {{ $t("auth.signOut") }}
             </button>

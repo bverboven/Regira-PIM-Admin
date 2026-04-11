@@ -1,8 +1,5 @@
 <template>
-  <nav
-    class="navbar navbar-expand-sm bg-body-tertiary"
-    v-click-outside="handleCloseMenu"
-  >
+  <nav class="navbar navbar-expand-sm bg-body-tertiary" v-click-outside="handleCloseMenu">
     <router-link
       class="navbar-brand"
       :to="{ name: 'home' }"
@@ -11,17 +8,10 @@
       <img :src="logo" style="height: 2rem; vertical-align: top" class="me-1" />
       <span class="d-sm-none d-md-inline"> {{ $t("pimManager") }} </span>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      @click.stop="showNavbarContent = !showNavbarContent"
-    >
+    <button class="navbar-toggler" type="button" @click.stop="showNavbarContent = !showNavbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse bg-light px-2 px-md-0 pt-2 pt-sm-0"
-      :class="{ show: showNavbarContent }"
-    >
+    <div class="collapse navbar-collapse bg-light px-2 px-md-0 pt-2 pt-sm-0" :class="{ show: showNavbarContent }">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item py-2 py-sm-0 d-none">
           <router-link
@@ -37,10 +27,7 @@
       <form class="d-flex mb-4 mb-sm-0">
         <div class="row my-2 my-sm-0">
           <div v-if="$auth.enabled" class="col">
-            <AccountMenu
-              :isAuthenticated="$auth.isAuthenticated"
-              @close="handleCloseMenu"
-            />
+            <AccountMenu :isAuthenticated="$auth.isAuthenticated" @close="handleCloseMenu" />
           </div>
           <div class="col-auto pt-2">
             <LangSelector class="float-end" />

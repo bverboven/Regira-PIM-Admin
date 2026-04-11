@@ -3,11 +3,7 @@
     <UserInput @save="load" />
 
     <template v-if="items?.length">
-      <ListItem
-        v-for="(item, i) in items"
-        :key="item.id!"
-        v-model="items[i]!"
-      />
+      <ListItem v-for="(item, i) in items" :key="item.id!" v-model="items[i]!" />
     </template>
 
     <Debug :modelValue="{ items }" />
@@ -29,9 +25,7 @@ const items = ref<Array<PimUser>>();
 // trigger searchHandler when logging in or refreshing token
 const authStore = useAuthStore();
 authStore.$onAction(
-  ({ name, after }) =>
-    ["login", "refresh"].includes(name) &&
-    after(() => authStore.isAuthenticated && load()),
+  ({ name, after }) => ["login", "refresh"].includes(name) && after(() => authStore.isAuthenticated && load()),
 );
 
 async function load() {

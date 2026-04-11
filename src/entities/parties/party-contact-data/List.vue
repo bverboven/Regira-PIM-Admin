@@ -1,16 +1,8 @@
 <template>
   <div>
-    <Draggable
-      v-model="items"
-      item-key="id"
-      handle=".drag-handle"
-      ghost-class="ghost"
-    >
+    <Draggable v-model="items" item-key="id" handle=".drag-handle" ghost-class="ghost">
       <template #item="{ element, index }">
-        <ListItem
-          v-model="items[index]!"
-          :class="{ 'is-deleted': element._deleted }"
-        />
+        <ListItem v-model="items[index]!" :class="{ 'is-deleted': element._deleted }" />
       </template>
     </Draggable>
   </div>

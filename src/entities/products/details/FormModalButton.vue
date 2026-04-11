@@ -29,12 +29,7 @@
 
 <script setup lang="ts">
 import { computed, type Ref } from "vue";
-import {
-  FormStates,
-  useModal,
-  type FormModalEmits,
-  type SaveResult,
-} from "@/regira_modules/vue/entities";
+import { FormStates, useModal, type FormModalEmits, type SaveResult } from "@/regira_modules/vue/entities";
 import config from "../config/config";
 import Entity from "../data/Entity";
 import useEntityStore from "../data/store";
@@ -72,18 +67,15 @@ const modelRef = defineModel<Entity>();
 const { service: entityService } = useEntityStore();
 
 const modalTitle = computed(
-  () =>
-    props.label ||
-    (modelRef.value != null && entityService.toEntity(modelRef.value).$title),
+  () => props.label || (modelRef.value != null && entityService.toEntity(modelRef.value).$title),
 );
-const { item, isOpen, close, open, handleSave, handleRemove, handleCancel } =
-  useModal<Entity>({
-    entityService,
-    model: modelRef,
-    itemDefaults: props.itemDefaults,
-    closeOnSave: props.closeOnSave,
-    closeOnCancel: false,
-    closeOnDelete: true,
-    emit,
-  });
+const { item, isOpen, close, open, handleSave, handleRemove, handleCancel } = useModal<Entity>({
+  entityService,
+  model: modelRef,
+  itemDefaults: props.itemDefaults,
+  closeOnSave: props.closeOnSave,
+  closeOnCancel: false,
+  closeOnDelete: true,
+  emit,
+});
 </script>

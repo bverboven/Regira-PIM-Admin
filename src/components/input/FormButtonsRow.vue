@@ -9,9 +9,7 @@
       @click="emit('restore')"
       :disabled="status != '' && status != FeedbackStatus.failed"
     >
-      <span v-if="showLabels" class="d-none d-md-inline ms-1">{{
-        $t("restore")
-      }}</span>
+      <span v-if="showLabels" class="d-none d-md-inline ms-1">{{ $t("restore") }}</span>
     </IconButton>
     <template v-else>
       <IconButton
@@ -19,13 +17,9 @@
         type="submit"
         icon="save"
         class="btn-primary py-1 me-2"
-        :disabled="
-          readonly || (status != '' && status != FeedbackStatus.failed)
-        "
+        :disabled="readonly || (status != '' && status != FeedbackStatus.failed)"
       >
-        <span v-if="showLabels" class="d-none d-md-inline ms-1">{{
-          $t("save")
-        }}</span>
+        <span v-if="showLabels" class="d-none d-md-inline ms-1">{{ $t("save") }}</span>
       </IconButton>
       <IconButton
         type="button"
@@ -34,9 +28,7 @@
         @click="emit('cancel')"
         :disabled="readonly || !canCancel"
       >
-        <span v-if="showLabels" class="d-none d-md-inline ms-1">{{
-          $t("reset")
-        }}</span>
+        <span v-if="showLabels" class="d-none d-md-inline ms-1">{{ $t("reset") }}</span>
       </IconButton>
       <ConfirmButton
         type="button"
@@ -49,14 +41,10 @@
       >
         <template #button-content>
           <Icon name="delete" class="me-1" />
-          <span v-if="showLabels" class="d-none d-md-inline">{{
-            $t("delete")
-          }}</span>
+          <span v-if="showLabels" class="d-none d-md-inline">{{ $t("delete") }}</span>
         </template>
         <template #default>
-          <slot name="delete">{{
-            $t("deleteItem", { title: item?.$title })
-          }}</slot>
+          <slot name="delete">{{ $t("deleteItem", { title: item?.$title }) }}</slot>
         </template>
       </ConfirmButton>
     </template>
@@ -65,10 +53,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import {
-  FeedbackStatus,
-  type FeedbackOut,
-} from "@/regira_modules/vue/ui/feedback";
+import { FeedbackStatus, type FeedbackOut } from "@/regira_modules/vue/ui/feedback";
 import { ConfirmButton, ModalType } from "@/regira_modules/vue/ui";
 import type { IEntity } from "@/regira_modules/vue/entities";
 
@@ -97,9 +82,7 @@ type archivableItem = { isArchived: number | boolean };
 
 const { status } = props.feedback;
 
-const isArchived = computed(
-  () => !!(props.item as unknown as archivableItem).isArchived,
-);
+const isArchived = computed(() => !!(props.item as unknown as archivableItem).isArchived);
 
 const containerEl = ref<any>(null);
 const showLabels = computed(() => {

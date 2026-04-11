@@ -3,19 +3,9 @@
     <div v-if="isVisible" class="modal-mask" @keydown.esc="handleClose">
       <div class="modal-wrapper">
         <div class="modal show d-block" tabindex="-1">
-          <div
-            class="modal-dialog modal-dialog-scrollable"
-            :class="{ 'full-width': fullWidth }"
-          >
-            <div
-              class="modal-content"
-              :style="{ 'min-height': fullWidth ? '60vh' : 'inherit' }"
-            >
-              <div
-                v-if="showHeader"
-                class="modal-header py-2"
-                :class="titleClass"
-              >
+          <div class="modal-dialog modal-dialog-scrollable" :class="{ 'full-width': fullWidth }">
+            <div class="modal-content" :style="{ 'min-height': fullWidth ? '60vh' : 'inherit' }">
+              <div v-if="showHeader" class="modal-header py-2" :class="titleClass">
                 <div class="d-flex justify-content-between w-100">
                   <slot name="title">
                     <h3 class="modal-title">
@@ -33,9 +23,7 @@
                     <slot name="header-close-button" :handleClose="handleClose">
                       <IconButton
                         icon="close"
-                        :class="[
-                          isDanger ? 'btn-danger' : 'btn-outline-danger',
-                        ]"
+                        :class="[isDanger ? 'btn-danger' : 'btn-outline-danger']"
                         title="close"
                         @click="handleClose"
                         data-dismiss="modal"
@@ -48,32 +36,17 @@
                 <slot></slot>
               </div>
 
-              <div
-                v-if="showFooter"
-                class="modal-footer py-1"
-                :class="footerClass"
-              >
+              <div v-if="showFooter" class="modal-footer py-1" :class="footerClass">
                 <slot name="buttons">
                   <div class="d-flex justify-content-between w-100">
-                    <slot
-                      name="footer-close-button"
-                      :handleCancel="handleCancel"
-                    >
+                    <slot name="footer-close-button" :handleCancel="handleCancel">
                       <div>
-                        <IconButton
-                          icon="cancel"
-                          class="btn-outline-secondary"
-                          @click="handleCancel"
-                          ><span class="ms-1">{{
-                            $t("cancel")
-                          }}</span></IconButton
+                        <IconButton icon="cancel" class="btn-outline-secondary" @click="handleCancel"
+                          ><span class="ms-1">{{ $t("cancel") }}</span></IconButton
                         >
                       </div>
                     </slot>
-                    <slot
-                      name="footer-submit-button"
-                      :handleClose="handleSubmit"
-                    >
+                    <slot name="footer-submit-button" :handleClose="handleSubmit">
                       <div>
                         <IconButton
                           icon="submit"

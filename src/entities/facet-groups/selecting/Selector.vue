@@ -4,11 +4,7 @@
       <div class="text-nowrap p-2 border rounded-1">
         <FormModalButton v-model="items![i]" class="m-0 p-0" />
         {{ item.title }}
-        <IconButton
-          icon="delete"
-          class="m-0 py-0 px-1"
-          @click="handleRemove(item)"
-        />
+        <IconButton icon="delete" class="m-0 py-0 px-1" @click="handleRemove(item)" />
       </div>
     </div>
     <div class="col-auto">
@@ -65,10 +61,7 @@ function handleRemove(selected: Entity) {
 }
 
 onMounted(async () => {
-  if (
-    (props.idsValue?.length || 0) > 0 &&
-    props.modelValue?.length != props.idsValue?.length
-  ) {
+  if ((props.idsValue?.length || 0) > 0 && props.modelValue?.length != props.idsValue?.length) {
     const models = await list({ id: props.idsValue });
     emit("update:modelValue", models);
   }

@@ -38,23 +38,13 @@
           />
           <FormLabel label="repeat password" />
           <div>
-            <small
-              v-if="passwordRepeat && !pwdMatches"
-              class="form-text text-danger"
-              >Passwords must match.</small
-            >
+            <small v-if="passwordRepeat && !pwdMatches" class="form-text text-danger">Passwords must match.</small>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12 text-end">
-          <button
-            type="submit"
-            class="btn btn-success"
-            :disabled="!isFormValid"
-          >
-            Submit
-          </button>
+          <button type="submit" class="btn btn-success" :disabled="!isFormValid">Submit</button>
         </div>
       </div>
     </LoadingContainer>
@@ -67,16 +57,8 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watchEffect } from "vue";
 import { useRouter } from "vue-router";
-import {
-  LoadingContainer,
-  Feedback,
-  useFeedback,
-} from "@/regira_modules/vue/ui";
-import {
-  useAuth,
-  useAuthStore,
-  type IResetPasswordInput,
-} from "@/regira_modules/vue/auth";
+import { LoadingContainer, Feedback, useFeedback } from "@/regira_modules/vue/ui";
+import { useAuth, useAuthStore, type IResetPasswordInput } from "@/regira_modules/vue/auth";
 
 const router = useRouter();
 const feedback = useFeedback();
@@ -88,10 +70,7 @@ const model = reactive<IResetPasswordInput>({
   password: "",
 });
 const passwordRepeat = ref("");
-const username = computed(
-  () =>
-    JSON.parse(atob(router.currentRoute.value.query.token as string))?.username,
-);
+const username = computed(() => JSON.parse(atob(router.currentRoute.value.query.token as string))?.username);
 const pwdMatches = computed(() => model.password == passwordRepeat.value);
 const isFormValid = computed(() => pwdMatches.value);
 

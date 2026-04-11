@@ -8,12 +8,7 @@ export class EntityService extends EntityServiceBase<Entity> {
   }
 
   override toEntity(item: object): Entity {
-    return item instanceof Entity
-      ? item
-      : Object.assign(
-          this.createInstance(Entity as new () => Entity),
-          item || {},
-        );
+    return item instanceof Entity ? item : Object.assign(this.createInstance(Entity as new () => Entity), item || {});
   }
 }
 

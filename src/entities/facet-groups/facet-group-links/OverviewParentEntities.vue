@@ -9,11 +9,7 @@
         />
       </div>
       <div class="col-auto">
-        <button
-          type="button"
-          class="btn btn-success"
-          @click="handleAdd(newItem)"
-        >
+        <button type="button" class="btn btn-success" @click="handleAdd(newItem)">
           <Icon name="new" />
         </button>
       </div>
@@ -26,11 +22,7 @@
           {{ item.facet?.title ?? "" }}
         </div>
         <div class="col-auto">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="handleRemove(item)"
-          >
+          <button type="button" class="btn btn-outline-danger" @click="handleRemove(item)">
             <Icon name="delete" />
           </button>
         </div>
@@ -53,21 +45,15 @@ const props = defineProps<{
 const items = defineModel<FacetGroupLinkParent[]>({ default: () => [] });
 const excludedIds = computed(() => [
   props.facetGroup.id,
-  ...(props.facetGroup.parentFacets
-    ?.filter((x) => !x._deleted)
-    .map((x) => x.facetId) ?? []),
-  ...(props.facetGroup.childFacets
-    ?.filter((x) => !x._deleted)
-    .map((x) => x.facetId) ?? []),
+  ...(props.facetGroup.parentFacets?.filter((x) => !x._deleted).map((x) => x.facetId) ?? []),
+  ...(props.facetGroup.childFacets?.filter((x) => !x._deleted).map((x) => x.facetId) ?? []),
 ]);
 
 function handleRemove(item: FacetGroupLinkParent) {
   item._deleted = !item._deleted;
 }
 
-const newItem = ref<FacetGroupLinkParent>(
-  FacetGroupLinkParent.create({ facetGroupId: props.facetGroup.id }),
-);
+const newItem = ref<FacetGroupLinkParent>(FacetGroupLinkParent.create({ facetGroupId: props.facetGroup.id }));
 function handleAdd(item: FacetGroupLinkParent) {
   items.value.push(FacetGroupLinkParent.create({ ...item }));
   newItem.value = FacetGroupLinkParent.create({

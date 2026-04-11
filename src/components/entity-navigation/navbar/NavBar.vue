@@ -17,11 +17,7 @@ defineEmits<{
 }>();
 
 const { navbarTree } = useNavigation();
-const navItems = computed(() =>
-  navbarTree.value
-    .filter((n) => n.value instanceof NavItem)
-    .map((n) => n.value),
-);
+const navItems = computed(() => navbarTree.value.filter((n) => n.value instanceof NavItem).map((n) => n.value));
 
 defineExpose({
   tree: navbarTree,

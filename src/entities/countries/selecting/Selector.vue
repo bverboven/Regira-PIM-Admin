@@ -1,9 +1,5 @@
 <template>
-  <InputSelector
-    v-model="item"
-    :placeholder="placeholder"
-    @select="handleSelect"
-  />
+  <InputSelector v-model="item" :placeholder="placeholder" @select="handleSelect" />
 </template>
 
 <script setup lang="ts">

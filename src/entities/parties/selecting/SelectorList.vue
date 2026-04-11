@@ -2,11 +2,7 @@
   <div class="entity-list">
     <div class="row pb-2 border-bottom border-bottom-1">
       <div class="col-auto fw-bold">
-        <IconButton
-          icon="select"
-          class="btn-default py-0 px-1 border-0"
-          disabled
-        />
+        <IconButton icon="select" class="btn-default py-0 px-1 border-0" disabled />
       </div>
       <div class="col-2 fw-bold">{{ $t("code") }}</div>
       <div class="col col-md-4 fw-bold">{{ $t("name") }}</div>
@@ -16,10 +12,7 @@
     </div>
 
     <template v-for="(item, i) in items" :key="item.$id">
-      <div
-        class="row border-bottom border-bottom-1 py-2"
-        :class="{ 'is-selected': isSelected(item) }"
-      >
+      <div class="row border-bottom border-bottom-1 py-2" :class="{ 'is-selected': isSelected(item) }">
         <div class="col-auto">
           <IconButton
             :icon="isSelected(item) ? 'selected' : 'select'"
@@ -63,9 +56,7 @@ const props = defineProps<{
   selected?: Entity;
 }>();
 
-const isSelected = computed(
-  () => (item: Entity) => item.$id == props.selected?.$id,
-);
+const isSelected = computed(() => (item: Entity) => item.$id == props.selected?.$id);
 const { fromPool } = useEntityStore();
 const items = computed<Array<Entity>>({
   get: () => fromPool(props.modelValue || []),

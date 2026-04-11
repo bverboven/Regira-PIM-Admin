@@ -1,28 +1,17 @@
 <template>
-  <form
-    @submit.prevent="handleSubmit"
-    ref="loginForm"
-    :style="{ 'min-height': minHeight }"
-  >
+  <form @submit.prevent="handleSubmit" ref="loginForm" :style="{ 'min-height': minHeight }">
     <!-- <p class="text-info">{{ $t("auth.demoInfoMessage") }}</p> -->
     <div class="mb-3 position-relative" v-if="failed">
       <div class="bg-danger border rounded text-light p-2">
         {{ $t("auth.signInErrorMsg") }}
-        <span v-if="isLockedOut">{{
-          $t("auth.tryAgainInMin", { minutes: 5 })
-        }}</span>
+        <span v-if="isLockedOut">{{ $t("auth.tryAgainInMin", { minutes: 5 }) }}</span>
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-3 col-form-label">{{ $t("auth.username") }}</label>
       <div class="col-sm-9">
         <div class="input-group">
-          <input
-            class="form-control"
-            autocomplete="username email"
-            v-model="username"
-            :disabled="signingIn"
-          />
+          <input class="form-control" autocomplete="username email" v-model="username" :disabled="signingIn" />
           <template v-if="demoUsers?.length">
             <button
               class="btn btn-outline-secondary dropdown-toggle"
@@ -33,18 +22,9 @@
             >
               Select user
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              :class="{ show: showUsersList }"
-              style="min-width: 12.5rem"
-            >
+            <ul class="dropdown-menu dropdown-menu-end" :class="{ show: showUsersList }" style="min-width: 12.5rem">
               <li v-for="item in pimUsers" :key="item.username">
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  @click="handleSelectUser(item)"
-                  >{{ item.title }}</a
-                >
+                <a class="dropdown-item" href="#" @click="handleSelectUser(item)">{{ item.title }}</a>
               </li>
             </ul>
           </template>
@@ -74,12 +54,7 @@
           <Loading class="me-1" style="width: 2rem" />
           {{ $t("auth.signingIn") }}
         </span>
-        <button
-          v-else
-          type="button"
-          class="btn btn-link"
-          @click="handleForgotPassword"
-        >
+        <button v-else type="button" class="btn btn-link" @click="handleForgotPassword">
           {{ $t("auth.forgotPassword") }}
         </button>
       </div>
@@ -89,11 +64,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import {
-  useLoginForm,
-  type ILoginEmits,
-  type ILoginProps,
-} from "@/regira_modules/vue/auth";
+import { useLoginForm, type ILoginEmits, type ILoginProps } from "@/regira_modules/vue/auth";
 import { Loading } from "@/regira_modules/vue/ui";
 import { useConfig } from "@/app-config.ts";
 
@@ -107,15 +78,10 @@ const props: ILoginProps = defineProps<{
 
 type IDemoUser = { username: string; title: string };
 
-const {
-  username,
-  password,
-  signingIn,
-  failed,
-  isLockedOut,
-  handleSubmit,
-  handleForgotPassword,
-} = useLoginForm(props, emit);
+const { username, password, signingIn, failed, isLockedOut, handleSubmit, handleForgotPassword } = useLoginForm(
+  props,
+  emit,
+);
 
 const { baseUrl } = useConfig();
 const showUsersList = ref(false);
@@ -130,10 +96,5 @@ function handleSelectUser(item: { username: string; password?: string }) {
   showUsersList.value = false;
 }
 
-onMounted(
-  async () =>
-    (demoUsers.value = await fetch(`${baseUrl}/data/demo-users.json`).then(
-      (r) => r.json(),
-    )),
-);
+onMounted(async () => (demoUsers.value = await fetch(`${baseUrl}/data/demo-users.json`).then((r) => r.json())));
 </script>
