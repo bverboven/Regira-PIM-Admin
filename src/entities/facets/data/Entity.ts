@@ -1,4 +1,5 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
+import type FacetParent from "../facet-related-facets/FacetParent"
 import type FacetChild from "../facet-related-facets/FacetChild"
 import type FacetFacetGroup from "../facet-group-links/FacetFacetGroup"
 
@@ -11,7 +12,7 @@ export class Facet extends EntityBase {
     created?: Date
     lastModified?: Date
 
-    parentEntities?: Array<FacetChild>
+    parentEntities?: Array<FacetParent>
     childEntities?: Array<FacetChild>
 
     facetParentGroups?: Array<FacetFacetGroup>

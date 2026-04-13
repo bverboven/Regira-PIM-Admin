@@ -130,19 +130,9 @@ const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore 
 const { translate } = useLang()
 const tabs = computed(() =>
     [
-        Tab.create("form", {
-            icon: "form",
-            title: translate("form"),
-            isDefault: true,
-        }),
-        Tab.create("products", {
-            icon: Product.name,
-            title: translate("products"),
-        }),
-        Tab.create("tree", {
-            icon: "tree",
-            title: translate("tree"),
-        }),
+        Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
+        Tab.create("tree", { icon: "tree", title: translate("tree") }),
+        Tab.create("products", { icon: Product.name, title: translate("products") }),
     ].filter((tab) => tab)
 )
 </script>

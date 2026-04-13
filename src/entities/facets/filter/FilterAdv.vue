@@ -32,30 +32,58 @@
             </div>
         </div>
         <div class="row">
-            <!-- minCreated -->
-            <div class="col-sm mb-2">
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <Icon name="from" />
-                    </div>
-                    <input type="date" v-model="searchObject.minCreated" class="form-control" />
-                </div>
+            <!-- parentFacet -->
+            <div class="col mb-2">
+                <FacetInputSelector v-model="parentFacet" v-model:idValue="searchObject.parentFacetId as number" :canEdit="false" />
+                <FormLabel :label="$t('parentFacet')" />
             </div>
-            <!-- maxCreated -->
-            <div class="col-sm mb-2">
-                <div class="input-group">
-                    <div class="input-group-text">
-                        <Icon name="to" />
+            <!-- childFacet -->
+            <div class="col mb-2">
+                <FacetInputSelector v-model="childFacet" v-model:idValue="searchObject.childFacetId as number" :canEdit="false" />
+                <FormLabel :label="$t('childFacet')" />
+            </div>
+        </div>
+        <div class="row">
+            <!-- parentFacetGroup -->
+            <div class="col mb-2">
+                <FacetGroupInputSelector v-model="parentFacetGroup" v-model:idValue="searchObject.parentFacetGroupId as number" :canEdit="false" />
+                <FormLabel :label="$t('parentFacetGroup')" />
+            </div>
+            <!-- childFacetGroup -->
+            <div class="col mb-2">
+                <FacetGroupInputSelector v-model="childFacetGroup" v-model:idValue="searchObject.childFacetGroupId as number" :canEdit="false" />
+                <FormLabel :label="$t('childFacetGroup')" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-2">
+                <div>
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isRoot" id="isRoot" class="form-check-input" />
+                        <label class="form-check-label" for="isRoot">{{ $t("isRoot") }}</label>
                     </div>
-                    <input type="date" v-model="searchObject.maxCreated" class="form-control" />
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isParent" id="isParent" class="form-check-input" />
+                        <label class="form-check-label" for="isParent">{{ $t("facet.isParent") }}</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isChild" id="isChild" class="form-check-input" />
+                        <label class="form-check-label" for="isChild">{{ $t("facet.isChild") }}</label>
+                    </div>
                 </div>
+                <FormLabel :label="$t('assembly')" />
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref, watchEffect } from "vue"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
+import type Facet from "../data/Entity"
+import FacetInputSelector from "../selecting/InputSelector.vue"
+import useEntityStore from "../data/store"
+import { type Entity as FacetGroup, InputSelector as FacetGroupInputSelector, useEntityStore as useFacetGroupStore } from "@/entities/facet-groups"
 import SearchObject from "./SearchObject"
 
 interface Emits extends /* @vue-ignore */ FilterEmits<SearchObject> {}
@@ -74,9 +102,42 @@ const props = defineProps<{
 
 const searchObject = defineModel<SearchObject>({ required: true })
 
+const parentFacet = ref<Facet>()
+const childFacet = ref<Facet>()
+const parentFacetGroup = ref<FacetGroup>()
+const childFacetGroup = ref<FacetGroup>()
+
 const { filterIsActive, handleReset } = useFilter({
     searchObject,
     emit,
     Constructor: SearchObject,
+})
+
+const { service: facetService } = useEntityStore()
+const { service: facetGroupService } = useFacetGroupStore()
+
+watchEffect(async () => {
+    if (searchObject.value.parentFacetId != null && parentFacet.value == null) {
+        const items = await facetService.list({ ids: [searchObject.value.parentFacetId as number] })
+        parentFacet.value = items[0]
+    }
+})
+watchEffect(async () => {
+    if (searchObject.value.childFacetId != null && childFacet.value == null) {
+        const items = await facetService.list({ ids: [searchObject.value.childFacetId as number] })
+        childFacet.value = items[0]
+    }
+})
+watchEffect(async () => {
+    if (searchObject.value.parentFacetGroupId != null && parentFacetGroup.value == null) {
+        const items = await facetGroupService.list({ ids: [searchObject.value.parentFacetGroupId as number] })
+        parentFacetGroup.value = items[0]
+    }
+})
+watchEffect(async () => {
+    if (searchObject.value.childFacetGroupId != null && childFacetGroup.value == null) {
+        const items = await facetGroupService.list({ ids: [searchObject.value.childFacetGroupId as number] })
+        childFacetGroup.value = items[0]
+    }
 })
 </script>

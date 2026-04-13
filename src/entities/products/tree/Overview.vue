@@ -23,6 +23,7 @@
                 </div>
             </div>
         </template>
+        <div v-if="skipTree" class="italic-muted my-2">{{ $t("product.treeDisabled") }}</div>
         <LoadingContainer :is-loading="isLoading">
             <template v-if="tree != null">
                 <div v-if="hasNoItems" class="italic-muted my-2">No items</div>
@@ -31,14 +32,14 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" v-model="reverseTree" :true-value="true" class="form-check-input" />
-                                invert
+                                {{ $t("tree.invert") }}
                             </label>
                         </div>
                     </div>
+                    <div v-if="reverseTree" class="text-muted fst-italic">({{ $t("tree.inverted") }})</div>
                     <TreeView
                         :nodes="tree.roots"
                         :selected="selectedNodes!"
-                        :hidden-ancestors="hiddenAncestors"
                         :facets="productFacets"
                         :suppliers="productSuppliers"
                         @add-child="linkItemAsChild"
@@ -84,18 +85,15 @@ const productFacets = ref<Record<number, Array<Facet>>>()
 const includeSuppliers = ref(false)
 const productSuppliers = ref<Record<number, Array<Party>>>()
 
-const includeEditors = ref(false)
-const productEditors = ref<Record<number, Array<Party>>>()
-
 const isLoading = ref(false)
 const { service } = useEntityStore()
 
 const hasNoItems = ref<boolean>()
+const skipTree = ref<boolean>(false)
 
 const reverseTree = ref<boolean>()
 const skinnyTree = ref<TreeList<TreeItem>>()
 const tree = ref<TreeList<TreeItem>>()
-const hiddenAncestors = ref<TreeList<TreeItem>>()
 const entityService = get<EntityService>(Entity.name)!
 const family = ref<Array<FamilyItem>>()
 const selectedNodes = computed(() => tree.value?.filter((n) => n.value?.id == props.item?.id))
@@ -187,14 +185,14 @@ function toggleNode(node: TreeNode<TreeItem>) {
 }
 
 async function load() {
+    // if there are no components, there is not much use for a tree
+    // moreover: there could be too many ancestors to display
+    skipTree.value = props.item.components?.length == 0
+    if (skipTree.value) {
+        return
+    }
     isLoading.value = true
-    let familyItems
-    familyItems = await entityService.getFamily([props.item.id])
-    // const parentIds = familyItems.filter((x) => x.childId == props.item.id).map((x) => x.parentId)
-    // if (parentIds.length) {
-    //     const siblings = await entityService.getOffspring(parentIds, 1)
-    //     familyItems.push(...siblings)
-    // }
+    const familyItems = await entityService.getFamily([props.item.id])
     family.value = distinctBy(familyItems, (x: FamilyItem) => `${x.childId}_${x.parentId || 0}`)
     isLoading.value = false
 }
@@ -216,19 +214,15 @@ watchEffect(async () => {
         isLoading.value = true
 
         const familyIds = skinnyTree.value.getValues().map((x) => x.id)
-        // also fetch (invisible) ancestors from other branches to link related data (suppliers, facets, ...)
-        const ancestors = [] as Array<FamilyItem> // await entityService.getAncestors(familyIds)
 
-        const ids = [...new Set([...familyIds, ...ancestors.map((x) => x.parentId)])]
+        const ids = [...new Set([...familyIds])]
         if (ids.length > 0) {
             const items = await service.list({ ids, pageSize: 0 })
             skinnyTree.value.forEach((node) => {
                 node.value.item = items.find((x) => x.id == node.value.id)
             })
-            hiddenAncestors.value = toTree(props.item, ancestors)
         } else {
             hasNoItems.value = true
-            hiddenAncestors.value = new TreeList()
         }
         tree.value = skinnyTree.value
         expandDefault()
@@ -240,7 +234,7 @@ watchEffect(async () => {
     if (includeFacets.value) {
         isLoading.value = true
         const { service: facetService } = useFacetStore()
-        const productIds = [...new Set([...tree.value!.map((x) => x.value.id), ...hiddenAncestors.value!.map((x) => x.value.id)])]
+        const productIds = [...new Set([...tree.value!.map((x) => x.value.id)])]
         const productsWithFacets = await service.list({ ids: productIds, includes: ["Facets"], pageSize: 0 })
         const result = productsWithFacets.map((p) => [p.id, p.facets?.map((e) => facetService.toEntity(e.facet!)) || []])
         productFacets.value = Object.fromEntries(result)
@@ -254,7 +248,7 @@ watchEffect(async () => {
     if (includeSuppliers.value) {
         isLoading.value = true
         const { service: partyService } = usePartyStore()
-        const productIds = [...new Set([...tree.value!.map((x) => x.value.id), ...hiddenAncestors.value!.map((x) => x.value.id)])]
+        const productIds = [...new Set([...tree.value!.map((x) => x.value.id)])]
         const productsWithSuppliers = await service.list({ ids: productIds, includes: ["Suppliers"], pageSize: 0 })
         const result = productsWithSuppliers.map((p) => [p.id, p.suppliers?.map((e) => partyService.toEntity(e.supplier!)) || []])
         productSuppliers.value = Object.fromEntries(result)

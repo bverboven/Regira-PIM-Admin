@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid m-0 p-0" :class="{ 'border opacity-75': isDragging }" @drop="handleDrop" @dragover.prevent="() => { }">
+    <div class="container-fluid m-0 p-0" :class="{ 'border opacity-75': isDragging }" @drop="handleDrop" @dragover.prevent="() => {}">
         <div class="row g-0 hover-line">
             <div class="col-auto">
                 <button type="button" :disabled="!node.children.length" class="btn btn-default border-0 p-1 me-1" @click="$emit('toggle-node', node)">
@@ -8,13 +8,23 @@
                 <FormModalButton :modelValue="nodeItem" initial-tab="form" class="btn btn-default border-0 p-1 me-1" :disabled="isSelected" />
             </div>
             <div class="col text-truncate">
-                <span draggable="true" class="d-inline-block p-1 cursor move" :class="{ 'fw-bold': isSelected }" @dragstart="() => $emit('drag', node)" @dragend="() => $emit('dragend')">
+                <span
+                    draggable="true"
+                    class="d-inline-block p-1 cursor move"
+                    :class="{ 'fw-bold': isSelected }"
+                    @dragstart="() => $emit('drag', node)"
+                    @dragend="() => $emit('dragend')"
+                >
                     {{ nodeItem?.title }}
                 </span>
             </div>
             <div class="col-auto">
-                <SelectorModalButton :item-defaults="childItemDefaults" class="btn btn-default border-0 py-1 px-2 mt-1 ms-1 bg-light" :title="`add child to ${nodeItem?.title}`"
-                    @select="handleAddChild">
+                <SelectorModalButton
+                    :item-defaults="childItemDefaults"
+                    class="btn btn-default border-0 py-1 px-2 mt-1 ms-1 bg-light"
+                    :title="`add child to ${nodeItem?.title}`"
+                    @select="handleAddChild"
+                >
                     <Icon name="new" />
                 </SelectorModalButton>
             </div>
@@ -31,19 +41,29 @@
                 <li v-for="supplier in nodeSuppliers" :key="`${node.value.id}_${supplier.id}`" class="list-inline-item" :title="supplier.title">
                     <PartyButton :modelValue="supplier" class="p-1">
                         <Icon name="supplier" />
-                    </PartyButton> {{ supplier.code || supplier.$initials }}
+                    </PartyButton>
+                    {{ supplier.code || supplier.$initials }}
                 </li>
             </ul>
         </template>
-        <TreeView v-show="node.value.isExpanded" :nodes="sortedChildren" :selected="selected" :hidden-ancestors="hiddenAncestors" :facets="facets" :suppliers="suppliers" :engine="engine"
-            class="tree-indent" @add-child="(child: Entity, parent?: Entity) => $emit('add-child', child, parent)" @toggle-node="$emit('toggle-node', $event)" />
+        <TreeView
+            v-show="node.value.isExpanded"
+            :nodes="sortedChildren"
+            :selected="selected"
+            :facets="facets"
+            :suppliers="suppliers"
+            :engine="engine"
+            class="tree-indent"
+            @add-child="(child: Entity, parent?: Entity) => $emit('add-child', child, parent)"
+            @toggle-node="$emit('toggle-node', $event)"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue"
-import { distinctBy, orderBy } from "@/regira_modules/utilities/array-utility"
-import type { TreeList, TreeNode } from "@/regira_modules/treelist"
+import { orderBy } from "@/regira_modules/utilities/array-utility"
+import { type TreeNode } from "@/regira_modules/treelist"
 import { type DragDropEmits, type DragDropEngine } from "@/regira_modules/vue/entities/tree"
 import { Entity, useEntityStore, FormModalButton, SelectorModalButton } from "../"
 import { Entity as Facet, FormModalButton as FacetButton } from "../../facets"
@@ -61,7 +81,6 @@ const emit = defineEmits<
 const props = defineProps<{
     selected: Array<TreeNode<TreeItem>>
     node: TreeNode<TreeItem>
-    hiddenAncestors?: TreeList<TreeItem>
     isDragging?: boolean
     facets?: Record<number, Array<Facet>>
     suppliers?: Record<number, Array<Party>>
@@ -96,17 +115,12 @@ const nodeFacets = computed(() => findItems(props.facets))
 const nodeSuppliers = computed(() => findItems(props.suppliers))
 
 function findItems<T>(items?: Record<number, Array<T>>) {
-    if (items == null) {
-        return []
+    if (items != null) {
+        const self = items[props.node.value.id]
+        if (self?.length || props.node.getAncestors().some((a) => items[a.value.id]?.length)) {
+            return self
+        }
     }
-
-    const self = items[props.node.value.id]
-    if (self?.length || props.node.getAncestors().some((a) => items[a.value.id]?.length)) {
-        return self
-    }
-
-    const hiddenNodes = props.hiddenAncestors?.getNodes().filter((n) => n.value.id == props.node.value.id)
-    const inheritedItems = hiddenNodes?.flatMap((n) => n.getAncestors().flatMap((a) => items[a.value.id] ?? [])) ?? []
-    return distinctBy(inheritedItems, (x: any) => x.id)
+    return []
 }
 </script>

@@ -1,412 +1,422 @@
 {
-  "auth.changePassword": {
-    "en": "Change password",
-    "fr": "Changer de mot de passe",
-    "nl": "Wachtwoord aanpassen"
-  },
-  "auth.changePasswordFailed": {
-    "en": "Changing password failed",
-    "fr": "Échec modif. mot de passe",
-    "nl": "Wachtwoord aanpassen is mislukt"
-  },
-  "auth.passwordChanged": {
-    "en": "Password is changed",
-    "fr": "Mot de passe a été modifié",
-    "nl": "Wachtwoord is aangepast"
-  },
-  "auth.currentPassword": {
-    "en": "current password",
-    "fr": "mot de passe actuel",
-    "nl": "huidig wachtwoord"
-  },
-  "auth.demoInfoMessage": {
-    "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "fr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "nl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  },
-  "auth.fillInUsernameMsg": {
-    "en": "Fill in username to request a password reset.",
-    "fr": "Saisissez votre nom d'utilisateur pour demander une réinitialisation de votre mot de passe.",
-    "nl": "Vul je gebruikersnaam in om je wachtwoord opnieuw in te stellen"
-  },
-  "auth.forgotPassword": {
-    "en": "Forgot password?",
-    "fr": "Mot de passe oublié ?",
-    "nl": "Wachtwoord vergeten?"
-  },
-  "auth.myAccount": {
-    "en": "My Account",
-    "fr": "Mon compte",
-    "nl": "Mijn account"
-  },
-  "auth.newPassword": {
-    "en": "new password",
-    "fr": "nouveau mot de passe",
-    "nl": "nieuw wachtwoord"
-  },
-  "auth.password": {
-    "en": "Password",
-    "fr": "Mot de passe",
-    "nl": "Wachtwoord"
-  },
-  "auth.passwordResetReceivedMsg": {
-    "en": "Password reset request received. Please check your email.",
-    "fr": "Demande de réinitialisation du mot de passe reçue. Veuillez vérifier votre e-mail.",
-    "nl": "Je aanvraag is ontvangen, gelieve je e-mail te controleren."
-  },
-  "auth.passwordResetSent": {
-    "en": "Reset request sent",
-    "fr": "Demande de réinitialisation envoyée",
-    "nl": "Je aanvraag is verstuurd"
-  },
-  "auth.passwordResetFailed": {
-    "en": "Reset request failed",
-    "fr": "Échec de la demande de réinitialisation",
-    "nl": "Je aanvraag is mislukt"
-  },
-  "auth.passwordsMustMatch": {
-    "en": "Passwords must match.",
-    "fr": "Les mots de passe doivent correspondre.",
-    "nl": "Wachtwoorden komen niet overeen"
-  },
-  "auth.repeatPassword": {
-    "en": "repeat password",
-    "fr": "répéter le mot de passe",
-    "nl": "herhaal wachtwoord"
-  },
-  "auth.signIn": {
-    "en": "Sign in",
-    "fr": "Se connecter",
-    "nl": "Aanmelden"
-  },
-  "auth.signOut": {
-    "en": "Sign out",
-    "fr": "Se déconnecter",
-    "nl": "Afmelden"
-  },
-  "auth.signingIn": {
-    "en": "Signing in ...",
-    "fr": "Connexion en cours...",
-    "nl": "Aan het aanmelden ..."
-  },
-  "auth.signInInfo": {
-    "en": "Fill in username & password to sign in",
-    "fr": "Saisissez votre nom d'utilisateur et votre mot de passe pour vous connecter.",
-    "nl": "Vul je gebruikersnaam & wachtwoord in"
-  },
-  "auth.signInErrorMsg": {
-    "en": "Unfortunately, signing in failed.",
-    "fr": "Malheureusement, la connexion a échoué.",
-    "nl": "Helaas, het aanmelden is mislukt."
-  },
-  "auth.tryAgainInMin": {
-    "en": "Try again in {minutes} min.",
-    "fr": "Réessayez dans {minutes} min.",
-    "nl": "Probeer opnieuw in {minutes} min."
-  },
-  "auth.username": {
-    "en": "Username",
-    "fr": "Identifiant",
-    "nl": "Gebruikersnaam"
-  },
-  "auth.personalData": {
-    "en": "Personal data",
-    "fr": "Données personelles",
-    "nl": "Persoonlijke gegevens"
-  },
-  "auth.personalDataChanged": {
-    "en": "Your data has been updated",
-    "fr": "Vos données ont été mises à jour",
-    "nl": "Je gegevens werden aangepast"
-  },
-  "auth.givenName": {
-    "en": "Given name",
-    "fr": "Prénom",
-    "nl": "Voornaam"
-  },
-  "auth.lastName": {
-    "en": "Last name",
-    "fr": "Nom de famille",
-    "nl": "Achternaam"
-  },
-  "auth.culture": {
-    "en": "Language",
-    "fr": "Langue",
-    "nl": "Voorkeurstaal"
-  },
-  "claims.canRead": {
-    "en": "Read",
-    "fr": "Lire",
-    "nl": "Lezen"
-  },
-  "claims.canWrite": {
-    "en": "Write",
-    "fr": "Ecrire",
-    "nl": "Schrijven"
-  },
-  "claims.admin": {
-    "en": "Admin",
-    "fr": "Admin",
-    "nl": "Beheerder"
-  },
-  "common.all": {
-    "en": "All",
-    "fr": "Tout",
-    "nl": "Alles"
-  },
-  "common.allTypes": {
-    "en": "All types",
-    "fr": "Tous les types",
-    "nl": "Alle types"
-  },
-  "addContactData": {
-    "en": "add new phone, email, website",
-    "fr": "ajouter un nouveau téléphone, e-mail, site web",
-    "nl": "nieuwe tel, e-mail of website"
-  },
-  "addNewAddress": {
-    "en": "Add new address",
-    "fr": "Ajouter une nouvelle adresse",
-    "nl": "Nieuw adres"
-  },
-  "addNewFile(s)": {
-    "en": "Add new file(s)",
-    "fr": "Ajouter un nouveau fichier",
-    "nl": "Voeg nieuwe bestanden toe"
-  },
-  "address": {
-    "en": "Address",
-    "fr": "Adresse",
-    "nl": "Adres"
-  },
-  "address(es)": {
-    "en": "Address(es)",
-    "fr": "Adresse(s)",
-    "nl": "Adres(sen)"
-  },
-  "addressModalTitle": {
-    "en": "Address for {name}",
-    "fr": "Adresse",
-    "nl": "Adres"
-  },
-  "cancel": {
-    "en": "Cancel",
-    "fr": "Annuler",
-    "nl": "Toch niet"
-  },
-  "code": {
-    "en": "Code",
-    "fr": "Code",
-    "nl": "Code"
-  },
-  "codePlaceholder": {
-    "en": "code or abbr.",
-    "fr": "code ou abrév.",
-    "nl": "code of afkorting"
-  },
-  "companyTitle": {
-    "en": "Company title",
-    "fr": "Nom de l'entreprise",
-    "nl": "Naam organisatie"
-  },
-  "confirm": {
-    "en": "Confirm",
-    "fr": "Confirmer",
-    "nl": "Bevestig"
-  },
-  "contact": {
-    "en": "Contact",
-    "fr": "Contact",
-    "nl": "Contact"
-  },
-  "contactData": {
-    "en": "Contact data",
-    "fr": "Coordonnées",
-    "nl": "Contactgegevens"
-  },
-  "country": {
-    "en": "Country",
-    "fr": "Pays",
-    "nl": "Land"
-  },
-  "countries": {
-    "en": "Countries",
-    "fr": "Pays",
-    "nl": "Landen"
-  },
-  "date": {
-    "en": "Date",
-    "fr": "Date",
-    "nl": "Datum"
-  },
-  "delete": {
-    "en": "Delete",
-    "fr": "Supprimer",
-    "nl": "Verwijder"
-  },
-  "deleteItem": {
-    "en": "Delete item '{title}'?",
-    "fr": "Supprimer l'élément '{title}' ?",
-    "nl": "Verwijder '{title}'?"
-  },
-  "description": {
-    "en": "Description",
-    "fr": "Description",
-    "nl": "Beschrijving"
-  },
-  "extra": {
-    "en": "Extra",
-    "fr": "Extra",
-    "nl": "Extra"
-  },
-  "files": {
-    "en": "Files",
-    "fr": "Fichiers",
-    "nl": "Bestanden"
-  },
-  "filtersAreApplied": {
-    "en": "Filters are applied",
-    "fr": "Filtres appliqués",
-    "nl": "Filters actief"
-  },
-  "form": {
-    "en": "Form",
-    "fr": "Formulaire",
-    "nl": "Formulier"
-  },
-  "keywords": {
-    "en": "Keyword(s)",
-    "fr": "Mot(s)-clé",
-    "nl": "Zoekwoord(en)"
-  },
-  "labels": {
-    "en": "Labels",
-    "fr": "Étiquettes",
-    "nl": "Labels"
-  },
-  "labelName": {
-    "en": "Label name",
-    "fr": "Type",
-    "nl": "Label type"
-  },
-  "labelValue": {
-    "en": "Label",
-    "fr": "Étiquette",
-    "nl": "Label"
-  },
-  "location": {
-    "en": "Location",
-    "fr": "Emplacement",
-    "nl": "Plaats"
-  },
-  "name": {
-    "en": "Name",
-    "fr": "Nom",
-    "nl": "Naam"
-  },
-  "new": {
-    "en": "New",
-    "fr": "Nouveau",
-    "nl": "Nieuw"
-  },
-  "noItems": {
-    "en": "No items",
-    "fr": "Aucun élément",
-    "nl": "Geen data"
-  },
-  "noResults": {
-    "en": "No items",
-    "fr": "Aucun résultat",
-    "nl": "Geen resultaten"
-  },
-  "notes": {
-    "en": "Notes",
-    "fr": "Notes",
-    "nl": "Nota's"
-  },
-  "overview": {
-    "en": "Overview",
-    "fr": "Liste",
-    "nl": "Overzicht"
-  },
-  "perMonth": {
-    "en": "per month",
-    "fr": "par mois",
-    "nl": "per maand"
-  },
-  "popOut": {
-    "en": "Pop out",
-    "fr": "Nouv. fenêtre",
-    "nl": "Nieuw venster"
-  },
-  "price": {
-    "en": "Price",
-    "fr": "Prix",
-    "nl": "Prijs"
-  },
-  "priceExcl": {
-    "en": "Price (excl.)",
-    "fr": "Prix (HT)",
-    "nl": "Prijs (excl.)"
-  },
-  "priceIncl": {
-    "en": "Price (incl.)",
-    "fr": "Prix (TTC)",
-    "nl": "Prijs (incl.)"
-  },
-  "removeItem?": {
-    "en": "Remove item?",
-    "fr": "Supprimer l'élément ?",
-    "nl": "Item verwijderen?"
-  },
-  "reset": {
-    "en": "Reset",
-    "fr": "Réinitialiser",
-    "nl": "Opnieuw"
-  },
-  "restore": {
-    "en": "Restore",
-    "fr": "Restaurer",
-    "nl": "Herstel"
-  },
-  "results": {
-    "en": "results",
-    "fr": "Résultats",
-    "nl": "resultaten"
-  },
-  "save": {
-    "en": "Save",
-    "fr": "Enregistrer",
-    "nl": "Opslaan"
-  },
-  "signIn": {
-    "en": "Sign in",
-    "fr": "Se connecter",
-    "nl": "Aanmelden"
-  },
-  "signOut": {
-    "en": "Sign out",
-    "fr": "Se déconnecter",
-    "nl": "Afmelden"
-  },
-  "submit": {
-    "en": "Submit",
-    "fr": "Soumettre",
-    "nl": "Verstuur"
-  },
-  "tree": {
-    "en": "Tree",
-    "fr": "Arbre",
-    "nl": "Boom"
-  },
-  "usernameLabel": {
-    "en": "Username/Email",
-    "fr": "Nom d'utilisateur, Addresse é-mail",
-    "nl": "Gebruikersnaam/E-mail"
-  },
-  "welcome": {
-    "en": "Welcome {name}",
-    "fr": "Bienvenue {name}",
-    "nl": "Welkom {name}"
-  }
+    "auth.changePassword": {
+        "en": "Change password",
+        "fr": "Changer de mot de passe",
+        "nl": "Wachtwoord aanpassen"
+    },
+    "auth.changePasswordFailed": {
+        "en": "Changing password failed",
+        "fr": "Échec modif. mot de passe",
+        "nl": "Wachtwoord aanpassen is mislukt"
+    },
+    "auth.passwordChanged": {
+        "en": "Password is changed",
+        "fr": "Mot de passe a été modifié",
+        "nl": "Wachtwoord is aangepast"
+    },
+    "auth.currentPassword": {
+        "en": "current password",
+        "fr": "mot de passe actuel",
+        "nl": "huidig wachtwoord"
+    },
+    "auth.demoInfoMessage": {
+        "en": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "nl": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    "auth.fillInUsernameMsg": {
+        "en": "Fill in username to request a password reset.",
+        "fr": "Saisissez votre nom d'utilisateur pour demander une réinitialisation de votre mot de passe.",
+        "nl": "Vul je gebruikersnaam in om je wachtwoord opnieuw in te stellen"
+    },
+    "auth.forgotPassword": {
+        "en": "Forgot password?",
+        "fr": "Mot de passe oublié ?",
+        "nl": "Wachtwoord vergeten?"
+    },
+    "auth.myAccount": {
+        "en": "My Account",
+        "fr": "Mon compte",
+        "nl": "Mijn account"
+    },
+    "auth.newPassword": {
+        "en": "new password",
+        "fr": "nouveau mot de passe",
+        "nl": "nieuw wachtwoord"
+    },
+    "auth.password": {
+        "en": "Password",
+        "fr": "Mot de passe",
+        "nl": "Wachtwoord"
+    },
+    "auth.passwordResetReceivedMsg": {
+        "en": "Password reset request received. Please check your email.",
+        "fr": "Demande de réinitialisation du mot de passe reçue. Veuillez vérifier votre e-mail.",
+        "nl": "Je aanvraag is ontvangen, gelieve je e-mail te controleren."
+    },
+    "auth.passwordResetSent": {
+        "en": "Reset request sent",
+        "fr": "Demande de réinitialisation envoyée",
+        "nl": "Je aanvraag is verstuurd"
+    },
+    "auth.passwordResetFailed": {
+        "en": "Reset request failed",
+        "fr": "Échec de la demande de réinitialisation",
+        "nl": "Je aanvraag is mislukt"
+    },
+    "auth.passwordsMustMatch": {
+        "en": "Passwords must match.",
+        "fr": "Les mots de passe doivent correspondre.",
+        "nl": "Wachtwoorden komen niet overeen"
+    },
+    "auth.repeatPassword": {
+        "en": "repeat password",
+        "fr": "répéter le mot de passe",
+        "nl": "herhaal wachtwoord"
+    },
+    "auth.signIn": {
+        "en": "Sign in",
+        "fr": "Se connecter",
+        "nl": "Aanmelden"
+    },
+    "auth.signOut": {
+        "en": "Sign out",
+        "fr": "Se déconnecter",
+        "nl": "Afmelden"
+    },
+    "auth.signingIn": {
+        "en": "Signing in ...",
+        "fr": "Connexion en cours...",
+        "nl": "Aan het aanmelden ..."
+    },
+    "auth.signInInfo": {
+        "en": "Fill in username & password to sign in",
+        "fr": "Saisissez votre nom d'utilisateur et votre mot de passe pour vous connecter.",
+        "nl": "Vul je gebruikersnaam & wachtwoord in"
+    },
+    "auth.signInErrorMsg": {
+        "en": "Unfortunately, signing in failed.",
+        "fr": "Malheureusement, la connexion a échoué.",
+        "nl": "Helaas, het aanmelden is mislukt."
+    },
+    "auth.tryAgainInMin": {
+        "en": "Try again in {minutes} min.",
+        "fr": "Réessayez dans {minutes} min.",
+        "nl": "Probeer opnieuw in {minutes} min."
+    },
+    "auth.username": {
+        "en": "Username",
+        "fr": "Identifiant",
+        "nl": "Gebruikersnaam"
+    },
+    "auth.personalData": {
+        "en": "Personal data",
+        "fr": "Données personelles",
+        "nl": "Persoonlijke gegevens"
+    },
+    "auth.personalDataChanged": {
+        "en": "Your data has been updated",
+        "fr": "Vos données ont été mises à jour",
+        "nl": "Je gegevens werden aangepast"
+    },
+    "auth.givenName": {
+        "en": "Given name",
+        "fr": "Prénom",
+        "nl": "Voornaam"
+    },
+    "auth.lastName": {
+        "en": "Last name",
+        "fr": "Nom de famille",
+        "nl": "Achternaam"
+    },
+    "auth.culture": {
+        "en": "Language",
+        "fr": "Langue",
+        "nl": "Voorkeurstaal"
+    },
+    "claims.canRead": {
+        "en": "Read",
+        "fr": "Lire",
+        "nl": "Lezen"
+    },
+    "claims.canWrite": {
+        "en": "Write",
+        "fr": "Ecrire",
+        "nl": "Schrijven"
+    },
+    "claims.admin": {
+        "en": "Admin",
+        "fr": "Admin",
+        "nl": "Beheerder"
+    },
+    "common.all": {
+        "en": "All",
+        "fr": "Tout",
+        "nl": "Alles"
+    },
+    "common.allTypes": {
+        "en": "All types",
+        "fr": "Tous les types",
+        "nl": "Alle types"
+    },
+    "addContactData": {
+        "en": "add new phone, email, website",
+        "fr": "ajouter un nouveau téléphone, e-mail, site web",
+        "nl": "nieuwe tel, e-mail of website"
+    },
+    "addNewAddress": {
+        "en": "Add new address",
+        "fr": "Ajouter une nouvelle adresse",
+        "nl": "Nieuw adres"
+    },
+    "addNewFile(s)": {
+        "en": "Add new file(s)",
+        "fr": "Ajouter un nouveau fichier",
+        "nl": "Voeg nieuwe bestanden toe"
+    },
+    "address": {
+        "en": "Address",
+        "fr": "Adresse",
+        "nl": "Adres"
+    },
+    "address(es)": {
+        "en": "Address(es)",
+        "fr": "Adresse(s)",
+        "nl": "Adres(sen)"
+    },
+    "addressModalTitle": {
+        "en": "Address for {name}",
+        "fr": "Adresse",
+        "nl": "Adres"
+    },
+    "cancel": {
+        "en": "Cancel",
+        "fr": "Annuler",
+        "nl": "Toch niet"
+    },
+    "code": {
+        "en": "Code",
+        "fr": "Code",
+        "nl": "Code"
+    },
+    "codePlaceholder": {
+        "en": "code or abbr.",
+        "fr": "code ou abrév.",
+        "nl": "code of afkorting"
+    },
+    "companyTitle": {
+        "en": "Company title",
+        "fr": "Nom de l'entreprise",
+        "nl": "Naam organisatie"
+    },
+    "confirm": {
+        "en": "Confirm",
+        "fr": "Confirmer",
+        "nl": "Bevestig"
+    },
+    "contact": {
+        "en": "Contact",
+        "fr": "Contact",
+        "nl": "Contact"
+    },
+    "contactData": {
+        "en": "Contact data",
+        "fr": "Coordonnées",
+        "nl": "Contactgegevens"
+    },
+    "country": {
+        "en": "Country",
+        "fr": "Pays",
+        "nl": "Land"
+    },
+    "countries": {
+        "en": "Countries",
+        "fr": "Pays",
+        "nl": "Landen"
+    },
+    "date": {
+        "en": "Date",
+        "fr": "Date",
+        "nl": "Datum"
+    },
+    "delete": {
+        "en": "Delete",
+        "fr": "Supprimer",
+        "nl": "Verwijder"
+    },
+    "deleteItem": {
+        "en": "Delete item '{title}'?",
+        "fr": "Supprimer l'élément '{title}' ?",
+        "nl": "Verwijder '{title}'?"
+    },
+    "description": {
+        "en": "Description",
+        "fr": "Description",
+        "nl": "Beschrijving"
+    },
+    "extra": {
+        "en": "Extra",
+        "fr": "Extra",
+        "nl": "Extra"
+    },
+    "files": {
+        "en": "Files",
+        "fr": "Fichiers",
+        "nl": "Bestanden"
+    },
+    "filtersAreApplied": {
+        "en": "Filters are applied",
+        "fr": "Filtres appliqués",
+        "nl": "Filters actief"
+    },
+    "form": {
+        "en": "Form",
+        "fr": "Formulaire",
+        "nl": "Formulier"
+    },
+    "keywords": {
+        "en": "Keyword(s)",
+        "fr": "Mot(s)-clé",
+        "nl": "Zoekwoord(en)"
+    },
+    "labels": {
+        "en": "Labels",
+        "fr": "Étiquettes",
+        "nl": "Labels"
+    },
+    "labelName": {
+        "en": "Label name",
+        "fr": "Type",
+        "nl": "Label type"
+    },
+    "labelValue": {
+        "en": "Label",
+        "fr": "Étiquette",
+        "nl": "Label"
+    },
+    "location": {
+        "en": "Location",
+        "fr": "Emplacement",
+        "nl": "Plaats"
+    },
+    "name": {
+        "en": "Name",
+        "fr": "Nom",
+        "nl": "Naam"
+    },
+    "new": {
+        "en": "New",
+        "fr": "Nouveau",
+        "nl": "Nieuw"
+    },
+    "noItems": {
+        "en": "No items",
+        "fr": "Aucun élément",
+        "nl": "Geen data"
+    },
+    "noResults": {
+        "en": "No items",
+        "fr": "Aucun résultat",
+        "nl": "Geen resultaten"
+    },
+    "notes": {
+        "en": "Notes",
+        "fr": "Notes",
+        "nl": "Nota's"
+    },
+    "overview": {
+        "en": "Overview",
+        "fr": "Liste",
+        "nl": "Overzicht"
+    },
+    "perMonth": {
+        "en": "per month",
+        "fr": "par mois",
+        "nl": "per maand"
+    },
+    "popOut": {
+        "en": "Pop out",
+        "fr": "Nouv. fenêtre",
+        "nl": "Nieuw venster"
+    },
+    "price": {
+        "en": "Price",
+        "fr": "Prix",
+        "nl": "Prijs"
+    },
+    "priceExcl": {
+        "en": "Price (excl.)",
+        "fr": "Prix (HT)",
+        "nl": "Prijs (excl.)"
+    },
+    "priceIncl": {
+        "en": "Price (incl.)",
+        "fr": "Prix (TTC)",
+        "nl": "Prijs (incl.)"
+    },
+    "removeItem?": {
+        "en": "Remove item?",
+        "fr": "Supprimer l'élément ?",
+        "nl": "Item verwijderen?"
+    },
+    "reset": {
+        "en": "Reset",
+        "fr": "Réinitialiser",
+        "nl": "Opnieuw"
+    },
+    "restore": {
+        "en": "Restore",
+        "fr": "Restaurer",
+        "nl": "Herstel"
+    },
+    "results": {
+        "en": "results",
+        "fr": "Résultats",
+        "nl": "resultaten"
+    },
+    "save": {
+        "en": "Save",
+        "fr": "Enregistrer",
+        "nl": "Opslaan"
+    },
+    "signIn": {
+        "en": "Sign in",
+        "fr": "Se connecter",
+        "nl": "Aanmelden"
+    },
+    "signOut": {
+        "en": "Sign out",
+        "fr": "Se déconnecter",
+        "nl": "Afmelden"
+    },
+    "submit": {
+        "en": "Submit",
+        "fr": "Soumettre",
+        "nl": "Verstuur"
+    },
+    "tree": {
+        "en": "Tree",
+        "fr": "Arbre",
+        "nl": "Boom"
+    },
+    "tree.invert": {
+        "en": "Invert tree",
+        "fr": "Inverser l'arbre",
+        "nl": "Boom omkeren"
+    },
+    "tree.inverted": {
+        "en": "Tree is inverted",
+        "fr": "L'arbre est inversé",
+        "nl": "Boom is omgekeerd"
+    },
+    "usernameLabel": {
+        "en": "Username/Email",
+        "fr": "Nom d'utilisateur, Addresse é-mail",
+        "nl": "Gebruikersnaam/E-mail"
+    },
+    "welcome": {
+        "en": "Welcome {name}",
+        "fr": "Bienvenue {name}",
+        "nl": "Welkom {name}"
+    }
 }

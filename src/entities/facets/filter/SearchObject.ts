@@ -4,6 +4,15 @@ export class EntitySearchObject extends SearchObjectBase {
     code?: string
     title?: string
 
+    isParent?: boolean
+    isChild?: boolean
+    isRoot?: boolean
+
+    parentFacetId?: number
+    childFacetId?: number
+    parentFacetGroupId?: number
+    childFacetGroupId?: number
+
     minCreated?: Date
     maxCreated?: Date
     minLastModified?: Date

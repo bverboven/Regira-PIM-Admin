@@ -18,7 +18,7 @@
                     {{ item.code }}
                 </div>
                 <div class="col col-md-4 text-truncate">
-                    <FormModalButton :modelValue="item" class="p-1" /> />
+                    <FormModalButton :modelValue="item" class="p-1" />
                     {{ item.$title }}
                 </div>
                 <div class="col d-none d-md-block text-truncate">

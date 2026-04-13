@@ -1,372 +1,377 @@
 {
-  "pim": {
-    "en": "PIM",
-    "fr": "GIP",
-    "nl": "PIM"
-  },
-  "pimManager": {
-    "en": "PIM Manager",
-    "fr": "Gestionnaire PIM",
-    "nl": "PIM Manager"
-  },
-  "assembly": {
-    "en": "Assembly",
-    "fr": "Assemblage",
-    "nl": "Samenstelling"
-  },
-  "assemblies": {
-    "en": "Assemblies",
-    "fr": "Assemblages",
-    "nl": "Samenstellingen"
-  },
-  "catalog": {
-    "en": "Catalog",
-    "fr": "Catalogue",
-    "nl": "Catalogus"
-  },
-  "facet": {
-    "en": "Facet",
-    "fr": "Facette",
-    "nl": "Facet"
-  },
-  "facet.childFacetGroups": {
-    "en": "Child Groups",
-    "fr": "Groupes de enfants",
-    "nl": "Onderliggende groepen"
-  },
-  "facet.childFacets": {
-    "en": "Child Facets",
-    "fr": "Facettes enfants",
-    "nl": "Onderliggende facetten"
-  },
-  "facet.description": {
-    "en": "Facets can be used to categorize and organize Products. Facets can have parent and child relationships with other facets, allowing for a hierarchical structure. They can also be associated with facet groups to further organize them within the taxonomy.Facets are usually described in plural form, while Products are described in singular form.",
-    "fr": "Les facettes peuvent être utilisées pour catégoriser et organiser les produits. Les facettes peuvent avoir des relations parent-enfant avec d'autres facettes, permettant une structure hiérarchique. Elles peuvent également être associées à des groupes de facettes pour les organiser davantage au sein de la taxonomie. Les facettes sont généralement décrites au pluriel, tandis que les produits sont décrits au singulier.",
-    "nl": "Facetten kunnen worden gebruikt om producten te categoriseren en te organiseren. Facetten kunnen ouder- en kindrelaties hebben met andere facetten, waardoor een hiërarchische structuur ontstaat. Ze kunnen ook worden geassocieerd met facetgroepen om ze verder te organiseren binnen de taxonomie. Facetten worden meestal in meervoud beschreven, terwijl producten in enkelvoud worden beschreven."
-  },
-  "facet.parentFacetGroups": {
-    "en": "Parent Groups",
-    "fr": "Groupes de parents",
-    "nl": "Bovenliggende groepen"
-  },
-  "facet.parentFacets": {
-    "en": "Parent Facets",
-    "fr": "Facettes parentes",
-    "nl": "Bovenliggende facetten"
-  },
-  "facetGroup": {
-    "en": "Facet Group",
-    "fr": "Groupe de facettes",
-    "nl": "Facetgroep"
-  },
-  "facetGroup.childFacets": {
-    "en": "Child Facets",
-    "fr": "Facettes enfants",
-    "nl": "Onderliggende facetten"
-  },
-  "facetGroup.description": {
-    "en": "Facet groups can be used to organize facets. e.g. a \"Color\" facet group can have child facets like \"Red\", \"Blue\", \"Green\", etc.",
-    "fr": "Les groupes de facettes peuvent être utilisés pour organiser les facettes. Par exemple, un groupe de facettes \"Couleur\" peut avoir des facettes enfants comme \"Rouge\", \"Bleu\", \"Vert\", etc.",
-    "nl": "Facetgroepen kunnen worden gebruikt om facetten te organiseren. Bijvoorbeeld een \"Kleur\" facetgroep kan onderliggende facetten hebben zoals \"Rood\", \"Blauw\", \"Groen\", etc."
-  },
-  "facetGroup.facets": {
-    "en": "Facets",
-    "fr": "Facettes",
-    "nl": "Facetten"
-  },
-  "facetGroup.parentFacets": {
-    "en": "Parent Facets",
-    "fr": "Facettes parentes",
-    "nl": "Bovenliggende facetten"
-  },
-  "facetGroup.relatedFacets": {
-    "en": "Related Facets",
-    "fr": "Facettes liées",
-    "nl": "Gerelateerde facetten"
-  },
-  "facetGroups": {
-    "en": "Facet Groups",
-    "fr": "Groupes de facettes",
-    "nl": "Facetgroepen"
-  },
-  "facets": {
-    "en": "Facets",
-    "fr": "Facettes",
-    "nl": "Facetten"
-  },
-  "location": {
-    "en": "Location",
-    "fr": "Emplacement",
-    "nl": "Locatie"
-  },
-  "isRoot": {
-    "en": "Top-level",
-    "fr": "Premier niveau",
-    "nl": "Top-level"
-  },
-  "parties": {
-    "en": "Parties",
-    "fr": "Parties",
-    "nl": "Partijen"
-  },
-  "party": {
-    "en": "Party",
-    "fr": "Partie",
-    "nl": "Partij"
-  },
-  "party.child": {
-    "en": "Child",
-    "fr": "Enfant",
-    "nl": "Onderliggende partij"
-  },
-  "party.children": {
-    "en": "Children",
-    "fr": "Enfants",
-    "nl": "Onderliggende partijen"
-  },
-  "party.description": {
-    "en": "Parties represent the different stakeholders.",
-    "fr": "Les parties représentent les différentes parties prenantes.",
-    "nl": "Partijen vertegenwoordigen de verschillende belanghebbenden."
-  },
-  "party.legalEntity": {
-    "en": "Legal entity",
-    "fr": "Entité légale",
-    "nl": "Rechtspersoon"
-  },
-  "party.name": {
-    "en": "Name",
-    "fr": "Nom",
-    "nl": "Naam"
-  },
-  "party.organization": {
-    "en": "Organization",
-    "fr": "Organisation",
-    "nl": "Organisatie"
-  },
-  "party.parent": {
-    "en": "Parent",
-    "fr": "Parent",
-    "nl": "Bovenliggende partij"
-  },
-  "party.parents": {
-    "en": "Parents",
-    "fr": "Parents",
-    "nl": "Bovenliggende partijen"
-  },
-  "party.partyType": {
-    "en": "Type",
-    "fr": "Type",
-    "nl": "Type"
-  },
-  "party.person": {
-    "en": "Person",
-    "fr": "Personne",
-    "nl": "Persoon"
-  },
-  "party.relations": {
-    "en": "Relations",
-    "fr": "Relations",
-    "nl": "Relaties"
-  },
-  "party.salutation": {
-    "en": "Salutation",
-    "fr": "Salutation",
-    "nl": "Aanhef"
-  },
-  "party.givenName": {
-    "en": "Given Name",
-    "fr": "Prénom",
-    "nl": "Voornaam"
-  },
-  "party.middleName": {
-    "en": "Middle Name",
-    "fr": "Deuxième prénom",
-    "nl": "Tussennaam"
-  },
-  "party.familyName": {
-    "en": "Family Name",
-    "fr": "Nom de famille",
-    "nl": "Achternaam"
-  },
-  "party.address.street": {
-    "en": "Street",
-    "fr": "Rue",
-    "nl": "Straat"
-  },
-  "party.address.houseNumber": {
-    "en": "No.",
-    "fr": "N°",
-    "nl": "Nr."
-  },
-  "party.address.postalCode": {
-    "en": "Postal code",
-    "fr": "Code postal",
-    "nl": "Postcode"
-  },
-  "party.address.city": {
-    "en": "City",
-    "fr": "Ville",
-    "nl": "Stad"
-  },
-  "party.contactData.value": {
-    "en": "Value",
-    "fr": "Valeur",
-    "nl": "Waarde"
-  },
-  "party.contactData.other": {
-    "en": "Other",
-    "fr": "Autre",
-    "nl": "Overige"
-  },
-  "party.contactData.phone": {
-    "en": "Phone",
-    "fr": "Téléphone",
-    "nl": "Telefoon"
-  },
-  "party.contactData.email": {
-    "en": "Email",
-    "fr": "E-mail",
-    "nl": "E-mail"
-  },
-  "party.contactData.website": {
-    "en": "Website",
-    "fr": "Site web",
-    "nl": "Website"
-  },
-  "partyRelationshipType": {
-    "en": "Relationship Type",
-    "fr": "Type de relation",
-    "nl": "Relatietype"
-  },
-  "partyRelationshipTypes": {
-    "en": "Relationship Types",
-    "fr": "Types de relations",
-    "nl": "Relatietypes"
-  },
-  "partyRelationshipType.description": {
-    "en": "Relationship types can be used to define the different types of relationships that can exist between parties.",
-    "fr": "Les types de relations peuvent être utilisés pour définir les différents types de relations qui peuvent exister entre les parties.",
-    "nl": "Relatietypes kunnen worden gebruikt om de verschillende soorten relaties te definiëren die kunnen bestaan tussen partijen."
-  },
-  "productInformationManagement": {
-    "en": "Product Information Management",
-    "fr": "Gestion de l'information produit",
-    "nl": "Product Informatie Management"
-  },
-  "product": {
-    "en": "Product",
-    "fr": "Produit",
-    "nl": "Product"
-  },
-  "product.allowAdditions": {
-    "en": "Allow additions",
-    "fr": "Autoriser les ajouts",
-    "nl": "Toevoegingen toestaan"
-  },
-  "product.assembly": {
-    "en": "Assembly",
-    "fr": "Assemblage",
-    "nl": "Samenstelling"
-  },
-  "product.addComponent": {
-    "en": "Add component",
-    "fr": "Ajouter un composant",
-    "nl": "Component toevoegen"
-  },
-  "product.addFacet": {
-    "en": "Add facet",
-    "fr": "Ajouter une facette",
-    "nl": "Facet toevoegen"
-  },
-  "product.allComponents": {
-    "en": "All components",
-    "fr": "Tous les composants",
-    "nl": "Alle componenten"
-  },
-  "product.allFacets": {
-    "en": "All facets",
-    "fr": "Toutes les facettes",
-    "nl": "Alle facetten"
-  },
-  "product.component": {
-    "en": "Component",
-    "fr": "Composant",
-    "nl": "Component"
-  },
-  "product.components": {
-    "en": "Components",
-    "fr": "Composants",
-    "nl": "Componenten"
-  },
-  "product.defaultQuantity": {
-    "en": "Default quantity",
-    "fr": "Quantité par défaut",
-    "nl": "Standaard hoeveelheid"
-  },
-  "product.facets": {
-    "en": "Facets",
-    "fr": "Facettes",
-    "nl": "Facetten"
-  },
-  "product.isAssembly": {
-    "en": "Is assembly",
-    "fr": "Est un assemblage",
-    "nl": "Is samenstelling"
-  },
-  "product.isComponent": {
-    "en": "Is component",
-    "fr": "Est un composant",
-    "nl": "Is component"
-  },
-  "product.isRoot": {
-    "en": "Is root",
-    "fr": "Est racine",
-    "nl": "Is root"
-  },
-  "product.suppliers": {
-    "en": "Suppliers",
-    "fr": "Fournisseurs",
-    "nl": "Leveranciers"
-  },
-  "products": {
-    "en": "Products",
-    "fr": "Produits",
-    "nl": "Producten"
-  },
-  "product.prices": {
-    "en": "Prices",
-    "fr": "Prix",
-    "nl": "Prijzen"
-  },
-  "product.description": {
-    "en": "Manage the products that are available.",
-    "fr": "Gérez les produits disponibles.",
-    "nl": "Beheer de producten die beschikbaar zijn."
-  },
-  "stakeholders": {
-    "en": "Stakeholders",
-    "fr": "Parties prenantes",
-    "nl": "Belanghebbenden"
-  },
-  "taxonomy": {
-    "en": "Taxonomy",
-    "fr": "Taxonomie",
-    "nl": "Taxonomie"
-  },
-  "unitType": {
-    "en": "Unit Type",
-    "fr": "Type d'unité",
-    "nl": "Eenheidstype"
-  },
-  "unitTypes": {
-    "en": "Unit Types",
-    "fr": "Types d'unités",
-    "nl": "Eenheidstypen"
-  },
-  "unitType.description": {
-    "en": "Manage the different unit types that can be used for prices from products.",
-    "fr": "Gérez les différents types d'unités qui peuvent être utilisés pour les prix des produits.",
-    "nl": "Beheer de verschillende eenheidstypen die kunnen worden gebruikt voor prijzen van producten."
-  }
+    "pim": {
+        "en": "PIM",
+        "fr": "GIP",
+        "nl": "PIM"
+    },
+    "pimManager": {
+        "en": "PIM Manager",
+        "fr": "Gestionnaire PIM",
+        "nl": "PIM Manager"
+    },
+    "assembly": {
+        "en": "Assembly",
+        "fr": "Assemblage",
+        "nl": "Samenstelling"
+    },
+    "assemblies": {
+        "en": "Assemblies",
+        "fr": "Assemblages",
+        "nl": "Samenstellingen"
+    },
+    "catalog": {
+        "en": "Catalog",
+        "fr": "Catalogue",
+        "nl": "Catalogus"
+    },
+    "facet": {
+        "en": "Facet",
+        "fr": "Facette",
+        "nl": "Facet"
+    },
+    "facet.childFacetGroups": {
+        "en": "Child Groups",
+        "fr": "Groupes de enfants",
+        "nl": "Onderliggende groepen"
+    },
+    "facet.childFacets": {
+        "en": "Child Facets",
+        "fr": "Facettes enfants",
+        "nl": "Onderliggende facetten"
+    },
+    "facet.description": {
+        "en": "Facets can be used to categorize and organize Products. Facets can have parent and child relationships with other facets, allowing for a hierarchical structure. They can also be associated with facet groups to further organize them within the taxonomy.Facets are usually described in plural form, while Products are described in singular form.",
+        "fr": "Les facettes peuvent être utilisées pour catégoriser et organiser les produits. Les facettes peuvent avoir des relations parent-enfant avec d'autres facettes, permettant une structure hiérarchique. Elles peuvent également être associées à des groupes de facettes pour les organiser davantage au sein de la taxonomie. Les facettes sont généralement décrites au pluriel, tandis que les produits sont décrits au singulier.",
+        "nl": "Facetten kunnen worden gebruikt om producten te categoriseren en te organiseren. Facetten kunnen ouder- en kindrelaties hebben met andere facetten, waardoor een hiërarchische structuur ontstaat. Ze kunnen ook worden geassocieerd met facetgroepen om ze verder te organiseren binnen de taxonomie. Facetten worden meestal in meervoud beschreven, terwijl producten in enkelvoud worden beschreven."
+    },
+    "facet.parentFacetGroups": {
+        "en": "Parent Groups",
+        "fr": "Groupes de parents",
+        "nl": "Bovenliggende groepen"
+    },
+    "facet.parentFacets": {
+        "en": "Parent Facets",
+        "fr": "Facettes parentes",
+        "nl": "Bovenliggende facetten"
+    },
+    "facetGroup": {
+        "en": "Facet Group",
+        "fr": "Groupe de facettes",
+        "nl": "Facetgroep"
+    },
+    "facetGroup.childFacets": {
+        "en": "Child Facets",
+        "fr": "Facettes enfants",
+        "nl": "Onderliggende facetten"
+    },
+    "facetGroup.description": {
+        "en": "Facet groups can be used to organize facets. e.g. a \"Color\" facet group can have child facets like \"Red\", \"Blue\", \"Green\", etc.",
+        "fr": "Les groupes de facettes peuvent être utilisés pour organiser les facettes. Par exemple, un groupe de facettes \"Couleur\" peut avoir des facettes enfants comme \"Rouge\", \"Bleu\", \"Vert\", etc.",
+        "nl": "Facetgroepen kunnen worden gebruikt om facetten te organiseren. Bijvoorbeeld een \"Kleur\" facetgroep kan onderliggende facetten hebben zoals \"Rood\", \"Blauw\", \"Groen\", etc."
+    },
+    "facetGroup.facets": {
+        "en": "Facets",
+        "fr": "Facettes",
+        "nl": "Facetten"
+    },
+    "facetGroup.parentFacets": {
+        "en": "Parent Facets",
+        "fr": "Facettes parentes",
+        "nl": "Bovenliggende facetten"
+    },
+    "facetGroup.relatedFacets": {
+        "en": "Related Facets",
+        "fr": "Facettes liées",
+        "nl": "Gerelateerde facetten"
+    },
+    "facetGroups": {
+        "en": "Facet Groups",
+        "fr": "Groupes de facettes",
+        "nl": "Facetgroepen"
+    },
+    "facets": {
+        "en": "Facets",
+        "fr": "Facettes",
+        "nl": "Facetten"
+    },
+    "location": {
+        "en": "Location",
+        "fr": "Emplacement",
+        "nl": "Locatie"
+    },
+    "isRoot": {
+        "en": "Top-level",
+        "fr": "Premier niveau",
+        "nl": "Top-level"
+    },
+    "parties": {
+        "en": "Parties",
+        "fr": "Parties",
+        "nl": "Partijen"
+    },
+    "party": {
+        "en": "Party",
+        "fr": "Partie",
+        "nl": "Partij"
+    },
+    "party.child": {
+        "en": "Child",
+        "fr": "Enfant",
+        "nl": "Onderliggende partij"
+    },
+    "party.children": {
+        "en": "Children",
+        "fr": "Enfants",
+        "nl": "Onderliggende partijen"
+    },
+    "party.description": {
+        "en": "Parties represent the different stakeholders.",
+        "fr": "Les parties représentent les différentes parties prenantes.",
+        "nl": "Partijen vertegenwoordigen de verschillende belanghebbenden."
+    },
+    "party.legalEntity": {
+        "en": "Legal entity",
+        "fr": "Entité légale",
+        "nl": "Rechtspersoon"
+    },
+    "party.name": {
+        "en": "Name",
+        "fr": "Nom",
+        "nl": "Naam"
+    },
+    "party.organization": {
+        "en": "Organization",
+        "fr": "Organisation",
+        "nl": "Organisatie"
+    },
+    "party.parent": {
+        "en": "Parent",
+        "fr": "Parent",
+        "nl": "Bovenliggende partij"
+    },
+    "party.parents": {
+        "en": "Parents",
+        "fr": "Parents",
+        "nl": "Bovenliggende partijen"
+    },
+    "party.partyType": {
+        "en": "Type",
+        "fr": "Type",
+        "nl": "Type"
+    },
+    "party.person": {
+        "en": "Person",
+        "fr": "Personne",
+        "nl": "Persoon"
+    },
+    "party.relations": {
+        "en": "Relations",
+        "fr": "Relations",
+        "nl": "Relaties"
+    },
+    "party.salutation": {
+        "en": "Salutation",
+        "fr": "Salutation",
+        "nl": "Aanhef"
+    },
+    "party.givenName": {
+        "en": "Given Name",
+        "fr": "Prénom",
+        "nl": "Voornaam"
+    },
+    "party.middleName": {
+        "en": "Middle Name",
+        "fr": "Deuxième prénom",
+        "nl": "Tussennaam"
+    },
+    "party.familyName": {
+        "en": "Family Name",
+        "fr": "Nom de famille",
+        "nl": "Achternaam"
+    },
+    "party.address.street": {
+        "en": "Street",
+        "fr": "Rue",
+        "nl": "Straat"
+    },
+    "party.address.houseNumber": {
+        "en": "No.",
+        "fr": "N°",
+        "nl": "Nr."
+    },
+    "party.address.postalCode": {
+        "en": "Postal code",
+        "fr": "Code postal",
+        "nl": "Postcode"
+    },
+    "party.address.city": {
+        "en": "City",
+        "fr": "Ville",
+        "nl": "Stad"
+    },
+    "party.contactData.value": {
+        "en": "Value",
+        "fr": "Valeur",
+        "nl": "Waarde"
+    },
+    "party.contactData.other": {
+        "en": "Other",
+        "fr": "Autre",
+        "nl": "Overige"
+    },
+    "party.contactData.phone": {
+        "en": "Phone",
+        "fr": "Téléphone",
+        "nl": "Telefoon"
+    },
+    "party.contactData.email": {
+        "en": "Email",
+        "fr": "E-mail",
+        "nl": "E-mail"
+    },
+    "party.contactData.website": {
+        "en": "Website",
+        "fr": "Site web",
+        "nl": "Website"
+    },
+    "partyRelationshipType": {
+        "en": "Relationship Type",
+        "fr": "Type de relation",
+        "nl": "Relatietype"
+    },
+    "partyRelationshipTypes": {
+        "en": "Relationship Types",
+        "fr": "Types de relations",
+        "nl": "Relatietypes"
+    },
+    "partyRelationshipType.description": {
+        "en": "Relationship types can be used to define the different types of relationships that can exist between parties.",
+        "fr": "Les types de relations peuvent être utilisés pour définir les différents types de relations qui peuvent exister entre les parties.",
+        "nl": "Relatietypes kunnen worden gebruikt om de verschillende soorten relaties te definiëren die kunnen bestaan tussen partijen."
+    },
+    "productInformationManagement": {
+        "en": "Product Information Management",
+        "fr": "Gestion de l'information produit",
+        "nl": "Product Informatie Management"
+    },
+    "product": {
+        "en": "Product",
+        "fr": "Produit",
+        "nl": "Product"
+    },
+    "product.allowAdditions": {
+        "en": "Allow additions",
+        "fr": "Autoriser les ajouts",
+        "nl": "Toevoegingen toestaan"
+    },
+    "product.assembly": {
+        "en": "Assembly",
+        "fr": "Assemblage",
+        "nl": "Samenstelling"
+    },
+    "product.addComponent": {
+        "en": "Add component",
+        "fr": "Ajouter un composant",
+        "nl": "Component toevoegen"
+    },
+    "product.addFacet": {
+        "en": "Add facet",
+        "fr": "Ajouter une facette",
+        "nl": "Facet toevoegen"
+    },
+    "product.allComponents": {
+        "en": "All components",
+        "fr": "Tous les composants",
+        "nl": "Alle componenten"
+    },
+    "product.allFacets": {
+        "en": "All facets",
+        "fr": "Toutes les facettes",
+        "nl": "Alle facetten"
+    },
+    "product.component": {
+        "en": "Component",
+        "fr": "Composant",
+        "nl": "Component"
+    },
+    "product.components": {
+        "en": "Components",
+        "fr": "Composants",
+        "nl": "Componenten"
+    },
+    "product.defaultQuantity": {
+        "en": "Default quantity",
+        "fr": "Quantité par défaut",
+        "nl": "Standaard hoeveelheid"
+    },
+    "product.facets": {
+        "en": "Facets",
+        "fr": "Facettes",
+        "nl": "Facetten"
+    },
+    "product.isAssembly": {
+        "en": "Is assembly",
+        "fr": "Est un assemblage",
+        "nl": "Is samenstelling"
+    },
+    "product.isComponent": {
+        "en": "Is component",
+        "fr": "Est un composant",
+        "nl": "Is component"
+    },
+    "product.isRoot": {
+        "en": "Is root",
+        "fr": "Est racine",
+        "nl": "Is root"
+    },
+    "product.suppliers": {
+        "en": "Suppliers",
+        "fr": "Fournisseurs",
+        "nl": "Leveranciers"
+    },
+    "product.treeDisabled": {
+        "en": "No components, tree is not available",
+        "fr": "Pas de composants, l'arbre n'est pas disponible",
+        "nl": "Geen componenten, boom is niet beschikbaar"
+    },
+    "products": {
+        "en": "Products",
+        "fr": "Produits",
+        "nl": "Producten"
+    },
+    "product.prices": {
+        "en": "Prices",
+        "fr": "Prix",
+        "nl": "Prijzen"
+    },
+    "product.description": {
+        "en": "Manage the products that are available.",
+        "fr": "Gérez les produits disponibles.",
+        "nl": "Beheer de producten die beschikbaar zijn."
+    },
+    "stakeholders": {
+        "en": "Stakeholders",
+        "fr": "Parties prenantes",
+        "nl": "Belanghebbenden"
+    },
+    "taxonomy": {
+        "en": "Taxonomy",
+        "fr": "Taxonomie",
+        "nl": "Taxonomie"
+    },
+    "unitType": {
+        "en": "Unit Type",
+        "fr": "Type d'unité",
+        "nl": "Eenheidstype"
+    },
+    "unitTypes": {
+        "en": "Unit Types",
+        "fr": "Types d'unités",
+        "nl": "Eenheidstypen"
+    },
+    "unitType.description": {
+        "en": "Manage the different unit types that can be used for prices from products.",
+        "fr": "Gérez les différents types d'unités qui peuvent être utilisés pour les prix des produits.",
+        "nl": "Beheer de verschillende eenheidstypen die kunnen worden gebruikt voor prijzen van producten."
+    }
 }
