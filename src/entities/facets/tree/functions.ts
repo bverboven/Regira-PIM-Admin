@@ -5,7 +5,9 @@ import { TreeItem, ChildItem } from "./TreeItem"
 export function toTreeItems(selfId: number, family: Array<FamilyItem>): Array<TreeItem> {
     const ids = [...new Set([selfId, ...family.flatMap(({ parentId, childId }) => [parentId, childId])])].filter((x) => x != null)
     return ids.map((id) => {
-        const type = family.find((x) => x.childId === id)?.childType || family.find((x) => x.parentId === id)?.parentType || ""
+        const asChild = family.find((x) => x.childId === id)
+        const asParent = family.find((x) => x.parentId === id)
+        const type = asChild?.childType || asParent?.parentType || ""
         return TreeItem.create({
             id,
             type,
@@ -23,8 +25,11 @@ export function toTree(selfId: number, family: Array<FamilyItem>): TreeList<Tree
         const node = tree.addValue(item, parentNode)
         if (item.children?.length) {
             item.children.forEach((child) => {
-                const childItem = ChildItem.create({ ...child, ...treeItems.find((x) => child.id === x.id)! })
-                add(childItem, node)
+                const found = treeItems.find((x) => child.id === x.id)
+                if (found) {
+                    const childItem = ChildItem.create({ ...child, ...found })
+                    add(childItem, node)
+                }
             })
         }
     }

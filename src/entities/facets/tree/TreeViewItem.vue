@@ -52,5 +52,5 @@ const nodeItem = computed(() => {
 })
 
 const isSelected = computed(() => props.selected.some((n: TreeNode<TreeItem>) => nodeItem.value?.id == n.value?.id && props.node.value.type == n.value?.type))
-const sortedChildren = computed(() => orderBy(props.node.children, (c) => (c.value?.item as any)?.title?.toUpperCase()))
+const sortedChildren = computed(() => orderBy(props.node.children, (c) => (c.value?.item as Facet | FacetGroup | undefined)?.title?.toUpperCase()))
 </script>

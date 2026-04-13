@@ -5,7 +5,7 @@ export class TreeItem {
     id: number
     type: string
     item?: Facet | FacetGroup
-    children: Array<ChildItem>
+    children: Array<ChildItem> = []
 
     isExpanded: boolean = false
 
