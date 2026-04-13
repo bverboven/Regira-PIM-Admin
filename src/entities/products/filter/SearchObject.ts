@@ -2,17 +2,18 @@ import { SearchObjectBase } from "@/regira_modules/vue/entities"
 
 export class EntitySearchObject extends SearchObjectBase {
     title?: string
-    unitTypeId?: number
 
-    componentId?: number | Array<number>
     assemblyId?: number | Array<number>
+    componentId?: number | Array<number>
     allComponentId?: number | Array<number>
 
     facetId?: number | Array<number>
+    allFacetId?: number | Array<number>
+    
+    unitTypeId?: number
     supplierId?: number | Array<number>
 
     isRoot?: boolean
-
     isComponent?: boolean
     isAssembly?: boolean
 

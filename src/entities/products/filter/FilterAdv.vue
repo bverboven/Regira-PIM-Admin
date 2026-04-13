@@ -2,6 +2,7 @@
 import { ref, watch, watchEffect } from "vue"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
 import { type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
+import { type Entity as Facet, InputSelector as FacetInputSelector, useEntityStore as useFacetStore } from "@/entities/facets"
 import SearchObject from "./SearchObject"
 import InputSelector from "../selecting/InputSelector.vue"
 import Product from "../data/Entity"
@@ -25,6 +26,7 @@ const unitType = ref<UnitType>()
 const component = ref<Product>()
 const assembly = ref<Product>()
 const allComponents = ref<Array<Product>>()
+const allFacets = ref<Array<Facet>>()
 
 const { filterIsActive, handleReset } = useFilter({
     searchObject,
@@ -38,6 +40,13 @@ watch(allComponents, () => {
     }
     emit("filter", searchObject.value)
 })
+watch(allFacets, () => {
+    searchObject.value = {
+        ...searchObject.value,
+        allFacetId: allFacets.value?.map((f) => f.id),
+    }
+    emit("filter", searchObject.value)
+})
 
 function handleAddComponent(product?: Product) {
     if (product && !allComponents.value?.some((c) => c.id === product.id)) {
@@ -47,11 +56,25 @@ function handleAddComponent(product?: Product) {
 function handleRemoveComponent(product: Product) {
     allComponents.value = allComponents.value?.filter((c) => c.id !== product.id)
 }
+function handleAddFacet(facet?: Facet) {
+    if (facet && !allFacets.value?.some((f) => f.id === facet.id)) {
+        allFacets.value = [...(allFacets.value ?? []), facet]
+    }
+}
+function handleRemoveFacet(facet: Facet) {
+    allFacets.value = allFacets.value?.filter((f) => f.id !== facet.id)
+}
 
 const { service } = useEntityStore()
+const { service: facetService } = useFacetStore()
 watchEffect(async () => {
     if (searchObject.value.allComponentId != null && allComponents.value == null) {
         allComponents.value = await service.list({ ids: searchObject.value.allComponentId as number[] })
+    }
+})
+watchEffect(async () => {
+    if (searchObject.value.allFacetId != null && allFacets.value == null) {
+        allFacets.value = await facetService.list({ ids: searchObject.value.allFacetId as number[] })
     }
 })
 </script>
@@ -158,6 +181,28 @@ watchEffect(async () => {
                     </div>
                 </div>
                 <FormLabel :label="$t('product.allComponents')" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto" v-for="f in allFacets" :key="f.id">
+                        <div class="input-group mt-1">
+                            <div class="form-control">{{ f.$title }}</div>
+                            <button class="btn btn-outline-secondary" @click="handleRemoveFacet(f)">
+                                <Icon name="close" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <FacetInputSelector
+                            @select="handleAddFacet"
+                            :canEdit="false"
+                            :placeholder="$t('product.addFacet')"
+                        />
+                    </div>
+                </div>
+                <FormLabel :label="$t('product.allFacets')" />
             </div>
         </div>
     </div>

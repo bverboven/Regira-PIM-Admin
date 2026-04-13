@@ -254,15 +254,15 @@
     "fr": "Gestion de l'information produit",
     "nl": "Product Informatie Management"
   },
-  "product.allowAdditions": {
-    "en": "Allow additions",
-    "fr": "Autoriser les ajouts",
-    "nl": "Toevoegingen toestaan"
-  },
   "product": {
     "en": "Product",
     "fr": "Produit",
     "nl": "Product"
+  },
+  "product.allowAdditions": {
+    "en": "Allow additions",
+    "fr": "Autoriser les ajouts",
+    "nl": "Toevoegingen toestaan"
   },
   "product.assembly": {
     "en": "Assembly",
@@ -274,10 +274,20 @@
     "fr": "Ajouter un composant",
     "nl": "Component toevoegen"
   },
+  "product.addFacet": {
+    "en": "Add facet",
+    "fr": "Ajouter une facette",
+    "nl": "Facet toevoegen"
+  },
   "product.allComponents": {
     "en": "All components",
     "fr": "Tous les composants",
     "nl": "Alle componenten"
+  },
+  "product.allFacets": {
+    "en": "All facets",
+    "fr": "Toutes les facettes",
+    "nl": "Alle facetten"
   },
   "product.component": {
     "en": "Component",

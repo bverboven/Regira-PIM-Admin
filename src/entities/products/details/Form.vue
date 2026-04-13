@@ -2,24 +2,10 @@
     <form @submit.prevent="handleSubmit" :modelValue="item">
         <div class="row form-buttons">
             <div class="col col-md-auto order-1">
-                <FormButtonsRow
-                    :item="item"
-                    :readonly="readonly"
-                    :feedback="feedback"
-                    :show-delete="item?.id > 0"
-                    @cancel="handleCancel"
-                    @remove="handleRemove"
-                    @restore="handleRestore"
-                />
+                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.id > 0" @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
             </div>
             <div class="col-auto order-2 order-md-3">
-                <RouterLink
-                    v-if="isPopup"
-                    :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
-                    class="btn btn-default py-1"
-                    target="_blank"
-                    :title="$t('popOut')"
-                >
+                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }" class="btn btn-default py-1" target="_blank" :title="$t('popOut')">
                     <Icon name="popOut" />
                 </RouterLink>
                 <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
@@ -54,14 +40,7 @@
                                     <FormLabel :label="$t('unitType')" />
                                 </div>
                                 <div class="col mb-2">
-                                    <input
-                                        type="number"
-                                        v-model.number="item.defaultQuantity"
-                                        :readonly="readonly"
-                                        class="form-control"
-                                        min="0"
-                                        step="any"
-                                    />
+                                    <input type="number" v-model.number="item.defaultQuantity" :readonly="readonly" class="form-control" min="0" step="any" />
                                     <FormLabel :label="$t('product.defaultQuantity')" />
                                 </div>
                             </div>
@@ -107,23 +86,25 @@
                     <SupplierInputSelectorOverview v-model="item" />
                 </FormSection>
             </template>
+
+            <template #tree>
+                <TreeOverview :item="item" />
+            </template>
         </TabContainer>
 
-        <Debug
-            :modelValue="{
-                screen: { size: screen.size },
-                item: {
-                    ...item,
-                    unitType: item.unitType?.title,
-                    prices: item.prices?.map(({ id, price, startDate }) => `${startDate}  €${price} #${id}`),
-                    components: item.components?.map(
-                        ({ id, component, quantity }) => `${component?.title} (${quantity} ${component?.unitType?.title}) #${id}`
-                    ),
-                    facets: item.facets?.map(({ id, facet }) => `${facet?.title} #${id}`),
-                    suppliers: item.suppliers?.map(({ id, supplier }) => `${supplier?.name} #${id}`),
-                },
-            }"
-        />
+        <Debug :modelValue="{
+            screen: { size: screen.size },
+            item: {
+                ...item,
+                unitType: item.unitType?.title,
+                prices: item.prices?.map(({ id, price, startDate }) => `${startDate}  €${price} #${id}`),
+                components: item.components?.map(
+                    ({ id, component, quantity }) => `${component?.title} (${quantity} ${component?.unitType?.title}) #${id}`
+                ),
+                facets: item.facets?.map(({ id, facet }) => `${facet?.title} #${id}`),
+                suppliers: item.suppliers?.map(({ id, supplier }) => `${supplier?.name} #${id}`),
+            },
+        }" />
     </form>
 </template>
 
@@ -140,11 +121,12 @@ import ComponentOverview from "@/entities/products/product-components/Overview.v
 import { InputSelectorInline } from "@/entities/products/product-facets/"
 import { InputSelectorOverview as SupplierInputSelectorOverview } from "@/entities/products/product-suppliers/"
 import PricesOverview from "@/entities/products/product-prices/Overview.vue"
+import TreeOverview from "../tree/Overview.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 
-interface Emits extends /* @vue-ignore */ FormEmits<Entity> {}
+interface Emits extends /* @vue-ignore */ FormEmits<Entity> { }
 const emit = defineEmits<Emits>()
 
 const props = withDefaults(
@@ -172,27 +154,11 @@ const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore 
 const { translate } = useLang()
 const tabs = computed(() =>
     [
-        Tab.create("form", {
-            icon: "form",
-            title: translate("form"),
-            isDefault: true,
-        }),
-        !screen.isLarge
-            ? Tab.create("components", {
-                  icon: "component",
-                  title: translate("product.components"),
-              })
-            : null,
-        Tab.create("assemblies", {
-            icon: "assembly",
-            title: translate("assemblies"),
-        }),
-        !screen.isLarge
-            ? Tab.create("suppliers", {
-                  icon: "supplier",
-                  title: translate("product.suppliers"),
-              })
-            : null,
+        Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
+        !screen.isLarge ? Tab.create("components", { icon: "component", title: translate("product.components"), }) : null,
+        Tab.create("assemblies", { icon: "assembly", title: translate("assemblies"), }),
+        !screen.isLarge ? Tab.create("suppliers", { icon: "supplier", title: translate("product.suppliers"), }) : null,
+        Tab.create("tree", { icon: "tree", title: translate("tree") }),
     ].filter((tab) => tab)
 )
 </script>
