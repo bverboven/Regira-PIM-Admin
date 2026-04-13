@@ -17,11 +17,6 @@
                             <Icon name="supplier" class="me-1" />
                             <span class="d-none d-lg-inline d-xl-none">show suppliers</span>
                         </label>
-                        <label class="btn btn-info mx-1" :class="{ 'opacity-50': includeEditors }" title="show editors">
-                            <input type="checkbox" v-model="includeEditors" :true-value="true" class="btn-check" />
-                            <Icon name="editor" class="me-1" />
-                            <span class="d-none d-lg-inline d-xl-none">show editors</span>
-                        </label>
                         <IconButton v-if="!areAllExanded" icon="expand" class="btn-info mx-1" @click="expandAll" />
                         <IconButton v-else icon="collapse" class="btn-info mx-1" @click="collapseAll" />
                     </div>
@@ -40,14 +35,27 @@
                             </label>
                         </div>
                     </div>
-                    <TreeView :nodes="tree.roots" :selected="selectedNodes!" :hidden-ancestors="hiddenAncestors" :facets="productFacets" :suppliers="productSuppliers" :editors="productEditors"
-                        @add-child="linkItemAsChild" @move="handleMove" @expand-node="expandNode" @collapse-node="collapseNode" @toggle-node="toggleNode" class="tree" />
+                    <TreeView
+                        :nodes="tree.roots"
+                        :selected="selectedNodes!"
+                        :hidden-ancestors="hiddenAncestors"
+                        :facets="productFacets"
+                        :suppliers="productSuppliers"
+                        @add-child="linkItemAsChild"
+                        @move="handleMove"
+                        @expand-node="expandNode"
+                        @collapse-node="collapseNode"
+                        @toggle-node="toggleNode"
+                        class="tree"
+                    />
                 </template>
             </template>
         </LoadingContainer>
-        <Debug :modelValue="{
-            treeRoots: tree?.getRoots().map(r => r.value.item?.title)
-        }" />
+        <Debug
+            :modelValue="{
+                treeRoots: tree?.getRoots().map((r) => r.value.item?.title),
+            }"
+        />
     </FormSection>
 </template>
 
@@ -161,7 +169,10 @@ function collapseAll() {
 }
 function expandDefault() {
     tree.value?.forEach(
-        (r) => (r.value.isExpanded = selectedNodes.value!.some((n) => n.value?.id == r.value?.id) || selectedNodes.value!.some((n) => n.getAncestors().some((o) => o.value?.id == r.value?.id)))
+        (r) =>
+            (r.value.isExpanded =
+                selectedNodes.value!.some((n) => n.value?.id == r.value?.id) ||
+                selectedNodes.value!.some((n) => n.getAncestors().some((o) => o.value?.id == r.value?.id)))
     )
 }
 
@@ -192,7 +203,9 @@ watchEffect(load)
 watchEffect(() => {
     if (family.value) {
         if (reverseTree.value == null) {
-            reverseTree.value = family.value.length > 1 && family.value!.filter((x) => x.parentId == props.item.id).length < family.value!.filter((x) => x.childId == props.item.id).length
+            reverseTree.value =
+                family.value.length > 1 &&
+                family.value!.filter((x) => x.parentId == props.item.id).length < family.value!.filter((x) => x.childId == props.item.id).length
         }
 
         skinnyTree.value = toTree(props.item, family.value, reverseTree.value)
@@ -203,7 +216,7 @@ watchEffect(async () => {
         isLoading.value = true
 
         const familyIds = skinnyTree.value.getValues().map((x) => x.id)
-        // also fetch (invisible) ancestors from other branches to link related data (suppliers, editors, ...)
+        // also fetch (invisible) ancestors from other branches to link related data (suppliers, facets, ...)
         const ancestors = [] as Array<FamilyItem> // await entityService.getAncestors(familyIds)
 
         const ids = [...new Set([...familyIds, ...ancestors.map((x) => x.parentId)])]

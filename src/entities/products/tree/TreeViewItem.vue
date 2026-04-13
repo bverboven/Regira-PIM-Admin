@@ -65,7 +65,6 @@ const props = defineProps<{
     isDragging?: boolean
     facets?: Record<number, Array<Facet>>
     suppliers?: Record<number, Array<Party>>
-    editors?: Record<number, Array<Party>>
     engine: DragDropEngine
 }>()
 
