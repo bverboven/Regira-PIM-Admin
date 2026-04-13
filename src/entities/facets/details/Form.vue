@@ -75,6 +75,10 @@
             <template #products>
                 <ProductsOverview :facet="item" />
             </template>
+
+            <template #tree>
+                <TreeOverview :item="item" />
+            </template>
         </TabContainer>
 
         <Debug
@@ -96,6 +100,7 @@ import { Entity as Product } from "@/entities/products"
 import { Overview as RelatedFacetsOverview } from "../facet-related-facets"
 import { Overview as FacetGroupsOverview } from "../facet-group-links"
 import { Overview as ProductsOverview } from "../facet-products"
+import TreeOverview from "../tree/Overview.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
@@ -133,6 +138,10 @@ const tabs = computed(() =>
         Tab.create("products", {
             icon: Product.name,
             title: translate("products"),
+        }),
+        Tab.create("tree", {
+            icon: "tree",
+            title: translate("tree"),
         }),
     ].filter((tab) => tab)
 )
