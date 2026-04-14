@@ -1,7 +1,8 @@
 <template>
     <button type="button" class="btn btn-default" @click="open">
         <slot>
-            <Icon :name="Entity.name" />
+            <PartyIcon v-if="modelRef" :item="modelRef" />
+            <Icon v-else :name="Entity.name" />
         </slot>
         <Teleport to="#modals">
             <MyModal
@@ -33,6 +34,7 @@ import { FormStates, useModal, type FormModalEmits, type SaveResult } from "@/re
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
+import PartyIcon from "./PartyIcon.vue"
 import Form from "./Form.vue"
 
 interface Emits extends /* @vue-ignore */ FormModalEmits<Entity> {}

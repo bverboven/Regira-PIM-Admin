@@ -39,11 +39,6 @@
                 </template>
             </template>
         </LoadingContainer>
-        <Debug
-            :modelValue="{
-                treeRoots: tree?.getRoots().map((r) => (r.value.item as any)?.title),
-            }"
-        />
     </FormSection>
 </template>
 
@@ -53,13 +48,12 @@ import { distinctBy } from "@/regira_modules/utilities/array-utility"
 import { LoadingContainer } from "@/regira_modules/vue/ui"
 import { get } from "@/regira_modules/vue/ioc"
 import { TreeList, TreeNode } from "@/regira_modules/treelist"
-import { Entity, type EntityService, useEntityStore } from "../../facets"
-import { Entity as FacetGroupEntity, useEntityStore as useFacetGroupStore } from "../../facet-groups"
+import { Entity, type EntityService, useEntityStore } from "../../parties"
+import { PartyRelationship } from "../data/PartyRelationship"
 import { toTree } from "./functions"
 import { FamilyItem } from "."
-import TreeItem from "./TreeItem"
+import TreeItem, { ChildItem } from "./TreeItem"
 import TreeView from "./TreeView.vue"
-import { FacetChild, FacetParent } from "../facet-related-facets"
 
 const props = defineProps<{
     item: Entity
@@ -74,7 +68,7 @@ const skinnyTree = ref<TreeList<TreeItem>>()
 const tree = ref<TreeList<TreeItem>>()
 const entityService = get<EntityService>(Entity.name)!
 const family = ref<Array<FamilyItem>>()
-const selectedNodes = computed(() => tree.value?.filter((n) => n.value?.id == props.item?.id && n.value.type === Entity.name))
+const selectedNodes = computed(() => tree.value?.filter((n) => n.value?.id == props.item?.id))
 
 const areAllExpanded = computed(() => tree.value?.getOffspring(tree.value.roots).every((n) => n.value.isExpanded))
 function expandAll() {
@@ -94,21 +88,24 @@ function expandDefault() {
 
 async function handleMove({ child, parent }: { child: TreeNode<TreeItem>; parent: TreeNode<TreeItem> }) {
     if (child.value?.item && parent.value?.item) {
-        // if (reverseTree.value) {
-        //     const temp = child
-        //     child = parent
-        //     parent = temp
-        // }
-
         isLoading.value = true
 
+        console.debug("handleMove", { child, parent })
+        const childValue = child.value as ChildItem
         const details = (await service.details(child.value.id))!
+
         if (child.parent != null) {
-            // remove previous parent
-            details.parentEntities = details.parentEntities?.filter((x) => x.parentId != child.parent?.value.id)
+            details.parentRelationships = details.parentRelationships?.filter((x) => x.parentId != child.parent?.value.id)
         }
-        if (!details.parentEntities?.some((p) => p.parentId == props.item.id)) {
-            details.parentEntities?.push(FacetParent.create({ childId: child.value.id, parentId: parent.value.id }))
+        if (!details.parentRelationships?.some((p) => p.parentId == parent.value.id)) {
+            details.parentRelationships = details.parentRelationships ?? []
+            details.parentRelationships.push(
+                PartyRelationship.create({
+                    parentId: parent.value.id,
+                    childId: child.value.id,
+                    relationshipTypeId: childValue.relationshipTypeId,
+                })
+            )
         }
         const { saved } = await service.save(details)
 
@@ -122,24 +119,20 @@ async function handleMove({ child, parent }: { child: TreeNode<TreeItem>; parent
         expandNode(parent)
     }
 }
+
 async function linkItemAsChild(child?: Entity, parent?: Entity) {
     if (!child?.id) {
         return
     }
     parent ??= props.item
 
-    // if (reverseTree.value) {
-    //     const temp = child
-    //     child = parent
-    //     parent = temp
-    // }
-
     isLoading.value = true
     const details = (await service.details(child.id))!
     isLoading.value = false
-    if (!details.parentEntities?.some((p) => p.parentId == parent!.id)) {
+    if (!details.parentRelationships?.some((p) => p.parentId == parent!.id)) {
         isLoading.value = true
-        details.parentEntities!.push(FacetParent.create({ parent: parent, parentId: parent.id }))
+        details.parentRelationships = details.parentRelationships ?? []
+        details.parentRelationships.push(PartyRelationship.create({ parentId: parent.id, childId: child.id }))
         await service.save(details)
         isLoading.value = false
     }
@@ -183,31 +176,16 @@ watchEffect(() => {
 })
 watchEffect(async () => {
     if (skinnyTree.value) {
-        const facetIds = skinnyTree.value
-            .getValues()
-            .filter((x) => x.type === Entity.name)
-            .map((x) => x.id)
-        const facetGroupIds = skinnyTree.value
-            .getValues()
-            .filter((x) => x.type === FacetGroupEntity.name)
-            .map((x) => x.id)
+        const partyIds = skinnyTree.value.getValues().map((x) => x.id)
 
-        if (facetIds.length > 0 || facetGroupIds.length > 0) {
+        if (partyIds.length > 0) {
             isLoading.value = true
-            const { service: facetService } = useEntityStore()
-            const { service: facetGroupService } = useFacetGroupStore()
+            const { service: partyService } = useEntityStore()
 
-            const [facets, facetGroups] = await Promise.all([
-                facetIds.length > 0 ? facetService.list({ ids: facetIds, pageSize: 0 }) : Promise.resolve([]),
-                facetGroupIds.length > 0 ? facetGroupService.list({ ids: facetGroupIds, pageSize: 0 }) : Promise.resolve([]),
-            ])
+            const parties = await partyService.list({ ids: partyIds, pageSize: 0 })
 
             skinnyTree.value.forEach((node) => {
-                if (node.value.type === Entity.name) {
-                    node.value.item = facets.find((x) => x.id == node.value.id)
-                } else {
-                    node.value.item = facetGroups.find((x) => x.id == node.value.id)
-                }
+                node.value.item = parties.find((x) => x.id == node.value.id)
             })
             tree.value = skinnyTree.value
             expandDefault()

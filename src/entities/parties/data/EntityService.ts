@@ -1,9 +1,10 @@
-import type { AxiosInstance } from "axios"
-import { EntityServiceBase, type IConfig } from "@/regira_modules/vue/entities"
+import type { AxiosInstance, AxiosResponse } from "axios"
+import { EntityServiceBase, type IConfig, type ListResult } from "@/regira_modules/vue/entities"
 import Entity from "./Entity"
 import { ContactDetails } from "../party-contact-data/Entity"
 import PartyAddress from "../party-addresses/Entity"
 import { PartyRelationship } from "./PartyRelationship"
+import { FamilyItem } from "../tree"
 
 export class EntityService extends EntityServiceBase<Entity> {
     constructor(axios: AxiosInstance, config: IConfig) {
@@ -27,6 +28,13 @@ export class EntityService extends EntityServiceBase<Entity> {
             return item
         }
         return Object.assign(new Entity(), item)
+    }
+
+    async getFamily(ids: Array<number> | number): Promise<Array<FamilyItem>> {
+        const queryString = (Array.isArray(ids) ? ids : [ids]).map((id) => `ids=${id}`).join("&")
+        const fetchUrl = `${this.config.api}/family?${queryString}`
+        const { data: result } = await this.axios.get<ListResult<FamilyItem>>(fetchUrl).then((response: AxiosResponse<ListResult<FamilyItem>>) => response)
+        return (result.items || []).map((item) => Object.assign(new FamilyItem(), item))
     }
 }
 

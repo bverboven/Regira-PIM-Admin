@@ -18,7 +18,7 @@
             <div :class="{ 'bg-light': !item._deleted && i % 2 == 0, 'is-deleted': item._deleted }">
                 <div class="row align-items-start">
                     <div class="col mb-2">
-                        <PartyFormModalButton :modelValue="item.parent"><PartyIcon :item="item.parent!" /></PartyFormModalButton>
+                        <PartyFormModalButton :modelValue="item.parent" />
                         {{ getParty(item.parent)?.title ?? "" }}
                         <small class="d-md-none text-muted">({{ getRelationshipType(item.relationshipType)?.title }})</small>
                         <div v-show="getParty(item.parent)?.$phone || getParty(item.parent)?.$email">
@@ -64,7 +64,6 @@ import usePartyStore from "../data/store"
 import { PartyRelationship } from "../data/PartyRelationship"
 import PartyInputSelector from "../selecting/InputSelector.vue"
 import PartyFormModalButton from "../details/FormModalButton.vue"
-import PartyIcon from "../details/PartyIcon.vue"
 import RelationshipTypeDropDown from "@/entities/party-relationship-types/selecting/SelectorDropdown.vue"
 
 const props = defineProps<{

@@ -132,7 +132,7 @@ async function linkItemAsChild(child?: Entity, parent?: Entity) {
     if (!child?.id) {
         return
     }
-    parent ||= props.item
+    parent ??= props.item
 
     // if (reverseTree.value) {
     //     const temp = child

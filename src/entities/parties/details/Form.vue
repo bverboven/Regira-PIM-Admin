@@ -133,6 +133,10 @@
                 <RelationshipsOverview v-model="item" />
             </template>
 
+            <template #tree>
+                <TreeOverview :item="item" />
+            </template>
+
             <template #products>
                 <ProductsOverview :party="item" />
             </template>
@@ -158,6 +162,7 @@ import { Overview as AddressesOverview } from "../party-addresses"
 import { Overview as ContactDataOverview } from "../party-contact-data"
 import { Overview as ProductsOverview } from "../party-products"
 import { Overview as RelationshipsOverview } from "../party-relations"
+import { Overview as TreeOverview } from "../tree"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import PartyTypes from "../data/PartyTypes"
@@ -206,19 +211,10 @@ watch(
 const { translate } = useLang()
 const tabs = computed(() =>
     [
-        Tab.create("form", {
-            icon: "form",
-            title: translate("form"),
-            isDefault: true,
-        }),
-        Tab.create("relations", {
-            icon: Entity.name,
-            title: translate("party.relations"),
-        }),
-        Tab.create("products", {
-            icon: Product.name,
-            title: translate("products"),
-        }),
+        Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
+        Tab.create("relations", { icon: Entity.name, title: translate("party.relations") }),
+        Tab.create("tree", { icon: "tree", title: translate("tree") }),
+        Tab.create("products", { icon: Product.name, title: translate("products") }),
     ].filter((tab) => tab)
 )
 </script>

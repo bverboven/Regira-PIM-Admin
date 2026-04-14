@@ -25,7 +25,7 @@
                             </span>
                         </div>
                         <div class="col mb-2">
-                            <PartyFormModalButton :modelValue="item.child"><PartyIcon :item="item.child!" /></PartyFormModalButton>
+                            <PartyFormModalButton :modelValue="item.child" />
                             {{ getParty(item.child)?.title ?? "" }}
                             <small class="d-md-none text-muted">({{ getRelationshipType(item.relationshipType)?.title }})</small>
 
@@ -74,7 +74,6 @@ import usePartyStore from "../data/store"
 import { PartyRelationship } from "../data/PartyRelationship"
 import PartyInputSelector from "../selecting/InputSelector.vue"
 import PartyFormModalButton from "../details/FormModalButton.vue"
-import PartyIcon from "../details/PartyIcon.vue"
 import RelationshipTypeDropDown from "@/entities/party-relationship-types/selecting/SelectorDropdown.vue"
 
 const props = defineProps<{
