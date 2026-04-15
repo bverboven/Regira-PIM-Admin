@@ -6,10 +6,12 @@ export class EntitySearchObject extends SearchObjectBase {
     assemblyId?: number | Array<number>
     componentId?: number | Array<number>
     allComponentId?: number | Array<number>
+    excludeComponentId?: number | Array<number>
 
     facetId?: number | Array<number>
     allFacetId?: number | Array<number>
-    
+    excludeFacetId?: number | Array<number>
+
     unitTypeId?: number
     supplierId?: number | Array<number>
 

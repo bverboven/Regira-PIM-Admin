@@ -274,6 +274,16 @@
         "fr": "Ajouter un composant",
         "nl": "Component toevoegen"
     },
+    "product.addExcludedComponent": {
+        "en": "Add excluded component",
+        "fr": "Ajouter un composant exclu",
+        "nl": "Uitgesloten component toevoegen"
+    },
+    "product.addExcludedFacet": {
+        "en": "Add excluded facet",
+        "fr": "Ajouter une facette exclue",
+        "nl": "Uitgesloten facet toevoegen"
+    },
     "product.addFacet": {
         "en": "Add facet",
         "fr": "Ajouter une facette",
@@ -303,6 +313,16 @@
         "en": "Default quantity",
         "fr": "Quantité par défaut",
         "nl": "Standaard hoeveelheid"
+    },
+    "product.excludedComponents": {
+        "en": "Excluded components",
+        "fr": "Composants exclus",
+        "nl": "Uitgesloten componenten"
+    },
+    "product.excludedFacets": {
+        "en": "Excluded facets",
+        "fr": "Facettes exclues",
+        "nl": "Uitgesloten facetten"
     },
     "product.facets": {
         "en": "Facets",

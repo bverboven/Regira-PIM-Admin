@@ -26,7 +26,9 @@ const unitType = ref<UnitType>()
 const component = ref<Product>()
 const assembly = ref<Product>()
 const allComponents = ref<Array<Product>>()
+const excludeComponents = ref<Array<Product>>()
 const allFacets = ref<Array<Facet>>()
+const excludeFacets = ref<Array<Facet>>()
 
 const { filterIsActive, handleReset } = useFilter({
     searchObject,
@@ -40,10 +42,24 @@ watch(allComponents, () => {
     }
     emit("filter", searchObject.value)
 })
+watch(excludeComponents, () => {
+    searchObject.value = {
+        ...searchObject.value,
+        excludeComponentId: excludeComponents.value?.map((c) => c.id),
+    }
+    emit("filter", searchObject.value)
+})
 watch(allFacets, () => {
     searchObject.value = {
         ...searchObject.value,
         allFacetId: allFacets.value?.map((f) => f.id),
+    }
+    emit("filter", searchObject.value)
+})
+watch(excludeFacets, () => {
+    searchObject.value = {
+        ...searchObject.value,
+        excludeFacetId: excludeFacets.value?.map((f) => f.id),
     }
     emit("filter", searchObject.value)
 })
@@ -56,6 +72,14 @@ function handleAddComponent(product?: Product) {
 function handleRemoveComponent(product: Product) {
     allComponents.value = allComponents.value?.filter((c) => c.id !== product.id)
 }
+function handleAddExcludedComponent(product?: Product) {
+    if (product && !excludeComponents.value?.some((c) => c.id === product.id)) {
+        excludeComponents.value = [...(excludeComponents.value ?? []), product]
+    }
+}
+function handleRemoveExcludedComponent(product: Product) {
+    excludeComponents.value = excludeComponents.value?.filter((c) => c.id !== product.id)
+}
 function handleAddFacet(facet?: Facet) {
     if (facet && !allFacets.value?.some((f) => f.id === facet.id)) {
         allFacets.value = [...(allFacets.value ?? []), facet]
@@ -63,6 +87,14 @@ function handleAddFacet(facet?: Facet) {
 }
 function handleRemoveFacet(facet: Facet) {
     allFacets.value = allFacets.value?.filter((f) => f.id !== facet.id)
+}
+function handleAddExcludedFacet(facet?: Facet) {
+    if (facet && !excludeFacets.value?.some((f) => f.id === facet.id)) {
+        excludeFacets.value = [...(excludeFacets.value ?? []), facet]
+    }
+}
+function handleRemoveExcludedFacet(facet: Facet) {
+    excludeFacets.value = excludeFacets.value?.filter((f) => f.id !== facet.id)
 }
 
 const { service } = useEntityStore()
@@ -73,8 +105,18 @@ watchEffect(async () => {
     }
 })
 watchEffect(async () => {
+    if (searchObject.value.excludeComponentId != null && excludeComponents.value == null) {
+        excludeComponents.value = await service.list({ ids: searchObject.value.excludeComponentId as number[] })
+    }
+})
+watchEffect(async () => {
     if (searchObject.value.allFacetId != null && allFacets.value == null) {
         allFacets.value = await facetService.list({ ids: searchObject.value.allFacetId as number[] })
+    }
+})
+watchEffect(async () => {
+    if (searchObject.value.excludeFacetId != null && excludeFacets.value == null) {
+        excludeFacets.value = await facetService.list({ ids: searchObject.value.excludeFacetId as number[] })
     }
 })
 </script>
@@ -113,6 +155,7 @@ watchEffect(async () => {
             </div>
         </div>
         <div class="row">
+            <!-- isRoot, isAssembly, isComponent -->
             <div class="col mb-2">
                 <div>
                     <div class="form-check form-check-inline">
@@ -161,10 +204,14 @@ watchEffect(async () => {
             </div>
         </div>
         <div class="row">
+            <!-- All Components -->
             <div class="col">
                 <div class="row">
-                    <div class="col-auto" v-for="c in allComponents" :key="c.id">
+                    <div class="col-auto mb-2" v-for="c in allComponents" :key="c.id">
                         <div class="input-group mt-1">
+                            <span class="input-group-text">
+                                <Icon name="check" />
+                            </span>
                             <div class="form-control">{{ c.$title }}</div>
                             <button class="btn btn-outline-secondary" @click="handleRemoveComponent(c)">
                                 <Icon name="close" />
@@ -182,12 +229,41 @@ watchEffect(async () => {
                 </div>
                 <FormLabel :label="$t('product.allComponents')" />
             </div>
-        </div>
-        <div class="row">
+            <!-- Exclude Components -->
             <div class="col">
                 <div class="row">
-                    <div class="col-auto" v-for="f in allFacets" :key="f.id">
+                    <div class="col-auto mb-2" v-for="c in excludeComponents" :key="c.id">
                         <div class="input-group mt-1">
+                            <span class="input-group-text">
+                                <Icon name="ban" />
+                            </span>
+                            <div class="form-control">{{ c.$title }}</div>
+                            <button class="btn btn-outline-secondary" @click="handleRemoveExcludedComponent(c)">
+                                <Icon name="close" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <InputSelector
+                            @select="handleAddExcludedComponent"
+                            :canEdit="false"
+                            :filter-defaults="{ isComponent: true }"
+                            :placeholder="$t('product.addExcludedComponent')"
+                        />
+                    </div>
+                </div>
+                <FormLabel :label="$t('product.excludedComponents')" />
+            </div>
+        </div>
+        <div class="row">
+            <!-- All Facets -->
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto mb-2" v-for="f in allFacets" :key="f.id">
+                        <div class="input-group mt-1">
+                            <span class="input-group-text">
+                                <Icon name="check" />
+                            </span>
                             <div class="form-control">{{ f.$title }}</div>
                             <button class="btn btn-outline-secondary" @click="handleRemoveFacet(f)">
                                 <Icon name="close" />
@@ -195,14 +271,30 @@ watchEffect(async () => {
                         </div>
                     </div>
                     <div class="col-auto">
-                        <FacetInputSelector
-                            @select="handleAddFacet"
-                            :canEdit="false"
-                            :placeholder="$t('product.addFacet')"
-                        />
+                        <FacetInputSelector @select="handleAddFacet" :canEdit="false" :placeholder="$t('product.addFacet')" />
                     </div>
                 </div>
                 <FormLabel :label="$t('product.allFacets')" />
+            </div>
+            <!-- Exclude Facets -->
+            <div class="col">
+                <div class="row">
+                    <div class="col-auto mb-2" v-for="f in excludeFacets" :key="f.id">
+                        <div class="input-group mt-1">
+                            <span class="input-group-text">
+                                <Icon name="ban" />
+                            </span>
+                            <div class="form-control">{{ f.$title }}</div>
+                            <button class="btn btn-outline-secondary" @click="handleRemoveExcludedFacet(f)">
+                                <Icon name="close" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <FacetInputSelector @select="handleAddExcludedFacet" :canEdit="false" :placeholder="$t('product.addExcludedFacet')" />
+                    </div>
+                </div>
+                <FormLabel :label="$t('product.excludedFacets')" />
             </div>
         </div>
     </div>
