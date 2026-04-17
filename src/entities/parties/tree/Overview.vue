@@ -81,7 +81,7 @@ function expandDefault() {
     tree.value?.forEach(
         (r) =>
             (r.value.isExpanded =
-                selectedNodes.value!.some((n) => n.value?.id == r.value?.id) ||
+                (!selectedNodes.value!.some((n) => n.value.isExpanded) && selectedNodes.value!.some((n) => n.value?.id == r.value?.id)) ||
                 selectedNodes.value!.some((n) => n.getAncestors().some((o) => o.value?.id == r.value?.id)))
     )
 }

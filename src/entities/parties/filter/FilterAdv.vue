@@ -52,8 +52,6 @@ const { filterIsActive, handleReset } = useFilter({
                     <input v-model.lazy.trim="searchObject.q" class="form-control" :placeholder="$t('keywords')" />
                 </div>
             </div>
-        </div>
-        <div class="row">
             <!-- name -->
             <div class="col mb-2">
                 <div class="input-group">
@@ -62,6 +60,26 @@ const { filterIsActive, handleReset } = useFilter({
                     </div>
                     <input v-model.lazy.trim="searchObject.name" class="form-control" :placeholder="$t('name')" />
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- isRoot, isParent, isChild -->
+            <div class="col mb-2">
+                <div>
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isRoot" id="isRoot" class="form-check-input" />
+                        <label class="form-check-label" for="isRoot">{{ $t("isRoot") }}</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isParent" id="isParent" class="form-check-input" />
+                        <label class="form-check-label" for="isParent">{{ $t("party.isParent") }}</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <NullableCheckBox v-model="searchObject.isChild" id="isChild" class="form-check-input" />
+                        <label class="form-check-label" for="isChild">{{ $t("party.isChild") }}</label>
+                    </div>
+                </div>
+                <FormLabel :label="$t('party.relations')" />
             </div>
             <!-- partyType -->
             <div class="col mb-2">
@@ -77,30 +95,22 @@ const { filterIsActive, handleReset } = useFilter({
         <div class="row">
             <!-- Ancestor -->
             <div class="col mb-2">
-                <InputSelector v-model="ancestor" v-model:idValue="searchObject.ancestorId as number" :filterDefaults="{ isAncestor: true }">
-                    <template #prepend>
-                        <div class="input-group-text">
-                            <NullableCheckBox v-model="searchObject.isParent" id="isAncestor" class="form-check-input" />
-                        </div>
-                        <div class="input-group-text">
-                            <label class="form-check-label" for="isRoot">
-                                <NullableCheckBox v-model="searchObject.isRoot" id="isRoot" class="form-check-input" />
-                                {{ $t("isRoot") }}
-                            </label>
-                        </div>
-                    </template>
-                </InputSelector>
+                <InputSelector
+                    v-model="ancestor"
+                    v-model:idValue="searchObject.ancestorId as number"
+                    :canEdit="false"
+                    :filterDefaults="{ isAncestor: true }"
+                />
                 <FormLabel :label="$t('party.parent')" />
             </div>
             <!-- Offspring -->
             <div class="col mb-2">
-                <InputSelector v-model="offspring" v-model:idValue="searchObject.offspringId as number" :filterDefaults="{ isOffspring: true }">
-                    <template #prepend>
-                        <div class="input-group-text">
-                            <NullableCheckBox v-model="searchObject.isChild" id="isOffspring" class="form-check-input" />
-                        </div>
-                    </template>
-                </InputSelector>
+                <InputSelector
+                    v-model="offspring"
+                    v-model:idValue="searchObject.offspringId as number"
+                    :canEdit="false"
+                    :filterDefaults="{ isOffspring: true }"
+                />
                 <FormLabel :label="$t('party.child')" />
             </div>
         </div>

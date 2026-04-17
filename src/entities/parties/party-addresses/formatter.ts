@@ -3,9 +3,9 @@ import type Entity from "./Entity"
 export function format(item: Entity): string {
     let s = ""
     if (item.street) {
-        s += `${item.street || ""} ${item.number || ""}`.trimEnd()
-        if (item.box) {
-            s += ` box ${item.box}`.trimEnd()
+        s += `${item.street || ""} ${item.houseNumber || ""}`.trimEnd()
+        if (item.unitNumber) {
+            s += ` box ${item.unitNumber}`.trimEnd()
         }
     }
     if (item.postalCode || item.city) {

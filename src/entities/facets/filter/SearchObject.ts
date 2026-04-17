@@ -10,8 +10,8 @@ export class EntitySearchObject extends SearchObjectBase {
 
     parentFacetId?: number
     childFacetId?: number
-    parentFacetGroupId?: number
-    childFacetGroupId?: number
+    parentGroupId?: number
+    childGroupId?: number
 
     minCreated?: Date
     maxCreated?: Date

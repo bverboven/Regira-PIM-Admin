@@ -2,6 +2,7 @@
     <div class="input-selector input-group text-nowrap">
         <slot name="prepend">
             <FormModalButton
+                v-if="canEdit"
                 v-model="item"
                 :item-defaults="itemDefaults"
                 :readonly="readonly"
@@ -54,15 +55,21 @@ const emit = defineEmits<{
     (e: "update:idValue", args?: number | string): void
     (e: "select", args?: Entity): void
 }>()
-const props = defineProps<{
-    modelValue?: Entity
-    idValue?: number | string
-    readonly?: boolean
-    itemDefaults?: Ref<Record<string, any>> | Record<string, any>
-    filterDefaults?: Record<string, any>
-    closeOnSave?: boolean
-    placeholder?: string
-}>()
+const props = withDefaults(
+    defineProps<{
+        modelValue?: Entity
+        idValue?: number | string
+        readonly?: boolean
+        canEdit?: boolean
+        itemDefaults?: Ref<Record<string, any>> | Record<string, any>
+        filterDefaults?: Record<string, any>
+        closeOnSave?: boolean
+        placeholder?: string
+    }>(),
+    {
+        canEdit: true,
+    }
+)
 
 const { fromPool, list } = useEntityStore()
 const item = computed<Entity | undefined>({

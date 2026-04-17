@@ -17,6 +17,7 @@
                                 :is="FilterAdv"
                                 v-model="searchObject"
                                 :result-count="itemsCount"
+                                :is-loading="isLoading"
                                 @filter="updateOverviewRoute(true)"
                                 @change="updateOverviewRoute(true)"
                                 @close="handleClose"
@@ -84,7 +85,14 @@
         <Debug
             :modelValue="{
                 pagingInfo,
-                items,
+                items: items?.map((item) => ({
+                    ...item,
+                    unitType: `${item.unitType?.title}`,
+                    components: item.components?.map(
+                        ({ id, component, quantity }) => `${component?.title} #${id} (${quantity} ${component?.unitType?.code})`
+                    ),
+                    facets: item.facets?.map(({ id, facet }) => `${facet?.title} #${id}`),
+                })),
             }"
         />
     </section>

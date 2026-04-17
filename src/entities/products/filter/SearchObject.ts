@@ -8,6 +8,9 @@ export class EntitySearchObject extends SearchObjectBase {
     allComponentId?: number | Array<number>
     excludeComponentId?: number | Array<number>
 
+    facetGroupId?: number | Array<number>
+    excludeFacetGroupId?: number | Array<number>
+
     facetId?: number | Array<number>
     allFacetId?: number | Array<number>
     excludeFacetId?: number | Array<number>

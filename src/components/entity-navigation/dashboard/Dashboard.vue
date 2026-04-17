@@ -3,7 +3,7 @@
         <template v-for="node in dashboardTree.roots" :key="node.value.id">
             <DashboardContainer v-if="node.children.length" :node="node" :is-collapsed="isCollapsed" />
         </template>
-        <Debug :modelValue="{ values: dashboardTree.getValues() }" />
+        <Debug :modelValue="{ tree: dashboardTree.getValues() }" />
     </div>
 </template>
 

@@ -129,11 +129,3 @@ a[disabled] {
     top: 0;
     z-index: 999;
 }
-
-.debug {
-    opacity: 0.8;
-
-    &.pre {
-        white-space: pre-wrap;
-    }
-}

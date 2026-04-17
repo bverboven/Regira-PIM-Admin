@@ -1,7 +1,7 @@
 <template>
     <button type="button" class="btn btn-default" @click="open">
         <slot>
-            <Icon :name="Entity.name" />
+            <Icon :name="config.key" />
         </slot>
         <Teleport to="#modals">
             <MyModal

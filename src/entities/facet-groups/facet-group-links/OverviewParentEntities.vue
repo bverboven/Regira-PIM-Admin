@@ -32,27 +32,27 @@ import { ref, computed } from "vue"
 import InputSelector from "@/entities/facets/selecting/InputSelector.vue"
 import FormModalButton from "@/entities/facets/details/FormModalButton.vue"
 import type FacetGroup from "../data/Entity"
-import FacetGroupLinkParent from "./FacetParentGroup"
+import Entity from "./Entity"
 
 const props = defineProps<{
     facetGroup: FacetGroup
 }>()
 
-const items = defineModel<FacetGroupLinkParent[]>({ default: () => [] })
+const items = defineModel<Entity[]>({ default: () => [] })
 const excludedIds = computed(() => [
     props.facetGroup.id,
     ...(props.facetGroup.parentFacets?.filter((x) => !x._deleted).map((x) => x.facetId) ?? []),
     ...(props.facetGroup.childFacets?.filter((x) => !x._deleted).map((x) => x.facetId) ?? []),
 ])
 
-function handleRemove(item: FacetGroupLinkParent) {
+function handleRemove(item: Entity) {
     item._deleted = !item._deleted
 }
 
-const newItem = ref<FacetGroupLinkParent>(FacetGroupLinkParent.create({ facetGroupId: props.facetGroup.id }))
-function handleAdd(item: FacetGroupLinkParent) {
-    items.value.push(FacetGroupLinkParent.create({ ...item }))
-    newItem.value = FacetGroupLinkParent.create({
+const newItem = ref<Entity>(Entity.create({ facetGroupId: props.facetGroup.id }))
+function handleAdd(item: Entity) {
+    items.value.push(Entity.create({ ...item }))
+    newItem.value = Entity.create({
         facetGroupId: props.facetGroup.id,
     })
 }

@@ -53,8 +53,12 @@
             </template>
         </LoadingContainer>
         <Debug
+            title="tree"
             :modelValue="{
-                treeRoots: tree?.getRoots().map((r) => r.value.item?.title),
+                roots: tree?.getRoots().map((r) => r.value.item?.title),
+                nodes: tree
+                    ?.getNodes()
+                    .map((n) => ''.padStart(n.level * 4, '.') + `${n.value.item?.title} (#${n.value.id}) ${n.value.isExpanded ? '+' : '-'}`),
             }"
         />
     </FormSection>
@@ -169,7 +173,7 @@ function expandDefault() {
     tree.value?.forEach(
         (r) =>
             (r.value.isExpanded =
-                selectedNodes.value!.some((n) => n.value?.id == r.value?.id) ||
+                (!selectedNodes.value!.some((n) => n.value.isExpanded) && selectedNodes.value!.some((n) => n.value?.id == r.value?.id)) ||
                 selectedNodes.value!.some((n) => n.getAncestors().some((o) => o.value?.id == r.value?.id)))
     )
 }

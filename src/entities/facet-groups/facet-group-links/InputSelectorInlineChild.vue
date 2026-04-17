@@ -23,7 +23,7 @@ import type Facet from "@/entities/facets/data/Entity"
 import InputSelector from "@/entities/facets/selecting/InputSelector.vue"
 import FormModalButton from "@/entities/facets/details/FormModalButton.vue"
 import type FacetGroup from "../data/Entity"
-import FacetGroupFacet from "./FacetGroupFacet"
+import FacetGroupFacet from "./Entity"
 
 const props = defineProps<{
     filterDefaults?: Record<string, any>

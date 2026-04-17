@@ -87,7 +87,7 @@ function expandDefault() {
     tree.value?.forEach(
         (r) =>
             (r.value.isExpanded =
-                selectedNodes.value!.some((n) => n.value?.id == r.value?.id) ||
+                (!selectedNodes.value!.some((n) => n.value.isExpanded) && selectedNodes.value!.some((n) => n.value?.id == r.value?.id)) ||
                 selectedNodes.value!.some((n) => n.getAncestors().some((o) => o.value?.id == r.value?.id)))
     )
 }
@@ -175,7 +175,9 @@ watchEffect(() => {
         if (reverseTree.value == null) {
             const tempTree = toTree(props.item.id, family.value, false)
             const self = tempTree.getNodes().filter((n) => n.value?.id == props.item.id)
-            reverseTree.value = tempTree.getAncestors(self).length > tempTree.getOffspring(self).length
+            const offspring = tempTree.getOffspring(self)
+            const ancestors = tempTree.getAncestors(self)
+            reverseTree.value = ancestors.length > 1 && offspring.length > 1 && ancestors.length > offspring.length
         }
 
         skinnyTree.value = toTree(props.item.id, family.value, reverseTree.value)

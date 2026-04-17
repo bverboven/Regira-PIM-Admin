@@ -41,17 +41,6 @@ export function useNavigation() {
 
     const sidebarItems = ref<Array<string>>(sidebar ?? [])
 
-    console.debug("useNavigation", {
-        groups,
-        dashboard,
-        navbar,
-        search,
-        sidebar,
-        configs,
-        dashboardTree,
-        navbarTree,
-    })
-
     return {
         dashboardTree,
         navbarTree,

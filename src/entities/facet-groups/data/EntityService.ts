@@ -8,8 +8,8 @@ export class EntityService extends EntityServiceBase<Entity> {
     }
 
     protected override prepareItem(item: Entity): Entity {
-        item.childEntities = item.childEntities?.filter((x) => !x._deleted) || []
-        item.parentEntities = item.parentEntities?.filter((x) => !x._deleted) || []
+        item.childFacets = item.childFacets?.filter((x) => !x._deleted) || []
+        item.parentFacets = item.parentFacets?.filter((x) => !x._deleted) || []
         return item
     }
 

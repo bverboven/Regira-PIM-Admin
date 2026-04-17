@@ -35,24 +35,24 @@
             <!-- parentFacet -->
             <div class="col mb-2">
                 <FacetInputSelector v-model="parentFacet" v-model:idValue="searchObject.parentFacetId as number" :canEdit="false" />
-                <FormLabel :label="$t('parentFacet')" />
+                <FormLabel :label="$t('facet.parentFacet')" />
             </div>
             <!-- childFacet -->
             <div class="col mb-2">
                 <FacetInputSelector v-model="childFacet" v-model:idValue="searchObject.childFacetId as number" :canEdit="false" />
-                <FormLabel :label="$t('childFacet')" />
+                <FormLabel :label="$t('facet.childFacet')" />
             </div>
         </div>
         <div class="row">
             <!-- parentFacetGroup -->
             <div class="col mb-2">
-                <FacetGroupInputSelector v-model="parentFacetGroup" v-model:idValue="searchObject.parentFacetGroupId as number" :canEdit="false" />
-                <FormLabel :label="$t('parentFacetGroup')" />
+                <FacetGroupInputSelector v-model="parentFacetGroup" v-model:idValue="searchObject.parentGroupId as number" :canEdit="false" />
+                <FormLabel :label="$t('facet.parentFacetGroup')" />
             </div>
             <!-- childFacetGroup -->
             <div class="col mb-2">
-                <FacetGroupInputSelector v-model="childFacetGroup" v-model:idValue="searchObject.childFacetGroupId as number" :canEdit="false" />
-                <FormLabel :label="$t('childFacetGroup')" />
+                <FacetGroupInputSelector v-model="childFacetGroup" v-model:idValue="searchObject.childGroupId as number" :canEdit="false" />
+                <FormLabel :label="$t('facet.childFacetGroup')" />
             </div>
         </div>
         <div class="row">
@@ -129,14 +129,14 @@ watchEffect(async () => {
     }
 })
 watchEffect(async () => {
-    if (searchObject.value.parentFacetGroupId != null && parentFacetGroup.value == null) {
-        const items = await facetGroupService.list({ ids: [searchObject.value.parentFacetGroupId as number] })
+    if (searchObject.value.parentGroupId != null && parentFacetGroup.value == null) {
+        const items = await facetGroupService.list({ ids: [searchObject.value.parentGroupId as number] })
         parentFacetGroup.value = items[0]
     }
 })
 watchEffect(async () => {
-    if (searchObject.value.childFacetGroupId != null && childFacetGroup.value == null) {
-        const items = await facetGroupService.list({ ids: [searchObject.value.childFacetGroupId as number] })
+    if (searchObject.value.childGroupId != null && childFacetGroup.value == null) {
+        const items = await facetGroupService.list({ ids: [searchObject.value.childGroupId as number] })
         childFacetGroup.value = items[0]
     }
 })

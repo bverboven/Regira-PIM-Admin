@@ -18,7 +18,7 @@
                     {{ nodeItem?.title }}
                 </span>
             </div>
-            <div class="col-auto">
+            <!-- <div class="col-auto">
                 <SelectorModalButton
                     :item-defaults="childItemDefaults"
                     class="btn btn-default border-0 py-1 px-2 mt-1 ms-1 bg-light"
@@ -27,7 +27,7 @@
                 >
                     <Icon name="new" />
                 </SelectorModalButton>
-            </div>
+            </div> -->
         </div>
         <template v-if="nodeFacets?.length">
             <ul class="list-unstyled tree-indent opacity-50 text-truncate">
@@ -88,7 +88,7 @@ const props = defineProps<{
 }>()
 
 const { fromPool } = useEntityStore()
-
+/*
 const childItemDefaults = computed(() => ({
     parentEntities: [{ parentId: props.node.value.id, parent: props.node.value.item }],
 }))
@@ -100,6 +100,7 @@ function handleAddChild(child?: Entity) {
     //props.node.value.isExpanded = true
     emit("add-child", child)
 }
+*/
 function handleDrop(e: DragEvent) {
     //e.preventDefault()
     e.stopPropagation()
