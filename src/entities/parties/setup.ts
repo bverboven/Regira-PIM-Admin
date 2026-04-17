@@ -12,7 +12,7 @@ import Form from "./details/Form.vue"
 import EntityService from "./data/EntityService"
 
 export function createRoutes(): Array<RouteRecordRaw> {
-    const key = Entity.name
+    const key = config.key
     return [
         {
             path: `/${config.routePrefix}`,
