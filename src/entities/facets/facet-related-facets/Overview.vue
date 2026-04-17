@@ -3,17 +3,17 @@
         <div class="col-lg-6">
             <FormSection>
                 <template #title>
-                    <h3 class="p-2 mb-2"><Icon :name="Facet.name" /> {{ $t("facet.parentFacets") }}</h3>
+                    <h3 class="p-2 mb-2"><Icon :name="config.key" /> {{ $t("facet.parentFacets") }}</h3>
                 </template>
-                <InputSelectorInlineParent v-model="item" />
+                <InputSelectorInlineParent v-model="item" :filter-defaults="{ exclude: excludedIds }" />
             </FormSection>
         </div>
         <div class="col-lg-6">
             <FormSection>
                 <template #title>
-                    <h3 class="p-2 mb-2"><Icon :name="Facet.name" /> {{ $t("facet.childFacets") }}</h3>
+                    <h3 class="p-2 mb-2"><Icon :name="config.key" /> {{ $t("facet.childFacets") }}</h3>
                 </template>
-                <InputSelectorInlineChild v-model="item" />
+                <InputSelectorInlineChild v-model="item" :filter-defaults="{ exclude: excludedIds }" />
             </FormSection>
         </div>
     </div>
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
+import config from "../config/config"
 import Facet from "../data/Entity"
 import InputSelectorInlineParent from "./InputSelectorInlineParent.vue"
 import InputSelectorInlineChild from "./InputSelectorInlineChild.vue"

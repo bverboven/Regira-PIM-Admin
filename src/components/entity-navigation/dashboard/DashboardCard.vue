@@ -3,7 +3,7 @@
         <router-link :to="{ name: node.value.routeName, query: node.value.initialQuery || {} }" class="btn btn-link pt-0 mt-0">
             <Icon :name="node.value.icon" size="xl" />
         </router-link>
-        <div>{{ $t(node.value.title) }} ({{ node.value.icon }})</div>
+        <div>{{ $t(node.value.title) }}</div>
     </div>
 </template>
 

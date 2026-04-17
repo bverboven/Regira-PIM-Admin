@@ -1,7 +1,7 @@
 <template>
     <div class="row border-bottom border-bottom-1 py-2">
         <div class="col-auto">
-            <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
+            <router-link :to="{ name: config.key + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
                 <PartyIcon :item="item" />
             </router-link>
         </div>
@@ -55,6 +55,7 @@ import { ModalType, ConfirmButton } from "@/regira_modules/vue/ui"
 import type { SaveResult } from "@/regira_modules/vue/entities"
 import { AddressButton, formatCity } from "../party-addresses"
 import { ContactDetails, ActionButton, ContactDataTypes } from "../party-contact-data"
+import config from "../config/config"
 import Entity from "../data/Entity"
 import PartyIcon from "../details/PartyIcon.vue"
 

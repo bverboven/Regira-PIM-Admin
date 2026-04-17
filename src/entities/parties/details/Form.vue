@@ -15,7 +15,7 @@
             <div class="col-auto order-2 order-md-3">
                 <RouterLink
                     v-if="isPopup"
-                    :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
+                    :to="{ name: `${config.key}Details`, params: { id: item.$id } }"
                     class="btn btn-default py-1"
                     target="_blank"
                     :title="$t('popOut')"
@@ -157,7 +157,8 @@ import { useLang } from "@/regira_modules/vue/lang"
 import { Feedback, TabContainer, Tab } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
-import { Entity as Product } from "@/entities/products"
+import { config as productConfig } from "@/entities/products"
+import { config as partyRelationshipTypeConfig } from "@/entities/party-relationship-types"
 import { Overview as AddressesOverview } from "../party-addresses"
 import { Overview as ContactDataOverview } from "../party-contact-data"
 import { Overview as ProductsOverview } from "../party-products"
@@ -212,9 +213,9 @@ const { translate } = useLang()
 const tabs = computed(() =>
     [
         Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }),
-        Tab.create("relations", { icon: Entity.name, title: translate("party.relations") }),
+        Tab.create("relations", { icon: partyRelationshipTypeConfig.key, title: translate("party.relations") }),
         Tab.create("tree", { icon: "tree", title: translate("tree") }),
-        Tab.create("products", { icon: Product.name, title: translate("products") }),
+        Tab.create("products", { icon: productConfig.key, title: translate("products") }),
     ].filter((tab) => tab)
 )
 </script>

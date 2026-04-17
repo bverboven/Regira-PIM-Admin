@@ -9,12 +9,12 @@
                     <div class="form-check my-0 float-end">
                         <label class="btn btn-info mx-1" :class="{ 'opacity-50': includeFacets }" title="show facets">
                             <input type="checkbox" v-model="includeFacets" class="btn-check" />
-                            <Icon :name="Facet.name" class="me-1" />
+                            <Icon :name="facetConfig.key" class="me-1" />
                             <span class="d-none d-lg-inline d-xl-none">show facets</span>
                         </label>
                         <label class="btn btn-info mx-1" :class="{ 'opacity-50': includeSuppliers }" title="show suppliers">
                             <input type="checkbox" v-model="includeSuppliers" :true-value="true" class="btn-check" />
-                            <Icon name="supplier" class="me-1" />
+                            <Icon :name="partyConfig.key" class="me-1" />
                             <span class="d-none d-lg-inline d-xl-none">show suppliers</span>
                         </label>
                         <IconButton v-if="!areAllExanded" icon="expand" class="btn-info mx-1" @click="expandAll" />
@@ -74,8 +74,8 @@ import TreeItem from "./TreeItem"
 import TreeView from "./TreeView.vue"
 import ProductAssembly from "../product-assemblies/Entity"
 import { Entity, type EntityService, useEntityStore } from "../"
-import { Entity as Facet, useEntityStore as useFacetStore } from "../../facets"
-import { Entity as Party, useEntityStore as usePartyStore } from "../../parties"
+import { Entity as Facet, config as facetConfig, useEntityStore as useFacetStore } from "../../facets"
+import { Entity as Party, config as partyConfig, useEntityStore as usePartyStore } from "../../parties"
 import { toTree } from "./functions"
 import { FamilyItem } from "."
 

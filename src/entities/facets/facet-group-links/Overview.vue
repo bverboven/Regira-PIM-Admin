@@ -3,7 +3,7 @@
         <div class="col-lg-6">
             <FormSection>
                 <template #title>
-                    <h3 class="p-2 mb-2"><Icon :name="FacetGroup.name" /> {{ $t("facet.parentFacetGroups") }}</h3>
+                    <h3 class="p-2 mb-2"><Icon :name="facetGroupConfig.key" /> {{ $t("facet.parentFacetGroups") }}</h3>
                 </template>
                 <OverviewParentGroups v-model="item" :filter-defaults="{ exclude: excludedIds }" />
             </FormSection>
@@ -11,7 +11,7 @@
         <div class="col-lg-6">
             <FormSection>
                 <template #title>
-                    <h3 class="p-2 mb-2"><Icon :name="FacetGroup.name" /> {{ $t("facet.childFacetGroups") }}</h3>
+                    <h3 class="p-2 mb-2"><Icon :name="facetGroupConfig.key" /> {{ $t("facet.childFacetGroups") }}</h3>
                 </template>
                 <OverviewChildGroups v-model="item" :filter-defaults="{ exclude: excludedIds }" />
             </FormSection>
@@ -21,8 +21,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
+import { config as facetGroupConfig } from "@/entities/facet-groups"
 import type Facet from "../data/Entity"
-import FacetGroup from "../../facet-groups/data/Entity"
 import OverviewParentGroups from "./InputSelectorInlineParent.vue"
 import OverviewChildGroups from "./InputSelectorInlineChild.vue"
 

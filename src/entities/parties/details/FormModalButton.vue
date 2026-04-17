@@ -2,7 +2,7 @@
     <button type="button" class="btn btn-default" @click="open">
         <slot>
             <PartyIcon v-if="modelRef" :item="modelRef" />
-            <Icon v-else :name="Entity.name" />
+            <Icon v-else :name="config.key" />
         </slot>
         <Teleport to="#modals">
             <MyModal

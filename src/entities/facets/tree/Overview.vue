@@ -59,7 +59,7 @@ import { toTree } from "./functions"
 import { FamilyItem } from "."
 import TreeItem from "./TreeItem"
 import TreeView from "./TreeView.vue"
-import { FacetChild, FacetParent } from "../facet-related-facets"
+import { FacetParent } from "../facet-related-facets"
 
 const props = defineProps<{
     item: Entity

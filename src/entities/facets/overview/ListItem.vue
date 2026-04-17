@@ -3,7 +3,7 @@
         <div class="col-auto">
             <template v-if="config.isComplex">
                 <!-- Complex entity: Link to input page -->
-                <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
+                <router-link :to="{ name: config.key + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
                     <Icon :name="config.key" />
                 </router-link>
             </template>

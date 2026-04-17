@@ -10,7 +10,7 @@
                 class="btn btn-outline-secondary"
                 @save="({ saved }) => handleSelect(saved)"
             >
-                <Icon :name="Entity.name" v-if="item?.id" />
+                <Icon :name="config.key" v-if="item?.id" />
                 <Icon v-else name="new" />
             </FormModalButton>
         </slot>
@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, type Ref } from "vue"
+import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import FormModalButton from "../details/FormModalButton.vue"

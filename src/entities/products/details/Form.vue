@@ -15,7 +15,7 @@
             <div class="col-auto order-2 order-md-3">
                 <RouterLink
                     v-if="isPopup"
-                    :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
+                    :to="{ name: `${config.key}Details`, params: { id: item.$id } }"
                     class="btn btn-default py-1"
                     target="_blank"
                     :title="$t('popOut')"

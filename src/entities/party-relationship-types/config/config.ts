@@ -18,7 +18,7 @@ const config: IConfig = {
     overviewTitle: "partyRelationshipTypes",
     detailsTitle: "partyRelationshipType",
     description: "partyRelationshipType.description",
-    icon: "bi bi-diagram-3",
+    icon: "bi bi-diagram-2",
 
     defaultPageSize: 0,
 

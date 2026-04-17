@@ -30,7 +30,7 @@
             </div>
             <div class="col-auto order-2 order-lg-3 ps-2">
                 <template v-if="config.isComplex">
-                    <RouterLink :to="{ name: Entity.name + 'Details', params: { id: 'new' } }" class="btn btn-info">
+                    <RouterLink :to="{ name: config.key + 'Details', params: { id: 'new' } }" class="btn btn-info">
                         <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("new") }}</span>
                     </RouterLink>
                 </template>
