@@ -53,7 +53,7 @@
             </div>
             <!-- UnitType -->
             <div class="col mb-2">
-                <UnitTypeInputSelector v-model="unitType" v-model:id-value="searchObject.unitTypeId" />
+                <UnitTypeInputSelector v-model="unitType" v-model:id-value="searchObject.unitTypeId" :placeholder="$t('unitType')" />
                 <FormLabel :label="$t('unitType')" />
             </div>
         </div>
@@ -66,7 +66,13 @@
                     :canEdit="false"
                     :filterDefaults="{ isComponent: true }"
                     :placeholder="$t('product.component')"
-                />
+                >
+                    <template #prepend>
+                        <span class="input-group-text">
+                            <Icon name="component" />
+                        </span>
+                    </template>
+                </InputSelector>
                 <FormLabel :label="$t('product.component')" />
             </div>
             <!-- Assembly -->
@@ -77,7 +83,13 @@
                     :canEdit="false"
                     :filterDefaults="{ isAssembly: true }"
                     :placeholder="$t('product.assembly')"
-                />
+                >
+                    <template #prepend>
+                        <span class="input-group-text">
+                            <Icon name="assembly" />
+                        </span>
+                    </template>
+                </InputSelector>
                 <FormLabel :label="$t('product.assembly')" />
             </div>
         </div>
@@ -88,8 +100,15 @@
                     v-model="facetGroup"
                     v-model:idValue="searchObject.facetGroupId as number"
                     :canEdit="false"
+                    :placeholder="$t('product.facetGroup')"
                     @select="handleFilter"
-                />
+                >
+                    <template #prepend>
+                        <span class="input-group-text bg-success bg-opacity-25">
+                            <Icon :name="facetGroupConfig.key" />
+                        </span>
+                    </template>
+                </FacetGroupInputSelector>
                 <FormLabel :label="$t('product.facetGroup')" />
             </div>
             <!-- Exclude Facet Group -->
@@ -98,8 +117,15 @@
                     v-model="excludeFacetGroup"
                     v-model:idValue="searchObject.excludeFacetGroupId as number"
                     :canEdit="false"
+                    :placeholder="$t('product.facetGroup')"
                     @select="handleFilter"
-                />
+                >
+                    <template #prepend>
+                        <span class="input-group-text bg-danger bg-opacity-25">
+                            <Icon :name="facetGroupConfig.key" />
+                        </span>
+                    </template>
+                </FacetGroupInputSelector>
                 <FormLabel :label="$t('product.excludedFacetGroup')" />
             </div>
         </div>
@@ -109,7 +135,7 @@
                 <div class="row">
                     <div class="col-auto mb-2" v-for="c in allComponents" :key="c.id">
                         <div class="input-group mt-1">
-                            <span class="input-group-text">
+                            <span class="input-group-text bg-success bg-opacity-50">
                                 <Icon name="check" />
                             </span>
                             <div class="form-control">{{ c.$title }}</div>
@@ -124,7 +150,13 @@
                             :canEdit="false"
                             :filter-defaults="{ isComponent: true }"
                             :placeholder="$t('product.addComponent')"
-                        />
+                        >
+                            <template #prepend>
+                                <span class="input-group-text bg-success bg-opacity-25">
+                                    <Icon name="component" />
+                                </span>
+                            </template>
+                        </InputSelector>
                     </div>
                 </div>
                 <FormLabel :label="$t('product.allComponents')" />
@@ -134,7 +166,7 @@
                 <div class="row">
                     <div class="col-auto mb-2" v-for="c in excludeComponents" :key="c.id">
                         <div class="input-group mt-1">
-                            <span class="input-group-text">
+                            <span class="input-group-text bg-danger bg-opacity-50">
                                 <Icon name="ban" />
                             </span>
                             <div class="form-control">{{ c.$title }}</div>
@@ -149,7 +181,13 @@
                             :canEdit="false"
                             :filter-defaults="{ isComponent: true }"
                             :placeholder="$t('product.addComponent')"
-                        />
+                        >
+                            <template #prepend>
+                                <span class="input-group-text bg-danger bg-opacity-25">
+                                    <Icon name="component" />
+                                </span>
+                            </template>
+                        </InputSelector>
                     </div>
                 </div>
                 <FormLabel :label="$t('product.excludedComponents')" />
@@ -161,7 +199,7 @@
                 <div class="row">
                     <div class="col-auto mb-2" v-for="f in allFacets" :key="f.id">
                         <div class="input-group mt-1">
-                            <span class="input-group-text">
+                            <span class="input-group-text bg-success bg-opacity-50">
                                 <Icon name="check" />
                             </span>
                             <div class="form-control">{{ f.$title }}</div>
@@ -171,7 +209,13 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <FacetInputSelector @select="handleAddFacet" :canEdit="false" :placeholder="$t('product.addFacet')" />
+                        <FacetInputSelector @select="handleAddFacet" :canEdit="false" :placeholder="$t('product.addFacet')">
+                            <template #prepend>
+                                <span class="input-group-text bg-success bg-opacity-25">
+                                    <Icon :name="facetConfig.key" />
+                                </span>
+                            </template>
+                        </FacetInputSelector>
                     </div>
                 </div>
                 <FormLabel :label="$t('product.allFacets')" />
@@ -181,7 +225,7 @@
                 <div class="row">
                     <div class="col-auto mb-2" v-for="f in excludeFacets" :key="f.id">
                         <div class="input-group mt-1">
-                            <span class="input-group-text">
+                            <span class="input-group-text bg-danger bg-opacity-50">
                                 <Icon name="ban" />
                             </span>
                             <div class="form-control">{{ f.$title }}</div>
@@ -191,7 +235,13 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <FacetInputSelector @select="handleAddExcludedFacet" :canEdit="false" :placeholder="$t('product.addFacet')" />
+                        <FacetInputSelector @select="handleAddExcludedFacet" :canEdit="false" :placeholder="$t('product.addFacet')">
+                            <template #prepend>
+                                <span class="input-group-text bg-danger bg-opacity-25">
+                                    <Icon :name="facetConfig.key" />
+                                </span>
+                            </template>
+                        </FacetInputSelector>
                     </div>
                 </div>
                 <FormLabel :label="$t('product.excludedFacets')" />
@@ -203,9 +253,9 @@
 <script setup lang="ts">
 import { ref, watch, watchEffect } from "vue"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
-import { type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
-import { type Entity as Facet, InputSelector as FacetInputSelector, useEntityStore as useFacetStore } from "@/entities/facets"
-import { type Entity as FacetGroup, InputSelector as FacetGroupInputSelector } from "@/entities/facet-groups"
+import { config as unitTypeConfig, type Entity as UnitType, InputSelector as UnitTypeInputSelector } from "@/entities/unit-types"
+import { config as facetConfig, type Entity as Facet, InputSelector as FacetInputSelector, useEntityStore as useFacetStore } from "@/entities/facets"
+import { config as facetGroupConfig, type Entity as FacetGroup, InputSelector as FacetGroupInputSelector } from "@/entities/facet-groups"
 import SearchObject from "./SearchObject"
 import InputSelector from "../selecting/InputSelector.vue"
 import Product from "../data/Entity"
@@ -236,11 +286,29 @@ const excludeComponents = ref<Array<Product>>()
 const allFacets = ref<Array<Facet>>()
 const excludeFacets = ref<Array<Facet>>()
 
-const { filterIsActive, handleReset, handleFilter } = useFilter({
+const {
+    filterIsActive,
+    handleReset: handleProductReset,
+    handleFilter,
+} = useFilter({
     searchObject,
     emit,
     Constructor: SearchObject,
 })
+
+function handleReset() {
+    handleProductReset()
+    unitType.value = undefined
+    component.value = undefined
+    assembly.value = undefined
+    facetGroup.value = undefined
+    excludeFacetGroup.value = undefined
+    allComponents.value = undefined
+    excludeComponents.value = undefined
+    allFacets.value = undefined
+    excludeFacets.value = undefined
+}
+
 watch(allComponents, () => {
     searchObject.value = {
         ...searchObject.value,
