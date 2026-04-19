@@ -12,16 +12,16 @@ const props = defineProps<{
     item: Entity
 }>()
 
-const itemAsFacet = computed(() =>
-    Object.assign(new FacetEntity(), {
-        id: props.item.id,
-        title: props.item.title,
-        code: props.item.code,
-        description: props.item.description,
-        parentEntities: [],
-        childEntities: [],
-        facetParentGroups: [],
-        facetChildGroups: [],
-    })
-)
+const itemAsFacet = computed(() => {
+    const facet = new FacetEntity()
+    facet.id = props.item.id
+    facet.title = props.item.title
+    facet.code = props.item.code
+    facet.description = props.item.description
+    facet.parentEntities = []
+    facet.childEntities = []
+    facet.facetParentGroups = []
+    facet.facetChildGroups = []
+    return facet
+})
 </script>
