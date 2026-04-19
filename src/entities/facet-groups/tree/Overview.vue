@@ -16,6 +16,12 @@ const itemAsFacet = computed(() =>
     Object.assign(new FacetEntity(), {
         id: props.item.id,
         title: props.item.title,
+        code: props.item.code,
+        description: props.item.description,
+        parentEntities: [],
+        childEntities: [],
+        facetParentGroups: [],
+        facetChildGroups: [],
     })
 )
 </script>
