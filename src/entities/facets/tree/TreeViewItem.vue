@@ -47,7 +47,7 @@ import { computed } from "vue"
 import { orderBy } from "@/regira_modules/utilities/array-utility"
 import type { TreeNode } from "@/regira_modules/treelist"
 import { type DragDropEmits, type DragDropEngine } from "@/regira_modules/vue/entities/tree"
-import { Entity as Facet, FormModalButton as FacetModalButton, useEntityStore as useFacetStore, SelectorModalButton } from "../../facets"
+import { config, Entity as Facet, FormModalButton as FacetModalButton, useEntityStore as useFacetStore, SelectorModalButton } from "../../facets"
 import { FormModalButton as FacetGroupModalButton, useEntityStore as useFacetGroupStore } from "../../facet-groups"
 import type FacetGroup from "../../facet-groups/data/Entity"
 import type TreeItem from "./TreeItem"
@@ -70,7 +70,7 @@ const props = defineProps<{
 const { fromPool: fromFacetPool } = useFacetStore()
 const { fromPool: fromFacetGroupPool } = useFacetGroupStore()
 
-const isFacet = computed(() => props.node.value.type === Facet.name)
+const isFacet = computed(() => props.node.value.type === config.key)
 
 const nodeItem = computed(() => {
     if (isFacet.value) {
